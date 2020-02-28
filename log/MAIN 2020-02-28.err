@@ -1,0 +1,38 @@
+2020-02-28 09:55:16.686   MAIN   ERR   Problem opening zapsi3 database: dial tcp: lookup zapsi_database: no such host
+2020-02-28 09:55:42.517   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 09:57:15.019   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 09:58:58.947   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 09:59:36.452   MAIN   ERR   Problem opening zapsi3 database: sql: unknown driver "" (forgotten import?)
+2020-02-28 10:04:20.255   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 10:07:17.963   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:07:35.357   MAIN   ERR   Problem opening zapsi3 database: sql: unknown driver "" (forgotten import?)
+2020-02-28 10:08:49.906   MAIN   ERR   Problem opening zapsi3 database: sql: unknown driver "" (forgotten import?)
+2020-02-28 10:09:51.475   MAIN   ERR   Problem opening zapsi3 database: sql: unknown driver "" (forgotten import?)
+2020-02-28 10:12:05.179   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Login failed for user ''.
+2020-02-28 10:13:40.279   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Login failed for user ''.
+2020-02-28 10:19:39.003   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
+2020-02-28 10:26:11.063   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
+2020-02-28 10:32:15.753   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
+2020-02-28 10:32:35.648   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 10:33:27.597   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:35:50.413   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:43:20.777   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:51:37.629   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:56:53.694   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 10:59:49.629   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:02:31.303   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 11:03:03.071   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:12:19.256   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 11:12:49.895   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:15:01.279   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:16:13.187   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:17:27.652   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:20:21.717   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:21:09.118   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 11:21:31.858   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 11:21:55.148   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
+2020-02-28 11:44:41.265   MAIN   ERR   Problem opening zapsi3 database: sql: unknown driver "" (forgotten import?)
+2020-02-28 12:09:49.678   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 13:20:25.110   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 13:35:27.138   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-28 13:35:32.932   MAIN   ERR   Email not sent: 535 5.7.0 ...authentication rejected (Use LOGIN or PLAIN Authentication, please), elapsed: 581.006602ms
