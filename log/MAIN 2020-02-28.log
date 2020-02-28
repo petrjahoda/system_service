@@ -31954,3 +31954,31 @@
 2020-02-28 13:35:32.931   MAIN   ERR   Email not sent: 535 5.7.0 ...authentication rejected (Use LOGIN or PLAIN Authentication, please), elapsed: 581.006602ms
 2020-02-28 13:35:32.932   MAIN   INF   Sleeping for 23h59m54.853987409s
 2020-02-28 13:35:39.150   MAIN   INF   Stopped on platform darwin-launchd
+2020-02-28 21:18:12.369   MAIN   INF   Starting System Service on darwin-launchd
+2020-02-28 21:18:12.370   MAIN   INF   Program version 2020.1.2.28 started
+2020-02-28 21:18:12.391   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 21:18:12.391   MAIN   INF   Program running
+2020-02-28 21:18:14.348   MAIN   INF   Getting database size
+2020-02-28 21:18:14.372   MAIN   INF   Database size calculated, elapsed: 23.245646ms
+2020-02-28 21:18:14.372   MAIN   INF   Getting database growth
+2020-02-28 21:18:14.397   MAIN   INF   Database growth calculated, elapsed: 24.327217ms
+2020-02-28 21:18:14.397   MAIN   INF   Getting free disk space
+2020-02-28 21:18:14.397   MAIN   INF   Disc free space calculated, elapsed: 17.01µs
+2020-02-28 21:18:14.397   MAIN   INF   Writing new record to database
+2020-02-28 21:18:14.430   MAIN   INF   New record saved, elapsed: 32.529746ms
+2020-02-28 21:18:14.430   MAIN   INF   Sleeping for 23h59m58.042801853s
+2020-02-28 21:20:58.169   MAIN   INF   Stopped on platform darwin-launchd
+2020-02-28 21:21:44.687   MAIN   INF   Starting System Service on darwin-launchd
+2020-02-28 21:21:44.687   MAIN   INF   Program version 2020.1.2.28 started
+2020-02-28 21:21:44.694   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 21:21:44.694   MAIN   INF   Program running
+2020-02-28 21:21:46.527   MAIN   INF   Getting database size
+2020-02-28 21:21:46.542   MAIN   INF   Database size calculated, elapsed: 15.590171ms
+2020-02-28 21:21:46.543   MAIN   INF   Getting database growth
+2020-02-28 21:21:46.565   MAIN   INF   Database growth calculated, elapsed: 21.356423ms
+2020-02-28 21:21:46.566   MAIN   INF   Getting free disk space
+2020-02-28 21:21:46.567   MAIN   INF   Disc free space calculated, elapsed: 25.481µs
+2020-02-28 21:21:46.567   MAIN   INF   Writing new record to database
+2020-02-28 21:21:46.597   MAIN   INF   New record saved, elapsed: 29.855658ms
+2020-02-28 21:21:46.597   MAIN   INF   Sleeping for 23h59m58.167537902s
+2020-02-28 21:21:50.302   MAIN   INF   Stopped on platform darwin-launchd

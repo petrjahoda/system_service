@@ -35,6 +35,10 @@ github.com/petrjahoda/zapsi_database v0.0.0-20200228121930-95d36b3226d3 h1:u1fGO
 github.com/petrjahoda/zapsi_database v0.0.0-20200228121930-95d36b3226d3/go.mod h1:rmyKvB+rcxSaB8KJwCdvewLjf9AuhtcxLi2fi5BW0uc=
 github.com/petrjahoda/zapsi_database v0.0.0-20200228122640-979f607bb88d h1:h/KiUdpg/VVNUPl6WupIIomg4Mjanc5AGq4PuwfralA=
 github.com/petrjahoda/zapsi_database v0.0.0-20200228122640-979f607bb88d/go.mod h1:rmyKvB+rcxSaB8KJwCdvewLjf9AuhtcxLi2fi5BW0uc=
+github.com/petrjahoda/zapsi_database v0.0.0-20200228201612-e18da4f054e7 h1:dF0BDjaRha9MxJEoPmvbYorWpm63dL7rqYS+AIHkDCw=
+github.com/petrjahoda/zapsi_database v0.0.0-20200228201612-e18da4f054e7/go.mod h1:rmyKvB+rcxSaB8KJwCdvewLjf9AuhtcxLi2fi5BW0uc=
+github.com/petrjahoda/zapsi_database v0.0.0-20200228202050-1e4ceac2f7a6 h1:f37XcQaCpbt8PL4cnxXfGayz3e/yFRmBPlac9yOd6G8=
+github.com/petrjahoda/zapsi_database v0.0.0-20200228202050-1e4ceac2f7a6/go.mod h1:rmyKvB+rcxSaB8KJwCdvewLjf9AuhtcxLi2fi5BW0uc=
 github.com/ricochet2200/go-disk-usage v0.0.0-20150921141558-f0d1b743428f h1:w4VLAgWDnrcBDFSi8Ppn/MrB/Z1A570+MV90CvMtVVA=
 github.com/ricochet2200/go-disk-usage v0.0.0-20150921141558-f0d1b743428f/go.mod h1:yhevTRDiduxPJHQDCtlqUn53ojFPkRh/mKhMUzQUCpc=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=

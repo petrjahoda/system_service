@@ -36,3 +36,5 @@
 2020-02-28 13:20:25.110   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
 2020-02-28 13:35:27.138   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
 2020-02-28 13:35:32.932   MAIN   ERR   Email not sent: 535 5.7.0 ...authentication rejected (Use LOGIN or PLAIN Authentication, please), elapsed: 581.006602ms
+2020-02-28 21:18:12.391   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-28 21:21:44.694   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist

@@ -1,8 +1,8 @@
 {
-  "DatabaseType": "mysql",
+  "DatabaseType": "postgres",
   "IpAddress": "localhost",
   "DatabaseName": "zapsi3",
-  "Port": "3308",
-  "Login": "root",
+  "Port": "5432",
+  "Login": "postgres",
   "Password": "Zps05....."
 }
