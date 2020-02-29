@@ -1,8 +1,8 @@
 {
-  "DatabaseType": "mysql",
+  "DatabaseType": "mariadb",
   "IpAddress": "localhost",
   "DatabaseName": "zapsi3",
-  "Port": "3308",
+  "Port": "3307",
   "Login": "root",
   "Password": "Zps05....."
 }
