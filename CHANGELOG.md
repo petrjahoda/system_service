@@ -20,6 +20,9 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 ### Removed
 - MySQL database
 
+### Fixed
+- added sleep when creating tables and database is not available
+
 ## [2020.1.1.1] - 2020-01-01
 
 ### Added

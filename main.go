@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const version = "2020.1.2.28"
+const version = "2020.1.2.29"
 const programName = "System Service"
 const programDesription = "Creates database and checks system data"
 const deleteLogsAfter = 240 * time.Hour
@@ -261,6 +261,7 @@ func CompleteDatabaseCheck() {
 			WriteProgramVersionIntoSettings()
 			firstRunCheckComplete = true
 		}
+		time.Sleep(10 * time.Second)
 	}
 }
 
