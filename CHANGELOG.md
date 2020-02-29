@@ -15,6 +15,11 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Security``` in case of vulnerabilities.
 
 
+## [2020.1.2.29] - 2020-02-29
+
+### Removed
+- MySQL database
+
 ## [2020.1.1.1] - 2020-01-01
 
 ### Added

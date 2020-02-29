@@ -218,8 +218,6 @@ func GetDatabaseSize() float32 {
 	switch DatabaseType {
 	case "postgres":
 		db.Raw("SELECT pg_database_size('" + DatabaseName + "')/1000000 as Size;").Scan(&result)
-	case "mysql":
-		db.Raw("SELECT SUM(ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2)) AS \"size\" FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = \"" + DatabaseName + "\"").Scan(&result)
 	case "mariadb":
 		db.Raw("SELECT SUM(ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2)) AS \"size\" FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = \"" + DatabaseName + "\"").Scan(&result)
 	case "mssql":

@@ -1,0 +1,5 @@
+2020-02-29 09:57:07.414   MAIN   ERR   Problem opening zapsi3 database: pq: database "zapsi3" does not exist
+2020-02-29 09:57:24.675   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-29 09:57:35.809   MAIN   ERR   Problem opening zapsi3 database: Error 1049: Unknown database 'zapsi3'
+2020-02-29 09:57:52.760   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
+2020-02-29 10:09:42.345   MAIN   ERR   Problem opening zapsi3 database: Login error: mssql: Cannot open database "zapsi3" that was requested by the login. Using the user default database "master" instead.
