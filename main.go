@@ -256,12 +256,12 @@ func CompleteDatabaseCheck() {
 		tablesOk, err := zapsi_database.CheckTables(DatabaseType, DatabaseIpAddress, DatabasePort, DatabaseLogin, DatabaseName, DatabasePassword)
 		if err != nil {
 			LogInfo("MAIN", "Problem creating tables: "+err.Error())
+			time.Sleep(1 * time.Second)
 		}
 		if databaseOk && tablesOk {
 			WriteProgramVersionIntoSettings()
 			firstRunCheckComplete = true
 		}
-		time.Sleep(10 * time.Second)
 	}
 }
 
