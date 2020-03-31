@@ -9,6 +9,10 @@ cd windows
 upx system_service_windows.exe
 cd ..
 docker pull alpine:latest
-docker rmi -f petrjahoda/system_service:"$1"
-docker build -t petrjahoda/system_service:"$1" .
-docker push petrjahoda/system_service:"$1"
+docker rmi -f petrjahoda/system_service:latest
+docker build -t petrjahoda/system_service:latest .
+docker push petrjahoda/system_service:latest
+
+docker rmi -f petrjahoda/system_service:2020.1.3
+docker build -t petrjahoda/system_service:2020.1.3 .
+docker push petrjahoda/system_service:2020.1.3

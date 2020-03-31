@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const version = "2020.1.2.29"
+const version = "2020.1.3.31"
 const programName = "System Service"
 const programDesription = "Creates database and checks system data"
 const deleteLogsAfter = 240 * time.Hour
