@@ -13,6 +13,6 @@ docker rmi -f petrjahoda/system_service:latest
 docker build -t petrjahoda/system_service:latest .
 docker push petrjahoda/system_service:latest
 
-docker rmi -f petrjahoda/system_service:2020.1.3
-docker build -t petrjahoda/system_service:2020.1.3 .
-docker push petrjahoda/system_service:2020.1.3
+docker rmi -f petrjahoda/system_service:2020.2.2
+docker build -t petrjahoda/system_service:2020.2.2 .
+docker push petrjahoda/system_service:2020.2.2

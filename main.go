@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const version = "2020.1.3.31"
+const version = "2020.2.2.18"
 const programName = "System Service"
 const programDesription = "Creates database and checks system data"
 const deleteLogsAfter = 240 * time.Hour
@@ -20,6 +20,8 @@ const downloadInSeconds = 86400
 type Result struct {
 	Size float32
 }
+
+var serviceDirectory string
 
 type program struct{}
 
@@ -59,6 +61,32 @@ func (p *program) run() {
 	}
 }
 
+func (p *program) Stop(s service.Service) error {
+	LogInfo("MAIN", "Stopped on platform "+s.Platform())
+	return nil
+}
+
+func init() {
+	serviceDirectory = GetDirectory()
+}
+
+func main() {
+	serviceConfig := &service.Config{
+		Name:        programName,
+		DisplayName: programName,
+		Description: programDesription,
+	}
+	prg := &program{}
+	s, err := service.New(prg, serviceConfig)
+	if err != nil {
+		LogError("MAIN", err.Error())
+	}
+	err = s.Run()
+	if err != nil {
+		LogError("MAIN", "Problem starting "+serviceConfig.Name)
+	}
+}
+
 func SendEmail(estimatedDiscSpaceDays float32) {
 	if estimatedDiscSpaceDays < 30 {
 		LogInfo("MAIN", "Sending email about low disc space")
@@ -93,9 +121,10 @@ func GetRecipient() string {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return ""
 	}
+	db.LogMode(false)
+	defer db.Close()
 	var company zapsi_database.Setting
 	db.Where("name=?", "email").Find(&company)
-	defer db.Close()
 	LogInfo("MAIN", "Recipient email ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
 	return company.Value
 }
@@ -109,9 +138,10 @@ func GetCompanyName() string {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return ""
 	}
+	db.LogMode(false)
+	defer db.Close()
 	var company zapsi_database.Setting
 	db.Where("name=?", "company").Find(&company)
-	defer db.Close()
 	LogInfo("MAIN", "Company name ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
 	return company.Value
 }
@@ -125,6 +155,8 @@ func UpdateMailSettings() (error, string, int, string, string, string) {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return nil, "", 0, "", "", ""
 	}
+	db.LogMode(false)
+	defer db.Close()
 	var settingsHost zapsi_database.Setting
 	db.Where("name=?", "host").Find(&settingsHost)
 	host := settingsHost.Value
@@ -144,7 +176,6 @@ func UpdateMailSettings() (error, string, int, string, string, string) {
 	var settingsEmail zapsi_database.Setting
 	db.Where("name=?", "email").Find(&settingsEmail)
 	email := settingsEmail.Value
-	defer db.Close()
 	LogInfo("MAIN", "Mail settings updated, elapsed: "+time.Since(timer).String())
 	return err, host, port, username, password, email
 }
@@ -158,6 +189,7 @@ func WriteNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaByt
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return
 	}
+	db.LogMode(false)
 	defer db.Close()
 	var newSystemRecord zapsi_database.SystemRecord
 	newSystemRecord.DatabaseSizeInMegaBytes = databaseSizeMegaBytes
@@ -196,6 +228,7 @@ func GetGrowthOfDatabase(actualDatabaseSize float32) float32 {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return 0
 	}
+	db.LogMode(false)
 	defer db.Close()
 	var systemRecord zapsi_database.SystemRecord
 	db.Last(&systemRecord)
@@ -213,6 +246,7 @@ func GetDatabaseSize() float32 {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return 0
 	}
+	db.LogMode(false)
 	defer db.Close()
 	var result Result
 	switch DatabaseType {
@@ -226,27 +260,6 @@ func GetDatabaseSize() float32 {
 
 	LogInfo("MAIN", "Database size calculated, elapsed: "+time.Since(timer).String())
 	return result.Size
-}
-func (p *program) Stop(s service.Service) error {
-	LogInfo("MAIN", "Stopped on platform "+s.Platform())
-	return nil
-}
-
-func main() {
-	serviceConfig := &service.Config{
-		Name:        programName,
-		DisplayName: programName,
-		Description: programDesription,
-	}
-	prg := &program{}
-	s, err := service.New(prg, serviceConfig)
-	if err != nil {
-		LogError("MAIN", err.Error())
-	}
-	err = s.Run()
-	if err != nil {
-		LogError("MAIN", "Problem starting "+serviceConfig.Name)
-	}
 }
 
 func CompleteDatabaseCheck() {
@@ -272,6 +285,7 @@ func WriteProgramVersionIntoSettings() {
 		LogError("MAIN", "Problem opening "+DatabaseName+" database: "+err.Error())
 		return
 	}
+	db.LogMode(false)
 	defer db.Close()
 	var settings zapsi_database.Setting
 	db.Where("name=?", programName).Find(&settings)

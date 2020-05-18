@@ -25,7 +25,7 @@ type Config struct {
 }
 
 func CreateConfigIfNotExists() {
-	configDirectory := filepath.Join(".", "config")
+	configDirectory := filepath.Join(serviceDirectory, "config")
 	configFileName := "config.json"
 	configFullPath := strings.Join([]string{configDirectory, configFileName}, "/")
 
@@ -61,7 +61,7 @@ func CreateConfigIfNotExists() {
 }
 
 func LoadSettingsFromConfigFile() {
-	configDirectory := filepath.Join(".", "config")
+	configDirectory := filepath.Join(serviceDirectory, "config")
 	configFileName := "config.json"
 	configFullPath := strings.Join([]string{configDirectory, configFileName}, "/")
 	ConfigFile := Config{}

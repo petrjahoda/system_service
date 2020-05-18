@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -32,7 +33,7 @@ func LogDebug(reference, data string) {
 
 func LogDirectoryFileCheck(reference string) {
 	dateTimeFormat := "2006-01-02 15:04:05.000"
-	logDirectory := filepath.Join(".", "log")
+	logDirectory := filepath.Join(serviceDirectory, "log")
 	_, checkPathError := os.Stat(logDirectory)
 	logDirectoryExists := checkPathError == nil
 	if logDirectoryExists {
@@ -50,7 +51,7 @@ func LogDirectoryFileCheck(reference string) {
 func AppendDataToLog(logLevel string, reference string, data string) {
 	dateTimeFormat := "2006-01-02 15:04:05.000"
 	logNameDateTimeFormat := "2006-01-02"
-	logDirectory := filepath.Join(".", "log")
+	logDirectory := filepath.Join(serviceDirectory, "log")
 	logFileName := reference + " " + time.Now().Format(logNameDateTimeFormat) + ".log"
 	logFullPath := strings.Join([]string{logDirectory, logFileName}, "/")
 	f, err := os.OpenFile(logFullPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -68,7 +69,7 @@ func AppendDataToLog(logLevel string, reference string, data string) {
 func AppendDataToErrLog(logLevel string, reference string, data string) {
 	dateTimeFormat := "2006-01-02 15:04:05.000"
 	logNameDateTimeFormat := "2006-01-02"
-	logDirectory := filepath.Join(".", "log")
+	logDirectory := filepath.Join(serviceDirectory, "log")
 	logFileName := reference + " " + time.Now().Format(logNameDateTimeFormat) + ".err"
 	logFullPath := strings.Join([]string{logDirectory, logFileName}, "/")
 	f, err := os.OpenFile(logFullPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -90,7 +91,7 @@ func DeleteOldLogFiles() {
 		return
 	}
 	now := time.Now()
-	logDirectory := filepath.Join(".", "log")
+	logDirectory := filepath.Join(serviceDirectory, "log")
 	for _, file := range directory {
 		if fileAge := now.Sub(file.ModTime()); fileAge > deleteLogsAfter {
 			LogInfo("MAIN", "Deleting old log file "+file.Name()+" with age of "+fileAge.String())
@@ -101,4 +102,18 @@ func DeleteOldLogFiles() {
 			}
 		}
 	}
+}
+
+func GetDirectory() string {
+	var dir string
+	if runtime.GOOS == "windows" {
+		executable, err := os.Executable()
+		if err != nil {
+			panic(err)
+		}
+		dir = filepath.Dir(executable)
+	} else {
+		dir, _ = os.Getwd()
+	}
+	return dir
 }
