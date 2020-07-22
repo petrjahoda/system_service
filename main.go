@@ -117,10 +117,7 @@ func SendEmail(estimatedDiscSpaceDays float32) {
 func GetRecipient() string {
 	LogInfo("MAIN", "Downloading recipient email name")
 	timer := time.Now()
-	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN:                  "user=postgres password=Zps05..... dbname=postgres host=localhost port=5432 sslmode=disable TimeZone=Asia/Shanghai",
-		PreferSimpleProtocol: true,
-	}), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return ""
@@ -134,10 +131,7 @@ func GetRecipient() string {
 func GetCompanyName() string {
 	LogInfo("MAIN", "Downloading company name")
 	timer := time.Now()
-	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN:                  "user=postgres password=Zps05..... dbname=postgres host=zapsidatabase port=5432 sslmode=disable TimeZone=Asia/Shanghai",
-		PreferSimpleProtocol: true,
-	}), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return ""
@@ -151,10 +145,7 @@ func GetCompanyName() string {
 func UpdateMailSettings() (error, string, int, string, string, string) {
 	LogInfo("MAIN", "Updating mail settings")
 	timer := time.Now()
-	db, err := gorm.Open(postgres.New(postgres.Config{
-		DSN:                  "user=postgres password=Zps05..... dbname=postgres host=localhost port=5432 sslmode=disable TimeZone=Asia/Shanghai",
-		PreferSimpleProtocol: true,
-	}), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return nil, "", 0, "", "", ""
