@@ -14,6 +14,15 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Fixed``` for any bug fixes.
 * ```Security``` in case of vulnerabilities.
 
+## [2020.3.1.22] - 2020-07-22
+
+### Changed
+- complete change to gorm v2
+
+### Removed
+- all about config files
+- writing to log files
+
 ## [2020.2.2.18] - 2020-05-18
 
 ### Added
