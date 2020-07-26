@@ -17,8 +17,8 @@ import (
 const version = "2020.3.1.26"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
-const config = "user=postgres password=Zps05..... dbname=zapsi3 host=database port=5432 sslmode=disable"
-const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=zapsidatabase port=5432 sslmode=disable"
+const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
+const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=database port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
 var serviceRunning = false
@@ -228,7 +228,7 @@ func GetDatabaseSize() float32 {
 		return 0
 	}
 	var result Result
-	db.Raw("SELECT pg_database_size('zapsi3')/1000000 as Size;").Scan(&result)
+	db.Raw("SELECT pg_database_size('version3')/1000000 as Size;").Scan(&result)
 	LogInfo("MAIN", "Database size calculated, elapsed: "+time.Since(timer).String())
 	return result.Size
 }
@@ -294,7 +294,7 @@ func CheckTables() (bool, error) {
 		if err != nil {
 			LogError("MAIN", "Cannot create setting table")
 		}
-		company := database.Setting{Name: "company", Value: "zapsi"}
+		company := database.Setting{Name: "company", Value: "Company"}
 		db.Create(&company)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Setting{})
@@ -546,8 +546,8 @@ func CheckTables() (bool, error) {
 		}
 		operator := database.UserType{Name: "Operator"}
 		db.Create(&operator)
-		zapsi := database.UserType{Name: "Zapsi"}
-		db.Create(&zapsi)
+		admin := database.UserType{Name: "Admin"}
+		db.Create(&admin)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.UserType{})
 		if err != nil {
@@ -582,16 +582,16 @@ func CheckTables() (bool, error) {
 		userRole := database.UserRole{}
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
-		db.Where("Name = ?", "Zapsi").Find(&userType)
+		db.Where("Name = ?", "Admin").Find(&userType)
 		password := hashAndSalt([]byte("54321"))
-		zapsiUser := database.User{
-			FirstName:  "Zapsi",
-			SecondName: "Zapsi",
+		adminUser := database.User{
+			FirstName:  "Admin",
+			SecondName: "Admin",
 			Password:   password,
 			UserRoleID: 1,
 			UserTypeID: 1,
 		}
-		db.Create(&zapsiUser)
+		db.Create(&adminUser)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.User{})
 		if err != nil {
@@ -874,21 +874,21 @@ func CheckDatabase() bool {
 	LogInfo("MAIN", "Checking database")
 	_, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
-		LogError("MAIN", "Database zapsi3 does not exist")
+		LogError("MAIN", "Database version3 does not exist")
 		db, err := gorm.Open(postgres.Open(postgresConfig), &gorm.Config{})
 		if err != nil {
 			LogError("MAIN", "Problem opening database: "+err.Error()+", elapsed: "+time.Since(timer).String())
 			return false
 		}
-		db = db.Exec("CREATE DATABASE zapsi3;")
+		db = db.Exec("CREATE DATABASE version3;")
 		if db.Error != nil {
-			LogError("MAIN", "Cannot create database zapsi3")
+			LogError("MAIN", "Cannot create database version3")
 		}
-		LogInfo("MAIN", "Database zapsi3 created, elapsed: "+time.Since(timer).String())
+		LogInfo("MAIN", "Database version3 created, elapsed: "+time.Since(timer).String())
 		return true
 
 	}
-	LogInfo("MAIN", "Database zapsi3 exists, elapsed: "+time.Since(timer).String())
+	LogInfo("MAIN", "Database version3 exists, elapsed: "+time.Since(timer).String())
 	return true
 
 }
