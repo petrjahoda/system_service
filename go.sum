@@ -142,6 +142,8 @@ github.com/petrjahoda/zapsi_database v0.0.0-20200722114506-b0b7684fcf02 h1:d6b/U
 github.com/petrjahoda/zapsi_database v0.0.0-20200722114506-b0b7684fcf02/go.mod h1:SwzFLqTIgnRBAwSu0/fseNQWO3zF9NNsPKZWthSjAT4=
 github.com/petrjahoda/zapsi_database v0.0.0-20200722115212-233efbb0665d h1:9Ew9MZlnDPyTD+ssNk3ER+dR+YrsxBFT5/ihO/hBGF0=
 github.com/petrjahoda/zapsi_database v0.0.0-20200722115212-233efbb0665d/go.mod h1:SwzFLqTIgnRBAwSu0/fseNQWO3zF9NNsPKZWthSjAT4=
+github.com/petrjahoda/zapsi_database v0.0.0-20200726084641-7c17802daecd h1:8P6DS/NCpJY+vFwJIYUSaO1LORXd8qED5gfqp584uG0=
+github.com/petrjahoda/zapsi_database v0.0.0-20200726084641-7c17802daecd/go.mod h1:R/uBN73yO+LTwM5JYUEtYi4cl349nZmeb4rdINPSneM=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
@@ -216,6 +218,8 @@ golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20200720211630-cb9d2d5c5666 h1:gVCS+QOncANNPlmlO1AhlU3oxs4V9z+gTtPwIk3p2N8=
 golang.org/x/sys v0.0.0-20200720211630-cb9d2d5c5666/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20200724161237-0e2f3a69832c h1:UIcGWL6/wpCfyGuJnRFJRurA+yj8RrW7Q6x2YMCXt6c=
+golang.org/x/sys v0.0.0-20200724161237-0e2f3a69832c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=

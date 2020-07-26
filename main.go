@@ -14,10 +14,11 @@ import (
 	"time"
 )
 
-const version = "2020.3.1.22"
+const version = "2020.3.1.26"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
 const config = "user=postgres password=Zps05..... dbname=zapsi3 host=zapsidatabase port=5432 sslmode=disable"
+const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=zapsidatabase port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
 var serviceRunning = false
@@ -874,7 +875,7 @@ func CheckDatabase() bool {
 	_, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
 		LogError("MAIN", "Database zapsi3 does not exist")
-		db, err := gorm.Open(postgres.Open("user=postgres password=Zps05..... dbname=postgres host=localhost port=5432 sslmode=disable"), &gorm.Config{})
+		db, err := gorm.Open(postgres.Open(postgresConfig), &gorm.Config{})
 		if err != nil {
 			LogError("MAIN", "Problem opening database: "+err.Error()+", elapsed: "+time.Since(timer).String())
 			return false
