@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-const version = "2020.3.1.26"
+const version = "2020.3.1.28"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
 const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
@@ -296,6 +296,8 @@ func CheckTables() (bool, error) {
 		}
 		company := database.Setting{Name: "company", Value: "Company"}
 		db.Create(&company)
+		timezone := database.Setting{Name: "timezone", Value: "Europe/Prague"}
+		db.Create(&timezone)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Setting{})
 		if err != nil {
