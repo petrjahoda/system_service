@@ -123,6 +123,8 @@ func GetRecipient() string {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return ""
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var company database.Setting
 	db.Where("name=?", "email").Find(&company)
 	LogInfo("MAIN", "Recipient email ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
@@ -137,6 +139,8 @@ func GetCompanyName() string {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return ""
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var company database.Setting
 	db.Where("name=?", "company").Find(&company)
 	LogInfo("MAIN", "Company name ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
@@ -151,6 +155,8 @@ func UpdateMailSettings() (error, string, int, string, string, string) {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return nil, "", 0, "", "", ""
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var settingsHost database.Setting
 	db.Where("name=?", "host").Find(&settingsHost)
 	host := settingsHost.Value
@@ -182,6 +188,8 @@ func WriteNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaByt
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var newSystemRecord database.SystemRecord
 	newSystemRecord.DatabaseSizeInMegaBytes = databaseSizeMegaBytes
 	newSystemRecord.DatabaseGrowthInMegaBytes = databaseGrowthInMegaBytes
@@ -212,6 +220,8 @@ func GetGrowthOfDatabase(actualDatabaseSize float32) float32 {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return 0
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var systemRecord database.SystemRecord
 	db.Last(&systemRecord)
 	growth := actualDatabaseSize - systemRecord.DatabaseSizeInMegaBytes
@@ -227,6 +237,8 @@ func GetDatabaseSize() float32 {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return 0
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var result Result
 	db.Raw("SELECT pg_database_size('version3')/1000000 as Size;").Scan(&result)
 	LogInfo("MAIN", "Database size calculated, elapsed: "+time.Since(timer).String())
@@ -259,7 +271,8 @@ func CheckTables() (bool, error) {
 		LogError("MAIN", "Problem opening database: "+err.Error()+", elapsed: "+time.Since(timer).String())
 		return false, err
 	}
-
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	if !db.Migrator().HasTable(&database.DeviceType{}) {
 		LogInfo("MAIN", "DeviceTypeId table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DeviceType{})
@@ -298,6 +311,16 @@ func CheckTables() (bool, error) {
 		db.Create(&company)
 		timezone := database.Setting{Name: "timezone", Value: "Europe/Prague"}
 		db.Create(&timezone)
+		host := database.Setting{Name: "host", Value: ""}
+		db.Create(&host)
+		port := database.Setting{Name: "port", Value: ""}
+		db.Create(&port)
+		username := database.Setting{Name: "username", Value: ""}
+		db.Create(&username)
+		password := database.Setting{Name: "password", Value: ""}
+		db.Create(&password)
+		email := database.Setting{Name: "email", Value: ""}
+		db.Create(&email)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Setting{})
 		if err != nil {
@@ -826,6 +849,7 @@ func CheckTables() (bool, error) {
 		if err != nil {
 			LogError("MAIN", "Cannot create alarm table")
 		}
+
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Alarm{})
 		if err != nil {
@@ -887,6 +911,8 @@ func CheckDatabase() bool {
 			LogError("MAIN", "Problem opening database: "+err.Error()+", elapsed: "+time.Since(timer).String())
 			return false
 		}
+		sqlDB, err := db.DB()
+		defer sqlDB.Close()
 		db = db.Exec("CREATE DATABASE version3;")
 		if db.Error != nil {
 			LogError("MAIN", "Cannot create database version3")
@@ -906,6 +932,8 @@ func WriteProgramVersionIntoSettings() {
 		LogError("MAIN", "Problem opening  database: "+err.Error())
 		return
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	var existingSettings database.Setting
 	db.Where("name=?", programName).Find(&existingSettings)
 	existingSettings.Name = programName

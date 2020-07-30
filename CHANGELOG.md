@@ -16,6 +16,8 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 
 ## [2020.3.1.30] - 2020-07-30
 
+### Fixed
+- proper closing database connections with sqlDB, err := db.DB() and defer sqlDB.Close()
 ### Added
 - creating default operation
 
