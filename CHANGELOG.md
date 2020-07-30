@@ -19,6 +19,9 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 ### Added
 - creating default operation
 
+### Changed
+- added tzdata to dockerfile
+
 ## [2020.3.1.28] - 2020-07-28
 
 ### Added
