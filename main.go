@@ -17,7 +17,7 @@ import (
 const version = "2020.3.1.30"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
-const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
+const config = "user=postgres password=Zps05..... dbname=version3 host=localhost port=5432 sslmode=disable"
 const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=database port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
@@ -903,7 +903,7 @@ func CheckTables() (bool, error) {
 func CheckDatabase() bool {
 	timer := time.Now()
 	LogInfo("MAIN", "Checking database")
-	_, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
 		LogError("MAIN", "Database version3 does not exist")
 		db, err := gorm.Open(postgres.Open(postgresConfig), &gorm.Config{})
@@ -921,6 +921,8 @@ func CheckDatabase() bool {
 		return true
 
 	}
+	sqlDB, err := db.DB()
+	defer sqlDB.Close()
 	LogInfo("MAIN", "Database version3 exists, elapsed: "+time.Since(timer).String())
 	return true
 
