@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-const version = "2020.3.1.28"
+const version = "2020.3.1.30"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
 const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
@@ -717,6 +717,11 @@ func CheckTables() (bool, error) {
 		if err != nil {
 			LogError("MAIN", "Cannot create operation table")
 		}
+		operation := database.Operation{
+			Name:    "Internal",
+			OrderID: 1,
+		}
+		db.Create(operation)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Operation{})
 		if err != nil {
