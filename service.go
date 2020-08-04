@@ -7,7 +7,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 	"time"
 )
 
@@ -457,7 +456,7 @@ func CheckTablesOnly() bool {
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
 		db.Where("Name = ?", "Admin").Find(&userType)
-		password := hashAndSalt([]byte("54321"))
+		password := GeneratePassword([]byte("54321"))
 		adminUser := database.User{
 			FirstName:  "Admin",
 			SecondName: "Admin",
@@ -734,7 +733,6 @@ func CheckTablesOnly() bool {
 	}
 	LogInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 	return true
-
 }
 
 func CheckDatabaseOnly() bool {
@@ -756,13 +754,11 @@ func CheckDatabaseOnly() bool {
 		}
 		LogInfo("MAIN", "Database created")
 		return true
-
 	}
 	sqlDB, err := db.DB()
 	defer sqlDB.Close()
 	LogInfo("MAIN", "Database checked in "+time.Since(timer).String())
 	return true
-
 }
 
 func WriteProgramVersionIntoSettings() {
@@ -783,10 +779,14 @@ func WriteProgramVersionIntoSettings() {
 	LogInfo("MAIN", "Program version written into settings in "+time.Since(timer).String())
 }
 
-func hashAndSalt(pwd []byte) string {
+func GeneratePassword(pwd []byte) string {
+	LogInfo("MAIN", "Generating password")
+	timer := time.Now()
 	hash, err := bcrypt.GenerateFromPassword(pwd, bcrypt.MinCost)
 	if err != nil {
-		log.Println(err)
+		LogError("MAIN", "Cannot generate password: "+err.Error())
+		return ""
 	}
+	LogInfo("MAIN", "Password generated in  "+time.Since(timer).String())
 	return string(hash)
 }
