@@ -59,7 +59,9 @@ func (p *program) run() {
 		LogInfo("MAIN", "Program running")
 		CheckDatabase()
 		databaseSizeMegaBytes := ReadDatabaseSize()
-		databaseGrowthInMegaBytes := CalculateGrowthOfDatabase(databaseSizeMegaBytes)
+		lastSystemRecord := ReadLastSystemRecord()
+		databaseGrowthInMegaBytes := databaseSizeMegaBytes - lastSystemRecord.DatabaseSizeInMegaBytes
+
 		if databaseGrowthInMegaBytes > 0 {
 			LogInfo("MAIN", "Database is larger than before")
 			discSpaceMegaBytes := CalculateFreeDiscSpace()

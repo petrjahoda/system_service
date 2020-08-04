@@ -12,64 +12,62 @@ import (
 func SendEmail(header string) {
 	LogInfo("MAIN", "Sending email about: "+header)
 	timer := time.Now()
-	companyName := GetCompanyName()
-	recipient := GetRecipient()
-	err, host, port, username, password, _ := UpdateMailSettings()
+	companyName := ReadCompanyName()
+	recipient := ReadRecipient()
+	host, port, username, password, _ := ReadMailSettings()
+	message := gomail.NewMessage()
+	message.SetHeader("From", username)
+	message.SetHeader("Subject", companyName+": "+header)
+	message.SetBody("text/html", "Disc space will last for just 30 days, please consider bigger disc for data.")
+	message.SetHeader("To", recipient)
+	d := gomail.NewDialer(host, port, username, password)
+	err := d.DialAndSend(message)
 	if err != nil {
+		LogError("MAIN", "Email not sent: "+err.Error())
 		return
 	}
-	m := gomail.NewMessage()
-	m.SetHeader("From", username)
-	m.SetHeader("Subject", companyName+": "+header)
-	m.SetBody("text/html", "Disc space will last for just 30 days, please consider bigger disc for data.")
-	m.SetHeader("To", recipient)
-	d := gomail.NewDialer(host, port, username, password)
-	if emailSentError := d.DialAndSend(m); emailSentError != nil {
-		LogError("MAIN", "Email not sent: "+emailSentError.Error())
-	} else {
-		LogInfo("MAIN", "Email sent int "+time.Since(timer).String())
-	}
+	LogInfo("MAIN", "Email sent in "+time.Since(timer).String())
 }
 
-func GetCompanyName() string {
-	LogInfo("MAIN", "Downloading company name")
+func ReadCompanyName() string {
+	LogInfo("MAIN", "Reading company name")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
-		LogError("MAIN", "Problem opening  database: "+err.Error())
+		LogError("MAIN", "Problem opening database: "+err.Error())
 		return ""
 	}
 	sqlDB, err := db.DB()
 	defer sqlDB.Close()
 	var company database.Setting
 	db.Where("name=?", "company").Find(&company)
-	LogInfo("MAIN", "Company name ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
+	LogInfo("MAIN", "Company name ["+company.Value+"] read in "+time.Since(timer).String())
 	return company.Value
 }
 
-func GetRecipient() string {
-	LogInfo("MAIN", "Downloading recipient email name")
+func ReadRecipient() string {
+	LogInfo("MAIN", "Reading recipients")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
-		LogError("MAIN", "Problem opening  database: "+err.Error())
+		LogError("MAIN", "Problem opening database: "+err.Error())
 		return ""
 	}
 	sqlDB, err := db.DB()
 	defer sqlDB.Close()
-	var company database.Setting
-	db.Where("name=?", "email").Find(&company)
-	LogInfo("MAIN", "Recipient email ["+company.Value+"] downloaded from database, elapsed: "+time.Since(timer).String())
-	return company.Value
+	var email database.Setting
+	db.Where("name=?", "email").Find(&email)
+	LogInfo("MAIN", "Recipients ["+email.Value+"] read in "+time.Since(timer).String())
+	return email.Value
 }
 
-func UpdateMailSettings() (error, string, int, string, string, string) {
-	LogInfo("MAIN", "Updating mail settings")
+func ReadMailSettings() (string, int, string, string, string) {
+	LogInfo("MAIN", "Reading mail settings")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
 	if err != nil {
-		LogError("MAIN", "Problem opening  database: "+err.Error())
-		return nil, "", 0, "", "", ""
+		LogError("MAIN", "Problem opening database: "+err.Error())
+		return "", 0, "", "", ""
 	}
 	sqlDB, err := db.DB()
 	defer sqlDB.Close()
@@ -92,6 +90,6 @@ func UpdateMailSettings() (error, string, int, string, string, string) {
 	var settingsEmail database.Setting
 	db.Where("name=?", "email").Find(&settingsEmail)
 	email := settingsEmail.Value
-	LogInfo("MAIN", "Mail settings updated, elapsed: "+time.Since(timer).String())
-	return err, host, port, username, password, email
+	LogInfo("MAIN", "Mail settings read in "+time.Since(timer).String())
+	return host, port, username, password, email
 }

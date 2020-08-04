@@ -43,21 +43,20 @@ func CalculateFreeDiscSpace() float32 {
 	return float32(usage.Available() / (1024 * 1024))
 }
 
-func CalculateGrowthOfDatabase(actualDatabaseSize float32) float32 {
-	LogInfo("MAIN", "Calculating database growth")
+func ReadLastSystemRecord() database.SystemRecord {
+	LogInfo("MAIN", "Reading last system record")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	var systemRecord database.SystemRecord
 	if err != nil {
 		LogError("MAIN", "Problem opening database: "+err.Error())
-		return 0
+		return systemRecord
 	}
 	sqlDB, err := db.DB()
 	defer sqlDB.Close()
-	var systemRecord database.SystemRecord
 	db.Last(&systemRecord)
-	growth := actualDatabaseSize - systemRecord.DatabaseSizeInMegaBytes
-	LogInfo("MAIN", "Database growth calculated in "+time.Since(timer).String())
-	return growth
+	LogInfo("MAIN", "Last system record read in "+time.Since(timer).String())
+	return systemRecord
 }
 
 func ReadDatabaseSize() float32 {
