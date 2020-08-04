@@ -10,5 +10,9 @@ func LogInfo(reference, data string) {
 }
 
 func LogError(reference, data string) {
-	fmt.Println(color.Ize(color.Red, "["+reference+"] --INF-- "+data))
+	fmt.Println(color.Ize(color.Red, "["+reference+"] --ERR-- "+data))
+}
+
+func LogWarning(reference, data string) {
+	fmt.Println(color.Ize(color.Yellow, "["+reference+"] --WAR-- "+data))
 }

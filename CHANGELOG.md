@@ -21,6 +21,13 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 
 ### Changed
 - updated to all latest libraries 
+- functions and method renamed
+- logging improved
+- behavior improved
+- code moved into multiple files
+
+### Added
+- MIT license
 
 
 ## [2020.3.1.30] - 2020-07-30
