@@ -48,6 +48,8 @@ github.com/jackc/pgproto3/v2 v2.0.0-rc3.0.20190831210041-4c03ce451f29/go.mod h1:
 github.com/jackc/pgproto3/v2 v2.0.1/go.mod h1:WfJCnwN3HIg9Ish/j3sgWXnAfK8A9Y0bwXYU5xKaEdA=
 github.com/jackc/pgproto3/v2 v2.0.2 h1:q1Hsy66zh4vuNsajBUF2PNqfAMMfxU5mk594lPE9vjY=
 github.com/jackc/pgproto3/v2 v2.0.2/go.mod h1:WfJCnwN3HIg9Ish/j3sgWXnAfK8A9Y0bwXYU5xKaEdA=
+github.com/jackc/pgproto3/v2 v2.0.4 h1:RHkX5ZUD9bl/kn0f9dYUWs1N7Nwvo1wwUYvKiR26Zco=
+github.com/jackc/pgproto3/v2 v2.0.4/go.mod h1:WfJCnwN3HIg9Ish/j3sgWXnAfK8A9Y0bwXYU5xKaEdA=
 github.com/jackc/pgservicefile v0.0.0-20200307190119-3430c5407db8 h1:Q3tB+ExeflWUW7AFcAhXqk40s9mnNYLk1nOkKNZ5GnU=
 github.com/jackc/pgservicefile v0.0.0-20200307190119-3430c5407db8/go.mod h1:vsD4gTJCa9TptPL8sPkXrLZ+hDuNrZCnj29CQpr4X1E=
 github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b h1:C8S2+VttkHFdOOCXJe+YGfa4vHYwlt4Zx+IVXQ97jYg=
@@ -118,6 +120,10 @@ github.com/petrjahoda/database v0.0.0-20200726174708-3fbd23ca38e4 h1:OUc54YBczjV
 github.com/petrjahoda/database v0.0.0-20200726174708-3fbd23ca38e4/go.mod h1:JtsFDIOUdREfIfWpbWdpe8whW7CztnDHgwh8L82EL7Q=
 github.com/petrjahoda/database v0.0.0-20200730075719-8f7e8f944e5b h1:YtcNntvzFGjQagCvpVpVCieUD7lEZhWqWw60QHK2M1U=
 github.com/petrjahoda/database v0.0.0-20200730075719-8f7e8f944e5b/go.mod h1:JtsFDIOUdREfIfWpbWdpe8whW7CztnDHgwh8L82EL7Q=
+github.com/petrjahoda/database v0.0.0-20200804082307-b1363793ca1f h1:L7t3rcyMTXb6p8uNUhMw23+fCHAVDdk2DFzLAEN2qY8=
+github.com/petrjahoda/database v0.0.0-20200804082307-b1363793ca1f/go.mod h1:JtsFDIOUdREfIfWpbWdpe8whW7CztnDHgwh8L82EL7Q=
+github.com/petrjahoda/database v0.0.0-20200804082543-76563017cf85 h1:x82NbP40i7kFvzHPMTQvKrMO1i64iGhjc8neQQa8/vw=
+github.com/petrjahoda/database v0.0.0-20200804082543-76563017cf85/go.mod h1:JtsFDIOUdREfIfWpbWdpe8whW7CztnDHgwh8L82EL7Q=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
@@ -192,6 +198,8 @@ golang.org/x/sys v0.0.0-20200724161237-0e2f3a69832c h1:UIcGWL6/wpCfyGuJnRFJRurA+
 golang.org/x/sys v0.0.0-20200724161237-0e2f3a69832c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20200728102440-3e129f6d46b1 h1:sIky/MyNRSHTrdxfsiUSS4WIAMvInbeXljJz+jDjeYE=
 golang.org/x/sys v0.0.0-20200728102440-3e129f6d46b1/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20200803210538-64077c9b5642 h1:B6caxRw+hozq68X2MY7jEpZh/cr4/aHLv9xU8Kkadrw=
+golang.org/x/sys v0.0.0-20200803210538-64077c9b5642/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=
@@ -232,4 +240,6 @@ gorm.io/gorm v0.2.24 h1:NKjfopoXim5xAHYkt/uN0n7ZNmyoXZ9FEZUX4ijzXlI=
 gorm.io/gorm v0.2.24/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
 gorm.io/gorm v0.2.25 h1:ESzqX6mEHClLI9FSj+U/QvEyzFoiDZt5P6C/hcI7Be8=
 gorm.io/gorm v0.2.25/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
+gorm.io/gorm v0.2.27 h1:wgAyEvfIcQBRCREPhbwrk7feDx2qrx0Fa1imqB59rEY=
+gorm.io/gorm v0.2.27/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
 honnef.co/go/tools v0.0.1-2019.2.3/go.mod h1:a3bituU0lyd329TUQxRnasdCoJDkEUEAqEt0JzvZhAg=

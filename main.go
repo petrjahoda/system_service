@@ -14,10 +14,10 @@ import (
 	"time"
 )
 
-const version = "2020.3.1.30"
+const version = "2020.3.2.4"
 const programName = "System Service"
 const programDescription = "Creates database and checks system data"
-const config = "user=postgres password=Zps05..... dbname=version3 host=localhost port=5432 sslmode=disable"
+const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
 const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=database port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
@@ -435,6 +435,20 @@ func CheckTables() (bool, error) {
 			LogError("MAIN", "Cannot update workplacesection table")
 		}
 	}
+	if !db.Migrator().HasTable(&database.WorkplaceMode{}) {
+		LogInfo("MAIN", "Workplacemode table not exists, creating")
+		err := db.Migrator().CreateTable(&database.WorkplaceMode{})
+		if err != nil {
+			LogError("MAIN", "Cannot create workplacemode table")
+		}
+		mode := database.WorkplaceMode{Name: "Production", DowntimeDuration: time.Second * 300, PoweroffDuration: time.Second * 300}
+		db.Create(&mode)
+	} else {
+		err := db.Migrator().AutoMigrate(&database.WorkplaceMode{})
+		if err != nil {
+			LogError("MAIN", "Cannot update workplacemode table")
+		}
+	}
 	if !db.Migrator().HasTable(&database.Workplace{}) {
 		LogInfo("MAIN", "Workplace table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Workplace{})
@@ -649,20 +663,6 @@ func CheckTables() (bool, error) {
 		}
 	}
 
-	if !db.Migrator().HasTable(&database.WorkplaceMode{}) {
-		LogInfo("MAIN", "Workplacemode table not exists, creating")
-		err := db.Migrator().CreateTable(&database.WorkplaceMode{})
-		if err != nil {
-			LogError("MAIN", "Cannot create workplacemode table")
-		}
-		mode := database.WorkplaceMode{Name: "Production", DowntimeDuration: time.Second * 300, PoweroffDuration: time.Second * 300}
-		db.Create(&mode)
-	} else {
-		err := db.Migrator().AutoMigrate(&database.WorkplaceMode{})
-		if err != nil {
-			LogError("MAIN", "Cannot update workplacemode table")
-		}
-	}
 	if !db.Migrator().HasTable(&database.Part{}) {
 		LogInfo("MAIN", "Part table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Part{})
@@ -741,10 +741,12 @@ func CheckTables() (bool, error) {
 			LogError("MAIN", "Cannot create operation table")
 		}
 		operation := database.Operation{
-			Name:    "Internal",
+			Name:    "Operation",
 			OrderID: 1,
+			Barcode: 0,
+			Note:    "",
 		}
-		db.Create(operation)
+		db.Create(&operation)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Operation{})
 		if err != nil {
