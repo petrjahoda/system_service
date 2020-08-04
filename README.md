@@ -7,4 +7,4 @@
 ## Description
 Go service that created database, check database size and disc free space. Sends email, when disc space is for 30 days of data
     
-Petr Jahoda © 2020
+tGMS © 2020 Petr Jahoda
