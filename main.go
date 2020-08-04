@@ -56,7 +56,7 @@ func (p *program) run() {
 	for serviceRunning {
 		processRunning = true
 		start := time.Now()
-		LogInfo("MAIN", "Program running")
+		LogInfo("MAIN", serviceName+" ["+version+"] running")
 		CheckDatabase()
 		databaseSizeMegaBytes := ReadDatabaseSize()
 		lastSystemRecord := ReadLastSystemRecord()
