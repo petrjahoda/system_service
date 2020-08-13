@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-const version = "2020.3.2.4"
+const version = "2020.3.2.13"
 const serviceName = "System Service"
 const serviceDescription = "Creates database and checks system data"
 const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
@@ -65,7 +65,7 @@ func (p *program) run() {
 			LogInfo("MAIN", "Database is larger than before")
 			discSpaceMegaBytes := CalculateFreeDiscSpace()
 			estimatedDiscSpaceDays := CalculateEstimatedDiscSpaceInDays(databaseGrowthInMegaBytes, discSpaceMegaBytes)
-			SaveNewSystemRecord(databaseSizeMegaBytes, databaseGrowthInMegaBytes, discSpaceMegaBytes, estimatedDiscSpaceDays)
+			CreateNewSystemRecord(databaseSizeMegaBytes, databaseGrowthInMegaBytes, discSpaceMegaBytes, estimatedDiscSpaceDays)
 			if estimatedDiscSpaceDays < 30 {
 				SendEmail("Low Disc Space")
 			}

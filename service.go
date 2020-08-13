@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func SaveNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaBytes float32, discSpaceMegaBytes float32, estimatedDiscSpaceDays float32) {
+func CreateNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaBytes float32, discSpaceMegaBytes float32, estimatedDiscSpaceDays float32) {
 	LogInfo("MAIN", "Saving new system record")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
@@ -84,7 +84,7 @@ func CheckDatabase() {
 		if databaseOk {
 			tablesOk := CheckTablesOnly()
 			if tablesOk {
-				WriteProgramVersionIntoSettings()
+				UpdateProgramVersion()
 				firstRunCheckComplete = true
 			} else {
 				time.Sleep(10 * time.Second)
@@ -761,7 +761,7 @@ func CheckDatabaseOnly() bool {
 	return true
 }
 
-func WriteProgramVersionIntoSettings() {
+func UpdateProgramVersion() {
 	LogInfo("MAIN", "Writing program version into settings")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
