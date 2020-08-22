@@ -456,7 +456,7 @@ func CheckTablesOnly() bool {
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
 		db.Where("Name = ?", "Admin").Find(&userType)
-		password := GeneratePassword([]byte("54321"))
+		password := HashPasswordFromString([]byte("54321"))
 		adminUser := database.User{
 			FirstName:  "Admin",
 			SecondName: "Admin",
@@ -779,14 +779,14 @@ func UpdateProgramVersion() {
 	LogInfo("MAIN", "Program version written into settings in "+time.Since(timer).String())
 }
 
-func GeneratePassword(pwd []byte) string {
-	LogInfo("MAIN", "Generating password")
+func HashPasswordFromString(pwd []byte) string {
+	LogInfo("MAIN", "Hashing password")
 	timer := time.Now()
 	hash, err := bcrypt.GenerateFromPassword(pwd, bcrypt.MinCost)
 	if err != nil {
-		LogError("MAIN", "Cannot generate password: "+err.Error())
+		LogError("MAIN", "Cannot hash password: "+err.Error())
 		return ""
 	}
-	LogInfo("MAIN", "Password generated in  "+time.Since(timer).String())
+	LogInfo("MAIN", "Password hashed in  "+time.Since(timer).String())
 	return string(hash)
 }
