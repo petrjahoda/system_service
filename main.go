@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/kardianos/service"
 	"time"
+
+	"github.com/kardianos/service"
 )
 
 const version = "2020.3.2.29"
