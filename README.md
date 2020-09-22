@@ -12,7 +12,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/petrjahoda/system_service)
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/petrjahoda/system_service?sort=date)
 
-![developed_using](https://img.shields.io/badge/database-PostgreSQL-red) ![developed_using](https://img.shields.io/badge/runtime-Docker-red)
+[![developed_using](https://img.shields.io/badge/database-PostgreSQL-red)](https://www.postgresql.org) [![developed_using](https://img.shields.io/badge/runtime-Docker-red)](https://www.docker.com)
 
 
 
