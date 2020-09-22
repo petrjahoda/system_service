@@ -27,7 +27,7 @@ Install under docker runtime using [this dockerfile image](https://github.com/pe
 
 ## Implementation Information
 Check the software running with this command: ```docker stats```. <br/>
-System_service has to be running.
+System_service has to be running. No need to make a specific setup.
 
 ## Developer Information
 Use software only as a [part of a system](https://github.com/petrjahoda/system) using Docker runtime.<br/>
