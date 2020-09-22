@@ -1,4 +1,4 @@
-![developed_using](https://img.shields.io/badge/developed%20using-Jetbrains%20Goland-lightgrey)
+![developed_using](https://img.shields.io/badge/developed%20using-Jetbrains%20Goland-lightgrey?link=http://left&link=https://www.jetbrains.com/go/)
 
 ![GitHub](https://img.shields.io/github/license/petrjahoda/system_service) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/petrjahoda/system_service)
