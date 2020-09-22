@@ -1,21 +1,17 @@
 [![developed_using](https://img.shields.io/badge/developed%20using-Jetbrains%20Goland-lightgrey)](https://www.jetbrains.com/go/)
-
+<br/>
 ![GitHub](https://img.shields.io/github/license/petrjahoda/system_service) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/petrjahoda/system_service)](https://github.com/petrjahoda/system_service/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/petrjahoda/system_service)](https://github.com/petrjahoda/system_service/issues)
-
+<br/>
 ![GitHub language count](https://img.shields.io/github/languages/count/petrjahoda/system_service)
 ![GitHub top language](https://img.shields.io/github/languages/top/petrjahoda/system_service)
 ![GitHub repo size](https://img.shields.io/github/repo-size/petrjahoda/system_service)
-
-
+<br/>
 [![Docker Pulls](https://img.shields.io/docker/pulls/petrjahoda/system_service)](https://hub.docker.com/r/petrjahoda/system_service)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/petrjahoda/system_service?sort=date)](https://hub.docker.com/r/petrjahoda/system_service/tags)
-
+<br/>
 [![developed_using](https://img.shields.io/badge/database-PostgreSQL-red)](https://www.postgresql.org) [![developed_using](https://img.shields.io/badge/runtime-Docker-red)](https://www.docker.com)
-
-
-
 
 # System Service
 
