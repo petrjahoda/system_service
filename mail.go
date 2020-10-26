@@ -31,12 +31,13 @@ func readMailSettings() (string, string, int, string, string, string) {
 	logInfo("MAIN", "Reading mail settings")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return "", "", 0, "", "", ""
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
+
 	var settingsHost database.Setting
 	db.Where("name=?", "host").Find(&settingsHost)
 	var company database.Setting

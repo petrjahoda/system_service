@@ -14,12 +14,12 @@ func createNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaBy
 	logInfo("MAIN", "Saving new system record")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	var newSystemRecord database.SystemRecord
 	newSystemRecord.DatabaseSizeInMegaBytes = databaseSizeMegaBytes
 	newSystemRecord.DatabaseGrowthInMegaBytes = databaseGrowthInMegaBytes
@@ -46,13 +46,13 @@ func readLastSystemRecord() database.SystemRecord {
 	logInfo("MAIN", "Reading last system record")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	var systemRecord database.SystemRecord
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return systemRecord
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	db.Last(&systemRecord)
 	logInfo("MAIN", "Last system record read in "+time.Since(timer).String())
 	return systemRecord
@@ -62,12 +62,12 @@ func readDatabaseSize() float32 {
 	logInfo("MAIN", "Reading database size")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return 0
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	var size float32
 	db.Raw("SELECT pg_database_size('version3')/1000000 as size;").Scan(&size)
 	logInfo("MAIN", "Database size read in "+time.Since(timer).String())
@@ -101,12 +101,12 @@ func checkTablesOnly() bool {
 	logInfo("MAIN", "Checking tables")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return false
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	if !db.Migrator().HasTable(&database.DeviceType{}) {
 		logInfo("MAIN", "DeviceTypeId table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DeviceType{})
@@ -739,15 +739,17 @@ func checkDatabaseOnly() bool {
 	logInfo("MAIN", "Checking database")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logWarning("MAIN", "Database does not exist")
 		db, err := gorm.Open(postgres.Open(postgresConfig), &gorm.Config{})
+		sqlDB, _ := db.DB()
+		defer sqlDB.Close()
 		if err != nil {
 			logError("MAIN", "Problem opening database: "+err.Error())
 			return false
 		}
-		sqlDB, err := db.DB()
-		defer sqlDB.Close()
 		db = db.Exec("CREATE DATABASE version3;")
 		if db.Error != nil {
 			logError("MAIN", "Cannot create database version3: "+err.Error())
@@ -755,8 +757,6 @@ func checkDatabaseOnly() bool {
 		logInfo("MAIN", "Database created")
 		return true
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	logInfo("MAIN", "Database checked in "+time.Since(timer).String())
 	return true
 }
@@ -765,12 +765,12 @@ func updateProgramVersion() {
 	logInfo("MAIN", "Writing program version into settings")
 	timer := time.Now()
 	db, err := gorm.Open(postgres.Open(config), &gorm.Config{})
+	sqlDB, _ := db.DB()
+	defer sqlDB.Close()
 	if err != nil {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return
 	}
-	sqlDB, err := db.DB()
-	defer sqlDB.Close()
 	var existingSettings database.Setting
 	db.Where("name=?", serviceName).Find(&existingSettings)
 	existingSettings.Name = serviceName
