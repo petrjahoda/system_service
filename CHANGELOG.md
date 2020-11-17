@@ -14,6 +14,13 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Fixed``` for any bug fixes.
 * ```Security``` in case of vulnerabilities.
 
+## [2020.4.2.17] - 2020-11-17
+
+### Changed
+- updated all go libraries 
+- updated Dockerfile
+- updated create.sh
+
 ## [2020.4.1.26] - 2020-10-26
 
 ### Fixed
