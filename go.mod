@@ -10,7 +10,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/lib/pq v1.8.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/petrjahoda/database v0.0.0-20201117090852-47341a185dc1
+	github.com/petrjahoda/database v0.0.0-20201117102627-93588a38b1e9
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/ricochet2200/go-disk-usage v0.0.0-20150921141558-f0d1b743428f
 	github.com/shopspring/decimal v1.2.0 // indirect

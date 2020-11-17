@@ -20,6 +20,7 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 - updated all go libraries 
 - updated Dockerfile
 - updated create.sh
+- added locale table
 
 ## [2020.4.1.26] - 2020-10-26
 

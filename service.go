@@ -460,9 +460,11 @@ func checkTablesOnly() bool {
 		adminUser := database.User{
 			FirstName:  "Admin",
 			SecondName: "Admin",
+			Email:      "admin@admin.com",
 			Password:   password,
 			UserRoleID: 1,
-			UserTypeID: 1,
+			UserTypeID: 2,
+			Locale:     "EnUS",
 		}
 		db.Create(&adminUser)
 	} else {
@@ -729,6 +731,19 @@ func checkTablesOnly() bool {
 		err := db.Migrator().AutoMigrate(&database.DeviceWorkplaceRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot update deviceworkplacerecord table")
+		}
+	}
+	if !db.Migrator().HasTable(&database.Locale{}) {
+		logInfo("MAIN", "Locale table not exists, creating")
+		err := db.Migrator().CreateTable(&database.Locale{})
+		if err != nil {
+			logError("MAIN", "Cannot create locale table")
+		}
+
+	} else {
+		err := db.Migrator().AutoMigrate(&database.Locale{})
+		if err != nil {
+			logError("MAIN", "Cannot update locale table")
 		}
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
