@@ -653,14 +653,14 @@ func checkTablesOnly() bool {
 		}
 	}
 
-	if !db.Migrator().HasTable(&database.DownTimeRecord{}) {
+	if !db.Migrator().HasTable(&database.DowntimeRecord{}) {
 		logInfo("MAIN", "DownTimeRecord table not exists, creating")
-		err := db.Migrator().CreateTable(&database.DownTimeRecord{})
+		err := db.Migrator().CreateTable(&database.DowntimeRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create downtimerecord table")
 		}
 	} else {
-		err := db.Migrator().AutoMigrate(&database.DownTimeRecord{})
+		err := db.Migrator().AutoMigrate(&database.DowntimeRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot update downtimerecord table")
 		}
