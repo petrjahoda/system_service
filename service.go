@@ -757,6 +757,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "živě",
 		DeDE: "live",
 		EnUS: "live",
+		EsES: "vivo",
+		FrFR: "direct",
+		ItIT: "diretta",
+		PlPL: "żywo",
+		PtPT: "vivo",
+		SkSK: "živo",
+		RuRU: "прямое",
 	}
 	db.Create(&live)
 	charts := database.Locale{
@@ -764,6 +771,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "grafy",
 		DeDE: "diagramme",
 		EnUS: "charts",
+		EsES: "gráficos",
+		FrFR: "graphiques",
+		ItIT: "grafici",
+		PlPL: "wykresy",
+		PtPT: "gráficos",
+		SkSK: "grafy",
+		RuRU: "графики",
 	}
 	db.Create(&charts)
 	statistics := database.Locale{
@@ -771,6 +785,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "statistiky",
 		DeDE: "statistiken",
 		EnUS: "statistics",
+		EsES: "estadísticas",
+		FrFR: "statistiques",
+		ItIT: "statistiche",
+		PlPL: "statystyka",
+		PtPT: "estatisticas",
+		SkSK: "štatistiky",
+		RuRU: "статистика",
 	}
 	db.Create(&statistics)
 	comparisons := database.Locale{
@@ -778,6 +799,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "porovnání",
 		DeDE: "vergleiche",
 		EnUS: "comparisons",
+		EsES: "comparaciones",
+		FrFR: "comparaisons",
+		ItIT: "confronti",
+		PlPL: "porównania",
+		PtPT: "comparações",
+		SkSK: "porovnania",
+		RuRU: "сравнения",
 	}
 	db.Create(&comparisons)
 	trends := database.Locale{
@@ -785,6 +813,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "trendy",
 		DeDE: "trends",
 		EnUS: "trends",
+		EsES: "tendencias",
+		FrFR: "tendances",
+		ItIT: "tendenze",
+		PlPL: "trendy",
+		PtPT: "tendências",
+		SkSK: "trendy",
+		RuRU: "тенденции",
 	}
 	db.Create(&trends)
 	data := database.Locale{
@@ -792,6 +827,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "data",
 		DeDE: "daten",
 		EnUS: "data",
+		EsES: "datos",
+		FrFR: "données",
+		ItIT: "dati",
+		PlPL: "dane",
+		PtPT: "dados",
+		SkSK: "dáta",
+		RuRU: "данные",
 	}
 	db.Create(&data)
 	settings := database.Locale{
@@ -799,6 +841,13 @@ func createLocales(db *gorm.DB) {
 		CsCZ: "nastavení",
 		DeDE: "einstellungen",
 		EnUS: "settings",
+		EsES: "ajustes",
+		FrFR: "réglages",
+		ItIT: "impostazioni",
+		PlPL: "ustawienia",
+		PtPT: "definições",
+		SkSK: "nastavenie",
+		RuRU: "настройки",
 	}
 	db.Create(&settings)
 }
