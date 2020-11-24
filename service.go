@@ -850,6 +850,78 @@ func createLocales(db *gorm.DB) {
 		RuRU: "настройки",
 	}
 	db.Create(&settings)
+	chartsStandard := database.Locale{
+		Name: "navbar-charts-standard",
+		CsCZ: "standardní",
+		DeDE: "standard",
+		EnUS: "standard",
+		EsES: "estándar",
+		FrFR: "standard",
+		ItIT: "standard",
+		PlPL: "standard",
+		PtPT: "padrão",
+		SkSK: "štandardné",
+		RuRU: "стандарт",
+	}
+	db.Create(&chartsStandard)
+	chartsSpecial := database.Locale{
+		Name: "navbar-charts-special",
+		CsCZ: "speciální",
+		DeDE: "speziell",
+		EnUS: "special",
+		EsES: "especial",
+		FrFR: "spécial",
+		ItIT: "speciale",
+		PlPL: "specjalne",
+		PtPT: "especial",
+		SkSK: "špeciálné",
+		RuRU: "специальный",
+	}
+	db.Create(&chartsSpecial)
+
+	liveCompany := database.Locale{
+		Name: "navbar-live-company",
+		CsCZ: "společnost",
+		DeDE: "firma",
+		EnUS: "company",
+		EsES: "empresa",
+		FrFR: "firme",
+		ItIT: "azienda",
+		PlPL: "firma",
+		PtPT: "companhia",
+		SkSK: "spoločnosť",
+		RuRU: "Компания",
+	}
+	db.Create(&liveCompany)
+	liveGroup := database.Locale{
+		Name: "navbar-live-group",
+		CsCZ: "skupina",
+		DeDE: "gruppe",
+		EnUS: "group",
+		EsES: "grupo",
+		FrFR: "groupe",
+		ItIT: "gruppo",
+		PlPL: "grupa",
+		PtPT: "grupo",
+		SkSK: "skupina",
+		RuRU: "группа",
+	}
+	db.Create(&liveGroup)
+
+	liveWorkplace := database.Locale{
+		Name: "navbar-live-workplace",
+		CsCZ: "pracoviště",
+		DeDE: "arbeitsplatz",
+		EnUS: "workplace",
+		EsES: "lugar de trabajo",
+		FrFR: "lieu de travail",
+		ItIT: "posto di lavoro",
+		PlPL: "miejsce pracy",
+		PtPT: "local de trabalho",
+		SkSK: "pracovisko",
+		RuRU: "рабочее место",
+	}
+	db.Create(&liveWorkplace)
 }
 
 func checkDatabaseOnly() bool {
