@@ -739,6 +739,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create locale table")
 		}
+		createLocales(db)
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Locale{})
@@ -748,6 +749,58 @@ func checkTablesOnly() bool {
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 	return true
+}
+
+func createLocales(db *gorm.DB) {
+	live := database.Locale{
+		Name: "navbar-live",
+		CsCZ: "živě",
+		DeDE: "live",
+		EnUS: "live",
+	}
+	db.Create(&live)
+	charts := database.Locale{
+		Name: "navbar-charts",
+		CsCZ: "grafy",
+		DeDE: "diagramme",
+		EnUS: "charts",
+	}
+	db.Create(&charts)
+	statistics := database.Locale{
+		Name: "navbar-statistics",
+		CsCZ: "statistiky",
+		DeDE: "statistiken",
+		EnUS: "statistics",
+	}
+	db.Create(&statistics)
+	comparisons := database.Locale{
+		Name: "navbar-comparisons",
+		CsCZ: "porovnání",
+		DeDE: "vergleiche",
+		EnUS: "comparisons",
+	}
+	db.Create(&comparisons)
+	trends := database.Locale{
+		Name: "navbar-trends",
+		CsCZ: "trendy",
+		DeDE: "trends",
+		EnUS: "trends",
+	}
+	db.Create(&trends)
+	data := database.Locale{
+		Name: "navbar-data",
+		CsCZ: "data",
+		DeDE: "daten",
+		EnUS: "data",
+	}
+	db.Create(&data)
+	settings := database.Locale{
+		Name: "navbar-settings",
+		CsCZ: "nastavení",
+		DeDE: "einstellungen",
+		EnUS: "settings",
+	}
+	db.Create(&settings)
 }
 
 func checkDatabaseOnly() bool {
