@@ -1398,6 +1398,107 @@ func createLocales(db *gorm.DB) {
 		RuRU: "устройство",
 	}
 	db.Create(&settingsDevice)
+
+	comparisonsCompany := database.Locale{
+		Name: "navbar-comparisons-company",
+		CsCZ: "společnost",
+		DeDE: "firma",
+		EnUS: "company",
+		EsES: "empresa",
+		FrFR: "firme",
+		ItIT: "azienda",
+		PlPL: "firma",
+		PtPT: "companhia",
+		SkSK: "spoločnosť",
+		RuRU: "Компания",
+	}
+	db.Create(&comparisonsCompany)
+	comparisonsGroup := database.Locale{
+		Name: "navbar-comparisons-group",
+		CsCZ: "skupina",
+		DeDE: "gruppe",
+		EnUS: "group",
+		EsES: "grupo",
+		FrFR: "groupe",
+		ItIT: "gruppo",
+		PlPL: "grupa",
+		PtPT: "grupo",
+		SkSK: "skupina",
+		RuRU: "группа",
+	}
+	db.Create(&comparisonsGroup)
+	comparisonsWorkplace := database.Locale{
+		Name: "navbar-comparisons-workplace",
+		CsCZ: "pracoviště",
+		DeDE: "arbeitsplatz",
+		EnUS: "workplace",
+		EsES: "lugar de trabajo",
+		FrFR: "lieu de travail",
+		ItIT: "posto di lavoro",
+		PlPL: "miejsce pracy",
+		PtPT: "local de trabalho",
+		SkSK: "pracovisko",
+		RuRU: "рабочее место",
+	}
+	db.Create(&comparisonsWorkplace)
+
+	comparisonsUser := database.Locale{
+		Name: "navbar-comparisons-user",
+		CsCZ: "uživatel",
+		DeDE: "nutzer",
+		EnUS: "user",
+		EsES: "usuario",
+		FrFR: "utilisateur",
+		ItIT: "utente",
+		PlPL: "użytkownik",
+		PtPT: "utilizador",
+		SkSK: "užívateľ",
+		RuRU: "пользователь",
+	}
+	db.Create(&comparisonsUser)
+
+	comparisonsDowntime := database.Locale{
+		Name: "navbar-comparisons-downtime",
+		CsCZ: "prostoj",
+		DeDE: "ausfallzeit",
+		EnUS: "downtime",
+		EsES: "inactividad",
+		FrFR: "inactivité",
+		ItIT: "inattività",
+		PlPL: "przestoj",
+		PtPT: "inatividade",
+		SkSK: "prestoj",
+		RuRU: "простой",
+	}
+	db.Create(&comparisonsDowntime)
+	comparisonsBreakdown := database.Locale{
+		Name: "navbar-comparisons-breakdown",
+		CsCZ: "porucha",
+		DeDE: "ausfall",
+		EnUS: "breakdown",
+		EsES: "trastorno",
+		FrFR: "désordre",
+		ItIT: "disturbo",
+		PlPL: "nieład",
+		PtPT: "transtorno",
+		SkSK: "porucha",
+		RuRU: "беспорядок",
+	}
+	db.Create(&comparisonsBreakdown)
+	comparisonsAlarm := database.Locale{
+		Name: "navbar-comparisons-alarm",
+		CsCZ: "alarm",
+		DeDE: "alarm",
+		EnUS: "alarm",
+		EsES: "alarma",
+		FrFR: "alarme",
+		ItIT: "allarme",
+		PlPL: "alarm",
+		PtPT: "alarme",
+		SkSK: "alarm",
+		RuRU: "тревога",
+	}
+	db.Create(&comparisonsAlarm)
 }
 
 func checkDatabaseOnly() bool {
