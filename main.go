@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-const version = "2020.4.3.14"
+const version = "2021.1.1.21"
 const serviceName = "System Service"
 const serviceDescription = "Creates database and checks system data"
-const config = "user=postgres password=Zps05..... dbname=version3 host=database port=5432 sslmode=disable"
-const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=database port=5432 sslmode=disable"
+const config = "user=postgres password=Zps05..... dbname=version3 host=localhost port=5432 sslmode=disable"
+const postgresConfig = "user=postgres password=Zps05..... dbname=postgres host=localhost port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
 var serviceRunning = false
