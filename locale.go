@@ -1194,4 +1194,77 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&poweroff)
 
+	liveWorkplaceUser := database.Locale{
+		Name: "navbar-live-workplace-3-user",
+		CsCZ: "operátor",
+		DeDE: "operator",
+		EnUS: "operator",
+		EsES: "operador",
+		FrFR: "opérateur",
+		ItIT: "operatore",
+		PlPL: "operator",
+		PtPT: "operador",
+		SkSK: "operátor",
+		RuRU: "оператор",
+	}
+	db.Create(&liveWorkplaceUser)
+
+	liveWorkplaceOrder := database.Locale{
+		Name: "navbar-live-workplace-3-order",
+		CsCZ: "zakázka",
+		DeDE: "bestellung",
+		EnUS: "order",
+		EsES: "orden",
+		FrFR: "ordre",
+		ItIT: "ordinazione",
+		PlPL: "zamówienie",
+		PtPT: "ordem",
+		SkSK: "zakázka",
+		RuRU: "заказ",
+	}
+	db.Create(&liveWorkplaceOrder)
+
+	liveWorkplaceDowntime := database.Locale{
+		Name: "navbar-live-workplace-3-downtime",
+		CsCZ: "prostoj",
+		DeDE: "ausfallzeit",
+		EnUS: "downtime",
+		EsES: "inactividad",
+		FrFR: "inactivité",
+		ItIT: "inattività",
+		PlPL: "przestoj",
+		PtPT: "inatividade",
+		SkSK: "prestoj",
+		RuRU: "простой",
+	}
+	db.Create(&liveWorkplaceDowntime)
+	liveWorkplaceBreakdown := database.Locale{
+		Name: "navbar-live-workplace-3-breakdown",
+		CsCZ: "porucha",
+		DeDE: "ausfall",
+		EnUS: "breakdown",
+		EsES: "trastorno",
+		FrFR: "désordre",
+		ItIT: "disturbo",
+		PlPL: "nieład",
+		PtPT: "transtorno",
+		SkSK: "porucha",
+		RuRU: "беспорядок",
+	}
+	db.Create(&liveWorkplaceBreakdown)
+	liveWorkplaceAlarm := database.Locale{
+		Name: "navbar-live-workplace-3-alarm",
+		CsCZ: "alarm",
+		DeDE: "alarm",
+		EnUS: "alarm",
+		EsES: "alarma",
+		FrFR: "alarme",
+		ItIT: "allarme",
+		PlPL: "alarm",
+		PtPT: "alarme",
+		SkSK: "alarm",
+		RuRU: "тревога",
+	}
+	db.Create(&liveWorkplaceAlarm)
+
 }
