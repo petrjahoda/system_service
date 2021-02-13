@@ -1267,4 +1267,93 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&liveWorkplaceAlarm)
 
+	menuOverview := database.Locale{
+		Name: "menu-overview",
+		CsCZ: "přehled",
+		DeDE: "überblick",
+		EnUS: "overview",
+		EsES: "visión general",
+		FrFR: "aperçu",
+		ItIT: "panoramica",
+		PlPL: "przegląd",
+		PtPT: "visão geral",
+		SkSK: "prehľad",
+		RuRU: "обзор",
+	}
+	db.Create(&menuOverview)
+
+	menuWorkplaces := database.Locale{
+		Name: "menu-workplaces",
+		CsCZ: "skupina",
+		DeDE: "gruppe",
+		EnUS: "group",
+		EsES: "grupo",
+		FrFR: "groupe",
+		ItIT: "gruppo",
+		PlPL: "grupa",
+		PtPT: "grupo",
+		SkSK: "skupina",
+		RuRU: "группа",
+	}
+	db.Create(&menuWorkplaces)
+
+	menuCharts := database.Locale{
+		Name: "menu-charts",
+		CsCZ: "grafy",
+		DeDE: "diagramme",
+		EnUS: "charts",
+		EsES: "gráficos",
+		FrFR: "graphiques",
+		ItIT: "grafici",
+		PlPL: "wykresy",
+		PtPT: "gráficos",
+		SkSK: "grafy",
+		RuRU: "графики",
+	}
+	db.Create(&menuCharts)
+
+	menuStatistics := database.Locale{
+		Name: "menu-statistics",
+		CsCZ: "statistiky",
+		DeDE: "statistiken",
+		EnUS: "statistics",
+		EsES: "estadísticas",
+		FrFR: "statistiques",
+		ItIT: "statistiche",
+		PlPL: "statystyka",
+		PtPT: "estatisticas",
+		SkSK: "štatistiky",
+		RuRU: "статистика",
+	}
+	db.Create(&menuStatistics)
+
+	menuData := database.Locale{
+		Name: "menu-data",
+		CsCZ: "data",
+		DeDE: "daten",
+		EnUS: "data",
+		EsES: "datos",
+		FrFR: "données",
+		ItIT: "dati",
+		PlPL: "dane",
+		PtPT: "dados",
+		SkSK: "dáta",
+		RuRU: "данные",
+	}
+	db.Create(&menuData)
+	menuSettings := database.Locale{
+		Name: "menu-settings",
+		CsCZ: "nastavení",
+		DeDE: "einstellungen",
+		EnUS: "settings",
+		EsES: "ajustes",
+		FrFR: "réglages",
+		ItIT: "impostazioni",
+		PlPL: "ustawienia",
+		PtPT: "definições",
+		SkSK: "nastavenie",
+		RuRU: "настройки",
+	}
+	db.Create(&menuSettings)
+
 }

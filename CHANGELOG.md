@@ -15,6 +15,11 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Security``` in case of vulnerabilities.
 
 
+## [2021.1.2.13] - 2021-02-13
+
+### Added
+- locales for new menu
+
 ## [2021.1.2.9] - 2021-02-09
 
 ### Added
