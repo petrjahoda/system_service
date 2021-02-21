@@ -132,7 +132,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create device table")
 		}
-		db.Exec("ALTER TABLE devices ADD CONSTRAINT fk_devices_device_type FOREIGN KEY (id) REFERENCES device_types(id)")
+		db.Exec("ALTER TABLE devices ADD CONSTRAINT fk_devices_device_type FOREIGN KEY (device_type_id) REFERENCES device_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Device{})
 		if err != nil {
@@ -197,8 +197,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create deviceport table")
 		}
-		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device FOREIGN KEY (id) REFERENCES devices(id)")
-		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device_port_type FOREIGN KEY (id) REFERENCES device_port_types(id)")
+		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device FOREIGN KEY (device_id) REFERENCES devices(id)")
+		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device_port_type FOREIGN KEY (device_port_type_id) REFERENCES device_port_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePort{})
 		if err != nil {
@@ -213,7 +213,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportanalogrecord table")
 		}
-		db.Exec("ALTER TABLE device_port_analog_records ADD CONSTRAINT fk_device_port_analog_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
+		db.Exec("ALTER TABLE device_port_analog_records ADD CONSTRAINT fk_device_port_analog_records_device_port FOREIGN KEY (device_port_id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortAnalogRecord{})
 		if err != nil {
@@ -228,7 +228,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportdigitalrecord table")
 		}
-		db.Exec("ALTER TABLE device_port_digital_records ADD CONSTRAINT fk_device_port_digital_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
+		db.Exec("ALTER TABLE device_port_digital_records ADD CONSTRAINT fk_device_port_digital_records_device_port FOREIGN KEY (device_port_id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortDigitalRecord{})
 		if err != nil {
@@ -243,7 +243,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportserialrecord table")
 		}
-		db.Exec("ALTER TABLE device_port_serial_records ADD CONSTRAINT fk_device_port_serial_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
+		db.Exec("ALTER TABLE device_port_serial_records ADD CONSTRAINT fk_device_port_serial_records_device_port FOREIGN KEY (device_port_id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortSerialRecord{})
 		if err != nil {
@@ -320,8 +320,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create workplace table")
 		}
-		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_mode FOREIGN KEY (id) REFERENCES workplace_modes(id)")
-		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_section FOREIGN KEY (id) REFERENCES workplace_sections(id)")
+		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_mode FOREIGN KEY (workplace_mode_id) REFERENCES workplace_modes(id)")
+		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_section FOREIGN KEY (workplace_section_id) REFERENCES workplace_sections(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Workplace{})
 		if err != nil {
@@ -336,7 +336,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create order table")
 		}
-		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (id) REFERENCES products(id)")
+		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (product_id) REFERENCES products(id)")
+		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (product_id) REFERENCES products(id)")
 		order := database.Order{Name: "Internal", DateTimeRequest: sql.NullTime{
 			Time:  time.Now(),
 			Valid: true,
@@ -356,8 +357,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create package table")
 		}
-		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_order FOREIGN KEY (id) REFERENCES orders(id)")
-		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_package_type FOREIGN KEY (id) REFERENCES package_types(id)")
+		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_order FOREIGN KEY (order_id) REFERENCES orders(id)")
+		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_package_type FOREIGN KEY (package_type_id) REFERENCES package_types(id)")
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Package{})
@@ -387,7 +388,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create fault table")
 		}
-		db.Exec("ALTER TABLE faults ADD CONSTRAINT fk_faults_fault_type FOREIGN KEY (id) REFERENCES fault_types(id)")
+		db.Exec("ALTER TABLE faults ADD CONSTRAINT fk_faults_fault_type FOREIGN KEY (fault_type_id) REFERENCES fault_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Fault{})
 		if err != nil {
@@ -417,7 +418,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create breakdown table")
 		}
-		db.Exec("ALTER TABLE breakdowns ADD CONSTRAINT fk_breakdowns_breakdown_type FOREIGN KEY (id) REFERENCES breakdown_types(id)")
+		db.Exec("ALTER TABLE breakdowns ADD CONSTRAINT fk_breakdowns_breakdown_type FOREIGN KEY (breakdown_type_id) REFERENCES breakdown_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Breakdown{})
 		if err != nil {
@@ -449,7 +450,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create downtime table")
 		}
-		db.Exec("ALTER TABLE downtimes ADD CONSTRAINT fk_downtimes_downtime_type FOREIGN KEY (id) REFERENCES downtime_types(id)")
+		db.Exec("ALTER TABLE downtimes ADD CONSTRAINT fk_downtimes_downtime_type FOREIGN KEY (downtime_type_id) REFERENCES downtime_types(id)")
 		system := database.DowntimeType{}
 		db.Where("Name = ?", "System").Find(&system)
 		noReasonDowntime := database.Downtime{
@@ -509,8 +510,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create user table")
 		}
-		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_role FOREIGN KEY (id) REFERENCES user_roles(id)")
-		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_type FOREIGN KEY (id) REFERENCES user_types(id)")
+		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_role FOREIGN KEY (user_role_id) REFERENCES user_roles(id)")
+		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_type FOREIGN KEY (user_type_id) REFERENCES user_types(id)")
 		userRole := database.UserRole{}
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
@@ -600,8 +601,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create workplaceworkshift table")
 		}
-		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
-		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workshift FOREIGN KEY (id) REFERENCES workshifts(id)")
+		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workshift FOREIGN KEY (workshift_id) REFERENCES workshifts(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Workshift{})
 		if err != nil {
@@ -616,9 +617,9 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create workplaceport table")
 		}
-		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
-		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_state FOREIGN KEY (id) REFERENCES states(id)")
-		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_device_port FOREIGN KEY (device_port_id) REFERENCES device_ports(id)")
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_state FOREIGN KEY (state_id) REFERENCES states(id)")
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.WorkplacePort{})
 		if err != nil {
@@ -633,8 +634,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create staterecord table")
 		}
-		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_state FOREIGN KEY (id) REFERENCES states(id)")
-		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_state FOREIGN KEY (state_id) REFERENCES states(id)")
+		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.StateRecord{})
 		if err != nil {
@@ -649,7 +650,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create operation table")
 		}
-		db.Exec("ALTER TABLE operations ADD CONSTRAINT fk_operations_order FOREIGN KEY (id) REFERENCES orders(id)")
+		db.Exec("ALTER TABLE operations ADD CONSTRAINT fk_operations_order FOREIGN KEY (order_id) REFERENCES orders(id)")
 		operation := database.Operation{
 			Name:    "Operation",
 			OrderID: 1,
@@ -671,11 +672,11 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create orderrecord table")
 		}
-		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_operation FOREIGN KEY (id) REFERENCES operations(id)")
-		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_order FOREIGN KEY (id) REFERENCES orders(id)")
-		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
-		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace_mode FOREIGN KEY (id) REFERENCES workplace_modes(id)")
-		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workshift FOREIGN KEY (id) REFERENCES workshifts(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_operation FOREIGN KEY (operation_id) REFERENCES operations(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_order FOREIGN KEY (order_id) REFERENCES orders(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace_mode FOREIGN KEY (workplace_mode_id) REFERENCES workplace_modes(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workshift FOREIGN KEY (workshift_id) REFERENCES workshifts(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.OrderRecord{})
 		if err != nil {
@@ -690,10 +691,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create partrecord table")
 		}
-		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
-		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_part FOREIGN KEY (id) REFERENCES parts(id)")
-		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_user FOREIGN KEY (id) REFERENCES users(id)")
-		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_order_record FOREIGN KEY (order_record_id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_part FOREIGN KEY (part_id) REFERENCES parts(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.PartRecord{})
 		if err != nil {
@@ -708,10 +709,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create packagerecord table")
 		}
-		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
-		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_package FOREIGN KEY (id) REFERENCES packages(id)")
-		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_user FOREIGN KEY (id) REFERENCES users(id)")
-		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_order_record FOREIGN KEY (order_record_id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_package FOREIGN KEY (package_id) REFERENCES packages(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.PackageRecord{})
 		if err != nil {
@@ -726,10 +727,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create faultrecord table")
 		}
-		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_fault FOREIGN KEY (id) REFERENCES faults(id)")
-		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
-		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_user FOREIGN KEY (id) REFERENCES users(id)")
-		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_fault FOREIGN KEY (fault_id) REFERENCES faults(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_order_record FOREIGN KEY (order_record_id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.FaultRecord{})
 		if err != nil {
@@ -744,9 +745,9 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create breakdownrecord table")
 		}
-		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_breakdown FOREIGN KEY (id) REFERENCES breakdowns(id)")
-		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_user FOREIGN KEY (id) REFERENCES users(id)")
-		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_breakdown FOREIGN KEY (breakdown_id) REFERENCES breakdowns(id)")
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.BreakdownRecord{})
 		if err != nil {
@@ -761,8 +762,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create downtimerecord table")
 		}
-		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_downtime FOREIGN KEY (id) REFERENCES downtimes(id)")
-		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_downtime FOREIGN KEY (downtime_id) REFERENCES downtimes(id)")
+		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DowntimeRecord{})
 		if err != nil {
@@ -777,9 +778,9 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create userrecord table")
 		}
-		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
-		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_user FOREIGN KEY (id) REFERENCES users(id)")
-		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_order_record FOREIGN KEY (order_record_id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.UserRecord{})
 		if err != nil {
@@ -795,7 +796,7 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot create alarm table")
 		}
 
-		db.Exec("ALTER TABLE alarms ADD CONSTRAINT fk_alarms_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE alarms ADD CONSTRAINT fk_alarms_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Alarm{})
@@ -811,8 +812,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create alarmrecord table")
 		}
-		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_alarm FOREIGN KEY (id) REFERENCES alarms(id)")
-		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_alarm FOREIGN KEY (alarm_id) REFERENCES alarms(id)")
+		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.AlarmRecord{})
 		if err != nil {
@@ -841,8 +842,8 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create deviceworkplacerecord table")
 		}
-		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_device FOREIGN KEY (id) REFERENCES devices(id)")
-		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_workplaces FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_device FOREIGN KEY (device_id) REFERENCES devices(id)")
+		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_workplaces FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DeviceWorkplaceRecord{})
