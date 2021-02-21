@@ -69,7 +69,7 @@ func readDatabaseSize() float32 {
 		return 0
 	}
 	var size float32
-	db.Raw("SELECT pg_database_size('version3')/1000000 as size;").Scan(&size)
+	db.Raw("SELECT pg_database_size('system')/1000000 as size;").Scan(&size)
 	logInfo("MAIN", "Database size read in "+time.Since(timer).String())
 	return size
 }
@@ -107,6 +107,7 @@ func checkTablesOnly() bool {
 		logError("MAIN", "Problem opening database: "+err.Error())
 		return false
 	}
+	// DEVICE TYPE
 	if !db.Migrator().HasTable(&database.DeviceType{}) {
 		logInfo("MAIN", "DeviceTypeId table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DeviceType{})
@@ -123,18 +124,23 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update devicetype table")
 		}
 	}
+
+	// DEVICE
 	if !db.Migrator().HasTable(&database.Device{}) {
 		logInfo("MAIN", "Device table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Device{})
 		if err != nil {
 			logError("MAIN", "Cannot create device table")
 		}
+		db.Exec("ALTER TABLE devices ADD CONSTRAINT fk_devices_device_type FOREIGN KEY (id) REFERENCES device_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Device{})
 		if err != nil {
 			logError("MAIN", "Cannot update device table")
 		}
 	}
+
+	// SETTING
 	if !db.Migrator().HasTable(&database.Setting{}) {
 		logInfo("MAIN", "Setting table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Setting{})
@@ -161,6 +167,8 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update setting table")
 		}
 	}
+
+	// DEVICE PORT TYPE
 	if !db.Migrator().HasTable(&database.DevicePortType{}) {
 		logInfo("MAIN", "DevicePortType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DevicePortType{})
@@ -181,54 +189,69 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update deviceporttype table")
 		}
 	}
+
+	// DEVICE PORT
 	if !db.Migrator().HasTable(&database.DevicePort{}) {
 		logInfo("MAIN", "DevicePort table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DevicePort{})
 		if err != nil {
 			logError("MAIN", "Cannot create deviceport table")
 		}
+		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device FOREIGN KEY (id) REFERENCES devices(id)")
+		db.Exec("ALTER TABLE device_ports ADD CONSTRAINT fk_device_ports_device_port_type FOREIGN KEY (id) REFERENCES device_port_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePort{})
 		if err != nil {
 			logError("MAIN", "Cannot update deviceport table")
 		}
 	}
+
+	// DEVICE PORT ANALOG RECORD
 	if !db.Migrator().HasTable(&database.DevicePortAnalogRecord{}) {
 		logInfo("MAIN", "DevicePortAnalogRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DevicePortAnalogRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportanalogrecord table")
 		}
+		db.Exec("ALTER TABLE device_port_analog_records ADD CONSTRAINT fk_device_port_analog_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortAnalogRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot update deviceportanalogrecord table")
 		}
 	}
+
+	// DEVICE PORT DIGITAL RECORD
 	if !db.Migrator().HasTable(&database.DevicePortDigitalRecord{}) {
 		logInfo("MAIN", "DevicePortDigitalRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DevicePortDigitalRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportdigitalrecord table")
 		}
+		db.Exec("ALTER TABLE device_port_digital_records ADD CONSTRAINT fk_device_port_digital_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortDigitalRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot update deviceportdigitalrecord table")
 		}
 	}
+
+	// DEVICE PORT SERIAL RECORD
 	if !db.Migrator().HasTable(&database.DevicePortSerialRecord{}) {
 		logInfo("MAIN", "DevicePortSerialRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DevicePortSerialRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create deviceportserialrecord table")
 		}
+		db.Exec("ALTER TABLE device_port_serial_records ADD CONSTRAINT fk_device_port_serial_records_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DevicePortSerialRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot UPDATE deviceportserialrecord table")
 		}
 	}
+
+	// PACKAGE TYPE
 	if !db.Migrator().HasTable(&database.PackageType{}) {
 		logInfo("MAIN", "PackageType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.PackageType{})
@@ -241,6 +264,8 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot UPDATE packagetype table")
 		}
 	}
+
+	// PRODUCT
 	if !db.Migrator().HasTable(&database.Product{}) {
 		logInfo("MAIN", "Product table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Product{})
@@ -255,6 +280,8 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update product table")
 		}
 	}
+
+	// WORKPLACE SECTION
 	if !db.Migrator().HasTable(&database.WorkplaceSection{}) {
 		logInfo("MAIN", "WorkplaceSection table not exists, creating")
 		err := db.Migrator().CreateTable(&database.WorkplaceSection{})
@@ -269,6 +296,8 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update workplacesection table")
 		}
 	}
+
+	// WORKPLACE MODE
 	if !db.Migrator().HasTable(&database.WorkplaceMode{}) {
 		logInfo("MAIN", "Workplacemode table not exists, creating")
 		err := db.Migrator().CreateTable(&database.WorkplaceMode{})
@@ -283,13 +312,16 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update workplacemode table")
 		}
 	}
+
+	// WORKPLACE
 	if !db.Migrator().HasTable(&database.Workplace{}) {
 		logInfo("MAIN", "Workplace table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Workplace{})
 		if err != nil {
 			logError("MAIN", "Cannot create workplace table")
 		}
-
+		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_mode FOREIGN KEY (id) REFERENCES workplace_modes(id)")
+		db.Exec("ALTER TABLE workplaces ADD CONSTRAINT fk_workplaces_workplace_section FOREIGN KEY (id) REFERENCES workplace_sections(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Workplace{})
 		if err != nil {
@@ -297,12 +329,14 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// ORDER
 	if !db.Migrator().HasTable(&database.Order{}) {
 		logInfo("MAIN", "Order table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Order{})
 		if err != nil {
 			logError("MAIN", "Cannot create order table")
 		}
+		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (id) REFERENCES products(id)")
 		order := database.Order{Name: "Internal", DateTimeRequest: sql.NullTime{
 			Time:  time.Now(),
 			Valid: true,
@@ -314,12 +348,17 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update order table")
 		}
 	}
+
+	// PACKAGE
 	if !db.Migrator().HasTable(&database.Package{}) {
 		logInfo("MAIN", "Package table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Package{})
 		if err != nil {
 			logError("MAIN", "Cannot create package table")
 		}
+		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_order FOREIGN KEY (id) REFERENCES orders(id)")
+		db.Exec("ALTER TABLE packages ADD CONSTRAINT fk_packages_package_type FOREIGN KEY (id) REFERENCES package_types(id)")
+
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Package{})
 		if err != nil {
@@ -327,6 +366,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// FAULT TYPE
 	if !db.Migrator().HasTable(&database.FaultType{}) {
 		logInfo("MAIN", "FaultType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.FaultType{})
@@ -339,19 +379,24 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update faulttype table")
 		}
 	}
+
+	// FAULT
 	if !db.Migrator().HasTable(&database.Fault{}) {
 		logInfo("MAIN", "Fault table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Fault{})
 		if err != nil {
 			logError("MAIN", "Cannot create fault table")
 		}
+		db.Exec("ALTER TABLE faults ADD CONSTRAINT fk_faults_fault_type FOREIGN KEY (id) REFERENCES fault_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Fault{})
 		if err != nil {
 			logError("MAIN", "Cannot update fault table")
 		}
+
 	}
 
+	// BREAKDOWN TYPE
 	if !db.Migrator().HasTable(&database.BreakdownType{}) {
 		logInfo("MAIN", "BreakdownType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.BreakdownType{})
@@ -364,19 +409,24 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot create update table")
 		}
 	}
+
+	// BREAKDOWN
 	if !db.Migrator().HasTable(&database.Breakdown{}) {
 		logInfo("MAIN", "Breakdown table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Breakdown{})
 		if err != nil {
 			logError("MAIN", "Cannot create breakdown table")
 		}
+		db.Exec("ALTER TABLE breakdowns ADD CONSTRAINT fk_breakdowns_breakdown_type FOREIGN KEY (id) REFERENCES breakdown_types(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Breakdown{})
 		if err != nil {
 			logError("MAIN", "Cannot update breakdown table")
 		}
+
 	}
 
+	// DOWNTIME TYPE
 	if !db.Migrator().HasTable(&database.DowntimeType{}) {
 		logInfo("MAIN", "DowntimeType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DowntimeType{})
@@ -391,12 +441,15 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update downtimetype table")
 		}
 	}
+
+	// DOWNTIME
 	if !db.Migrator().HasTable(&database.Downtime{}) {
 		logInfo("MAIN", "Downtime table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Downtime{})
 		if err != nil {
 			logError("MAIN", "Cannot create downtime table")
 		}
+		db.Exec("ALTER TABLE downtimes ADD CONSTRAINT fk_downtimes_downtime_type FOREIGN KEY (id) REFERENCES downtime_types(id)")
 		system := database.DowntimeType{}
 		db.Where("Name = ?", "System").Find(&system)
 		noReasonDowntime := database.Downtime{
@@ -411,6 +464,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// USER TYPE
 	if !db.Migrator().HasTable(&database.UserType{}) {
 		logInfo("MAIN", "UserType table not exists, creating")
 		err := db.Migrator().CreateTable(&database.UserType{})
@@ -428,6 +482,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// USER ROLE
 	if !db.Migrator().HasTable(&database.UserRole{}) {
 		logInfo("MAIN", "UserRole table not exists, creating")
 		err := db.Migrator().CreateTable(&database.UserRole{})
@@ -446,12 +501,16 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update userrole table")
 		}
 	}
+
+	//USER
 	if !db.Migrator().HasTable(&database.User{}) {
 		logInfo("MAIN", "User table not exists, creating")
 		err := db.Migrator().CreateTable(&database.User{})
 		if err != nil {
 			logError("MAIN", "Cannot create user table")
 		}
+		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_role FOREIGN KEY (id) REFERENCES user_roles(id)")
+		db.Exec("ALTER TABLE users ADD CONSTRAINT fk_users_user_type FOREIGN KEY (id) REFERENCES user_types(id)")
 		userRole := database.UserRole{}
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
@@ -474,6 +533,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// WORKSHIFT
 	if !db.Migrator().HasTable(&database.Workshift{}) {
 		logInfo("MAIN", "Workshift table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Workshift{})
@@ -499,6 +559,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// PART
 	if !db.Migrator().HasTable(&database.Part{}) {
 		logInfo("MAIN", "Part table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Part{})
@@ -512,6 +573,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// STATE
 	if !db.Migrator().HasTable(&database.State{}) {
 		logInfo("MAIN", "State table not exists, creating")
 		err := db.Migrator().CreateTable(&database.State{})
@@ -531,12 +593,15 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// WORKPLACE WORKSHIFT
 	if !db.Migrator().HasTable(&database.WorkplaceWorkshift{}) {
 		logInfo("MAIN", "WorkplaceWorkshift table not exists, creating")
 		err := db.Migrator().CreateTable(&database.WorkplaceWorkshift{})
 		if err != nil {
 			logError("MAIN", "Cannot create workplaceworkshift table")
 		}
+		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE workplace_workshifts ADD CONSTRAINT fk_workplace_workshifts_workshift FOREIGN KEY (id) REFERENCES workshifts(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Workshift{})
 		if err != nil {
@@ -544,25 +609,32 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// WORKPLACE PORT
 	if !db.Migrator().HasTable(&database.WorkplacePort{}) {
 		logInfo("MAIN", "WorkplacePort table not exists, creating")
 		err := db.Migrator().CreateTable(&database.WorkplacePort{})
 		if err != nil {
 			logError("MAIN", "Cannot create workplaceport table")
 		}
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_device_port FOREIGN KEY (id) REFERENCES device_ports(id)")
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_state FOREIGN KEY (id) REFERENCES states(id)")
+		db.Exec("ALTER TABLE workplace_ports ADD CONSTRAINT fk_workplace_ports_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.WorkplacePort{})
 		if err != nil {
 			logError("MAIN", "Cannot update workplaceport table")
 		}
 	}
+
+	// STATE RECORD
 	if !db.Migrator().HasTable(&database.StateRecord{}) {
 		logInfo("MAIN", "StateRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.StateRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create staterecord table")
 		}
-
+		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_state FOREIGN KEY (id) REFERENCES states(id)")
+		db.Exec("ALTER TABLE state_records ADD CONSTRAINT fk_state_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.StateRecord{})
 		if err != nil {
@@ -570,12 +642,14 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// OPERATION
 	if !db.Migrator().HasTable(&database.Operation{}) {
 		logInfo("MAIN", "Operation table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Operation{})
 		if err != nil {
 			logError("MAIN", "Cannot create operation table")
 		}
+		db.Exec("ALTER TABLE operations ADD CONSTRAINT fk_operations_order FOREIGN KEY (id) REFERENCES orders(id)")
 		operation := database.Operation{
 			Name:    "Operation",
 			OrderID: 1,
@@ -590,12 +664,18 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// ORDER RECORD
 	if !db.Migrator().HasTable(&database.OrderRecord{}) {
 		logInfo("MAIN", "OrderRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.OrderRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create orderrecord table")
 		}
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_operation FOREIGN KEY (id) REFERENCES operations(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_order FOREIGN KEY (id) REFERENCES orders(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workplace_mode FOREIGN KEY (id) REFERENCES workplace_modes(id)")
+		db.Exec("ALTER TABLE order_records ADD CONSTRAINT fk_order_records_workshift FOREIGN KEY (id) REFERENCES workshifts(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.OrderRecord{})
 		if err != nil {
@@ -603,12 +683,17 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// PART RECORD
 	if !db.Migrator().HasTable(&database.PartRecord{}) {
 		logInfo("MAIN", "PartRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.PartRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create partrecord table")
 		}
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_part FOREIGN KEY (id) REFERENCES parts(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_user FOREIGN KEY (id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE part_records ADD CONSTRAINT fk_part_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.PartRecord{})
 		if err != nil {
@@ -616,12 +701,17 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// PACKAGE RECORD
 	if !db.Migrator().HasTable(&database.PackageRecord{}) {
 		logInfo("MAIN", "PackageRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.PackageRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create packagerecord table")
 		}
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_package FOREIGN KEY (id) REFERENCES packages(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_user FOREIGN KEY (id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE package_records ADD CONSTRAINT fk_package_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.PackageRecord{})
 		if err != nil {
@@ -629,12 +719,17 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// FAULT RECORD
 	if !db.Migrator().HasTable(&database.FaultRecord{}) {
 		logInfo("MAIN", "FaultRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.FaultRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create faultrecord table")
 		}
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_fault FOREIGN KEY (id) REFERENCES faults(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_user FOREIGN KEY (id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE fault_records ADD CONSTRAINT fk_fault_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.FaultRecord{})
 		if err != nil {
@@ -642,12 +737,16 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// BREAKDOWN RECORD
 	if !db.Migrator().HasTable(&database.BreakdownRecord{}) {
 		logInfo("MAIN", "BreakdownRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.BreakdownRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create breakdownrecord table")
 		}
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_breakdown FOREIGN KEY (id) REFERENCES breakdowns(id)")
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_user FOREIGN KEY (id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE breakdown_records ADD CONSTRAINT fk_breakdown_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.BreakdownRecord{})
 		if err != nil {
@@ -655,12 +754,15 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// DOWNTIME RECORD
 	if !db.Migrator().HasTable(&database.DowntimeRecord{}) {
 		logInfo("MAIN", "DownTimeRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DowntimeRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create downtimerecord table")
 		}
+		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_downtime FOREIGN KEY (id) REFERENCES downtimes(id)")
+		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DowntimeRecord{})
 		if err != nil {
@@ -668,12 +770,16 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// USER RECORD
 	if !db.Migrator().HasTable(&database.UserRecord{}) {
 		logInfo("MAIN", "UserRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.UserRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create userrecord table")
 		}
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_order_record FOREIGN KEY (id) REFERENCES order_records(id)")
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_user FOREIGN KEY (id) REFERENCES users(id)")
+		db.Exec("ALTER TABLE user_records ADD CONSTRAINT fk_user_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.UserRecord{})
 		if err != nil {
@@ -681,6 +787,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// ALARM
 	if !db.Migrator().HasTable(&database.Alarm{}) {
 		logInfo("MAIN", "Alarm table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Alarm{})
@@ -688,19 +795,24 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot create alarm table")
 		}
 
+		db.Exec("ALTER TABLE alarms ADD CONSTRAINT fk_alarms_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
+
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Alarm{})
 		if err != nil {
 			logError("MAIN", "Cannot update alarm table")
 		}
 	}
+
+	// ALARM RECORDS
 	if !db.Migrator().HasTable(&database.AlarmRecord{}) {
 		logInfo("MAIN", "AlarmRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.AlarmRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create alarmrecord table")
 		}
-
+		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_alarm FOREIGN KEY (id) REFERENCES alarms(id)")
+		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_workplace FOREIGN KEY (id) REFERENCES workplaces(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.AlarmRecord{})
 		if err != nil {
@@ -708,6 +820,7 @@ func checkTablesOnly() bool {
 		}
 	}
 
+	// SYSTEM RECORD
 	if !db.Migrator().HasTable(&database.SystemRecord{}) {
 		logInfo("MAIN", "SystemRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.SystemRecord{})
@@ -720,12 +833,16 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update systemrecord table")
 		}
 	}
+
+	// DEVICE WORKPLACE RECORD
 	if !db.Migrator().HasTable(&database.DeviceWorkplaceRecord{}) {
 		logInfo("MAIN", "DeviceWorkplaceRecord table not exists, creating")
 		err := db.Migrator().CreateTable(&database.DeviceWorkplaceRecord{})
 		if err != nil {
 			logError("MAIN", "Cannot create deviceworkplacerecord table")
 		}
+		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_device FOREIGN KEY (id) REFERENCES devices(id)")
+		db.Exec("ALTER TABLE device_workplace_records ADD CONSTRAINT fk_device_workplace_records_workplaces FOREIGN KEY (id) REFERENCES workplaces(id)")
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DeviceWorkplaceRecord{})
@@ -733,20 +850,22 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update deviceworkplacerecord table")
 		}
 	}
+
+	// LOCALE
 	if !db.Migrator().HasTable(&database.Locale{}) {
 		logInfo("MAIN", "Locale table not exists, creating")
 		err := db.Migrator().CreateTable(&database.Locale{})
 		if err != nil {
 			logError("MAIN", "Cannot create locale table")
 		}
-		createLocales(db)
+		//createLocales(db)
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Locale{})
 		if err != nil {
 			logError("MAIN", "Cannot update locale table")
 		}
-		createLocales(db)
+		//createLocales(db)
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 	return true
@@ -767,7 +886,7 @@ func checkDatabaseOnly() bool {
 			logError("MAIN", "Problem opening database: "+err.Error())
 			return false
 		}
-		db = db.Exec("CREATE DATABASE version3;")
+		db = db.Exec("CREATE DATABASE system;")
 		if db.Error != nil {
 			logError("MAIN", "Cannot create database version3: "+err.Error())
 		}
