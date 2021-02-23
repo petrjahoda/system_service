@@ -859,14 +859,14 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create locale table")
 		}
-		//createLocales(db)
+		createLocales(db)
 
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Locale{})
 		if err != nil {
 			logError("MAIN", "Cannot update locale table")
 		}
-		//createLocales(db)
+		createLocales(db)
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 	return true
