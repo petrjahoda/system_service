@@ -8,8 +8,8 @@ import (
 const version = "2021.1.2.23"
 const serviceName = "System Service"
 const serviceDescription = "Creates database and checks system data"
-const config = "user=postgres password=pj79.. dbname=system host=database port=5432 sslmode=disable"
-const postgresConfig = "user=postgres password=pj79.. dbname=postgres host=database port=5432 sslmode=disable"
+const config = "user=postgres password=pj79.. dbname=system host=localhost port=5432 sslmode=disable"
+const postgresConfig = "user=postgres password=pj79.. dbname=postgres host=localhost port=5432 sslmode=disable"
 const downloadInSeconds = 86400
 
 var serviceRunning = false
