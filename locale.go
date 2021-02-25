@@ -1734,16 +1734,16 @@ func createLocales(db *gorm.DB) {
 
 	tableInfo := database.Locale{
 		Name: "data-table-info-title",
-		CsCZ: "Zobrazeno $ 1 až $ 2 z $ 3 záznamů",
-		DeDE: "Anzeigen von $ 1 bis $ 2 von $ 3 Einträgen",
+		CsCZ: "Zobrazeno $1 až $2 z $3 záznamů",
+		DeDE: "Anzeigen von $1 bis $2 von $3 Einträgen",
 		EnUS: "Showing $1 to $2 of $3 entries",
-		EsES: "Mostrando $ 1 a $ 2 de $ 3 entradas",
-		FrFR: "Affichage des entrées de 1 $ à 2 $ sur 3 $",
-		ItIT: "Visualizzazione di $ 1 a $ 2 di $ 3 voci",
-		PlPL: "Wyświetlam pozycje od 1 $ do 2 $ z 3 $",
-		PtPT: "Mostrando $ 1 a $ 2 de $ 3 entradas",
-		SkSK: "Zobrazuje sa $ 1 až $ 2 z $ 3 záznamov",
-		RuRU: "Показаны записи от $ 1 до $ 2 из $ 3",
+		EsES: "Mostrando $1 a $2 de $3 entradas",
+		FrFR: "Affichage des entrées de $1 à $2 sur $3",
+		ItIT: "Visualizzazione di $1 a $2 di $3 voci",
+		PlPL: "Wyświetlam pozycje od 1$ do 2$ z 3$",
+		PtPT: "Mostrando $1 a $2 de $3 entradas",
+		SkSK: "Zobrazuje sa $1 až $2 z $3 záznamov",
+		RuRU: "Показаны записи от $1 до $2 из $3",
 	}
 	db.Create(&tableInfo)
 
