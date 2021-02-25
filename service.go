@@ -869,6 +869,7 @@ func checkTablesOnly() bool {
 		createLocales(db)
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
+
 	return true
 }
 

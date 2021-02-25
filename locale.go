@@ -1507,4 +1507,214 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&systemData)
 
+	workplaceName := database.Locale{
+		Name: "workplace-name",
+		CsCZ: "pracoviště",
+		DeDE: "arbeitsplatz",
+		EnUS: "workplace",
+		EsES: "lugar de trabajo",
+		FrFR: "lieu de travail",
+		ItIT: "posto di lavoro",
+		PlPL: "miejsce pracy",
+		PtPT: "local de trabalho",
+		SkSK: "pracovisko",
+		RuRU: "рабочее место",
+	}
+	db.Create(&workplaceName)
+
+	workplaceModeName := database.Locale{
+		Name: "workplacemode-name",
+		CsCZ: "pracovní režim",
+		DeDE: "arbeitsplatzmodus",
+		EnUS: "workplace mode",
+		EsES: "modo de trabajo",
+		FrFR: "mode de travail",
+		ItIT: "modalità di lavoro",
+		PlPL: "tryb pracy",
+		PtPT: "modo de trabalho",
+		SkSK: "režim pracoviska",
+		RuRU: "рабочий режим",
+	}
+	db.Create(&workplaceModeName)
+
+	workshiftName := database.Locale{
+		Name: "workshift-name",
+		CsCZ: "pracovní směna",
+		DeDE: "arbeitsschicht",
+		EnUS: "workshift",
+		EsES: "turno de trabajo",
+		FrFR: "un poste de travail",
+		ItIT: "turno di lavoro",
+		PlPL: "zmiany roboczej",
+		PtPT: "turno de trabalho",
+		SkSK: "pracovná zmena",
+		RuRU: "рабочая смена",
+	}
+	db.Create(&workshiftName)
+
+	userName := database.Locale{
+		Name: "user-name",
+		CsCZ: "uživatel",
+		DeDE: "nutzer",
+		EnUS: "user",
+		EsES: "usuario",
+		FrFR: "utilisateur",
+		ItIT: "utente",
+		PlPL: "użytkownik",
+		PtPT: "utilizador",
+		SkSK: "užívateľ",
+		RuRU: "пользователь",
+	}
+	db.Create(&userName)
+
+	orderName := database.Locale{
+		Name: "order-name",
+		CsCZ: "zakázka",
+		DeDE: "bestellung",
+		EnUS: "order",
+		EsES: "orden",
+		FrFR: "ordre",
+		ItIT: "ordinazione",
+		PlPL: "zamówienie",
+		PtPT: "ordem",
+		SkSK: "zakázka",
+		RuRU: "заказ",
+	}
+	db.Create(&orderName)
+
+	operationName := database.Locale{
+		Name: "operation-name",
+		CsCZ: "operace",
+		DeDE: "operation",
+		EnUS: "operation",
+		EsES: "operación",
+		FrFR: "opération",
+		ItIT: "operazione",
+		PlPL: "operacja",
+		PtPT: "operação",
+		SkSK: "operácia",
+		RuRU: "операция",
+	}
+	db.Create(&operationName)
+
+	cycleName := database.Locale{
+		Name: "cycle-name",
+		CsCZ: "cyklus",
+		DeDE: "zyklus",
+		EnUS: "cycle",
+		EsES: "ciclo",
+		FrFR: "cycle",
+		ItIT: "ciclo",
+		PlPL: "cykl",
+		PtPT: "ciclo",
+		SkSK: "cyklus",
+		RuRU: "цикл",
+	}
+	db.Create(&cycleName)
+
+	cavityName := database.Locale{
+		Name: "cavity-name",
+		CsCZ: "násobič",
+		DeDE: "multiplikator",
+		EnUS: "multiplier",
+		EsES: "multiplicador",
+		FrFR: "multiplicateur",
+		ItIT: "moltiplicatore",
+		PlPL: "mnożnik",
+		PtPT: "multiplicador",
+		SkSK: "násobiteľ",
+		RuRU: "множитель",
+	}
+	db.Create(&cavityName)
+
+	goodName := database.Locale{
+		Name: "good-pieces-name",
+		CsCZ: "dobré kusy",
+		DeDE: "gute stücke",
+		EnUS: "good pieces",
+		EsES: "buenas piezas",
+		FrFR: "bons morceaux",
+		ItIT: "buoni pezzi",
+		PlPL: "dobre kawałki",
+		PtPT: "boas peças",
+		SkSK: "dobré kusy",
+		RuRU: "Добрэ кусы",
+	}
+	db.Create(&goodName)
+
+	badName := database.Locale{
+		Name: "bad-pieces-name",
+		CsCZ: "špatné kusy",
+		DeDE: "schlechte stücke",
+		EnUS: "bad pieces",
+		EsES: "malas piezas",
+		FrFR: "mauvais morceaux",
+		ItIT: "pezzi cattivi",
+		PlPL: "złe kawałki",
+		PtPT: "peças ruins",
+		SkSK: "zlé kusy",
+		RuRU: "шпатне кусы",
+	}
+	db.Create(&badName)
+
+	noteName := database.Locale{
+		Name: "note-name",
+		CsCZ: "poznámka",
+		DeDE: "note",
+		EnUS: "note",
+		EsES: "nota",
+		FrFR: "la note",
+		ItIT: "la nota",
+		PlPL: "notatka",
+		PtPT: "anotação",
+		SkSK: "poznámka",
+		RuRU: "заметка",
+	}
+	db.Create(&noteName)
+
+	showEntries := database.Locale{
+		Name: "data-table-rows-count-title",
+		CsCZ: "Zobrazit záznamy: ",
+		DeDE: "Einträge anzeigen: ",
+		EnUS: "Show entries: ",
+		EsES: "Mostrar entradas: ",
+		FrFR: "Afficher les entrées: ",
+		ItIT: "Mostra voci: ",
+		PlPL: "Pokaż wpisy: ",
+		PtPT: "Mostrar entradas: ",
+		SkSK: "Zobraziť záznamy: ",
+		RuRU: "показать записи: ",
+	}
+	db.Create(&showEntries)
+
+	search := database.Locale{
+		Name: "data-table-search-title",
+		CsCZ: "Hledat: ",
+		DeDE: "Suche: ",
+		EnUS: "Search: ",
+		EsES: "Buscar: ",
+		FrFR: "Chercher: ",
+		ItIT: "Ricerca: ",
+		PlPL: "Szukaj: ",
+		PtPT: "Procurar: ",
+		SkSK: "Vyhľadávanie: ",
+		RuRU: "Поиск: ",
+	}
+	db.Create(&search)
+
+	tableInfo := database.Locale{
+		Name: "data-table-info-title",
+		CsCZ: "Zobrazeno $ 1 až $ 2 z $ 3 záznamů",
+		DeDE: "Anzeigen von $ 1 bis $ 2 von $ 3 Einträgen",
+		EnUS: "Showing $1 to $2 of $3 entries",
+		EsES: "Mostrando $ 1 a $ 2 de $ 3 entradas",
+		FrFR: "Affichage des entrées de 1 $ à 2 $ sur 3 $",
+		ItIT: "Visualizzazione di $ 1 a $ 2 di $ 3 voci",
+		PlPL: "Wyświetlam pozycje od 1 $ do 2 $ z 3 $",
+		PtPT: "Mostrando $ 1 a $ 2 de $ 3 entradas",
+		SkSK: "Zobrazuje sa $ 1 až $ 2 z $ 3 záznamov",
+		RuRU: "Показаны записи от $ 1 до $ 2 из $ 3",
+	}
+	db.Create(&tableInfo)
+
 }
