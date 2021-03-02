@@ -1747,4 +1747,64 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&tableInfo)
 
+	alarmName := database.Locale{
+		Name: "Alarm-name",
+		CsCZ: "Alarm",
+		DeDE: "Alarm",
+		EnUS: "Alarm",
+		EsES: "Alarma",
+		FrFR: "Alarme",
+		ItIT: "Allarme",
+		PlPL: "Alarm",
+		PtPT: "Alarme",
+		SkSK: "Alarm",
+		RuRU: "Тревога",
+	}
+	db.Create(&alarmName)
+
+	alarmStart := database.Locale{
+		Name: "alarm-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&alarmStart)
+
+	alarmEnd := database.Locale{
+		Name: "alarm-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&alarmEnd)
+
+	alarmProcessed := database.Locale{
+		Name: "alarm-processed",
+		CsCZ: "Zpracováno",
+		DeDE: "Verarbeitet",
+		EnUS: "Processed",
+		EsES: "Procesada",
+		FrFR: "Traité",
+		ItIT: "Elaborato",
+		PlPL: "Obrobiony",
+		PtPT: "Processado",
+		SkSK: "Spracované",
+		RuRU: "Обработанный",
+	}
+	db.Create(&alarmProcessed)
+
 }
