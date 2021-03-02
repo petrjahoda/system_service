@@ -30,8 +30,8 @@ func createNewSystemRecord(databaseSizeMegaBytes float32, databaseGrowthInMegaBy
 
 }
 
-func calculateEstimatedDiscSpaceInDays(databaseGrowthInMegaBytes float32, discSpaceMegaBytes float32) float32 {
-	return discSpaceMegaBytes / databaseGrowthInMegaBytes
+func calculateEstimatedDiscSpaceInDays(databaseGrowthInMegaBytes float32, discSpaceMegaBytes float32, hours float64) float32 {
+	return discSpaceMegaBytes / (databaseGrowthInMegaBytes / (float32(hours) / 24))
 }
 
 func calculateFreeDiscSpace() float32 {

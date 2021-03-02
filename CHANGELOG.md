@@ -27,6 +27,9 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 - translation for user table
 - translation for system stats table
 
+## Changed
+- interval for processing calculating disc size
+
 ## [2021.1.2.25] - 2021-02-25
 
 ### Added

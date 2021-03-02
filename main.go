@@ -10,7 +10,7 @@ const serviceName = "System Service"
 const serviceDescription = "Creates database and checks system data"
 const config = "user=postgres password=pj79.. dbname=system host=database port=5432 sslmode=disable"
 const postgresConfig = "user=postgres password=pj79.. dbname=postgres host=database port=5432 sslmode=disable"
-const downloadInSeconds = 86400
+const downloadInSeconds = 60
 
 var serviceRunning = false
 var processRunning = false
@@ -61,16 +61,14 @@ func (p *program) run() {
 		databaseSizeMegaBytes := readDatabaseSize()
 		lastSystemRecord := readLastSystemRecord()
 		databaseGrowthInMegaBytes := databaseSizeMegaBytes - lastSystemRecord.DatabaseSizeInMegaBytes
-		if databaseGrowthInMegaBytes > 0 {
+		if time.Now().Sub(lastSystemRecord.CreatedAt).Hours() > 24 {
 			logInfo("MAIN", "Database is larger than before")
 			discSpaceMegaBytes := calculateFreeDiscSpace()
-			estimatedDiscSpaceDays := calculateEstimatedDiscSpaceInDays(databaseGrowthInMegaBytes, discSpaceMegaBytes)
+			estimatedDiscSpaceDays := calculateEstimatedDiscSpaceInDays(databaseGrowthInMegaBytes, discSpaceMegaBytes, time.Now().Sub(lastSystemRecord.CreatedAt).Hours())
 			createNewSystemRecord(databaseSizeMegaBytes, databaseGrowthInMegaBytes, discSpaceMegaBytes, estimatedDiscSpaceDays)
 			if estimatedDiscSpaceDays < 30 {
 				sendEmail("Low Disc Space")
 			}
-		} else {
-			logInfo("MAIN", "No change in database size")
 		}
 		sleepTime := downloadInSeconds*time.Second - time.Since(start)
 		logInfo("MAIN", "Sleeping for "+sleepTime.String())
