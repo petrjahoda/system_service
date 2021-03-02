@@ -1807,4 +1807,378 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&alarmProcessed)
 
+	breakdownStart := database.Locale{
+		Name: "breakdown-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&breakdownStart)
+
+	breakdownEnd := database.Locale{
+		Name: "breakdown-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&breakdownEnd)
+
+	breakdownName := database.Locale{
+		Name: "breakdown-name",
+		CsCZ: "Porucha",
+		DeDE: "Ausfall",
+		EnUS: "Breakdown",
+		EsES: "Trastorno",
+		FrFR: "Désordre",
+		ItIT: "Disturbo",
+		PlPL: "Nieład",
+		PtPT: "Transtorno",
+		SkSK: "Porucha",
+		RuRU: "Беспорядок",
+	}
+	db.Create(&breakdownName)
+
+	downtimeStart := database.Locale{
+		Name: "downtime-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&downtimeStart)
+
+	downtimeEnd := database.Locale{
+		Name: "downtime-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&downtimeEnd)
+
+	downtimeName := database.Locale{
+		Name: "downtime-name",
+		CsCZ: "Prostoj",
+		DeDE: "Ausfallzeit",
+		EnUS: "Downtime",
+		EsES: "Inactividad",
+		FrFR: "Inactivité",
+		ItIT: "Inattività",
+		PlPL: "Przestoj",
+		PtPT: "Inatividade",
+		SkSK: "Prestoj",
+		RuRU: "Простой",
+	}
+	db.Create(&downtimeName)
+
+	faultDate := database.Locale{
+		Name: "fault-date",
+		CsCZ: "Datum",
+		DeDE: "Datum",
+		EnUS: "Date",
+		EsES: "Fecha",
+		FrFR: "Date",
+		ItIT: "Data",
+		PlPL: "Data",
+		PtPT: "Data",
+		SkSK: "Dátum",
+		RuRU: "Дата",
+	}
+	db.Create(&faultDate)
+
+	faultName := database.Locale{
+		Name: "fault-name",
+		CsCZ: "Chyba",
+		DeDE: "Fehler",
+		EnUS: "Fault",
+		EsES: "Falla",
+		FrFR: "Défaut",
+		ItIT: "Difetto",
+		PlPL: "Wada",
+		PtPT: "Falha",
+		SkSK: "Chyba",
+		RuRU: "Недостаток",
+	}
+	db.Create(&faultName)
+
+	faultCount := database.Locale{
+		Name: "fault-count",
+		CsCZ: "Množství",
+		DeDE: "Menge",
+		EnUS: "Amount",
+		EsES: "Cantidad",
+		FrFR: "Quantité",
+		ItIT: "Quantità",
+		PlPL: "Ilość",
+		PtPT: "Quantia",
+		SkSK: "Množstvo",
+		RuRU: "Количество",
+	}
+	db.Create(&faultCount)
+
+	packageDate := database.Locale{
+		Name: "package-date",
+		CsCZ: "Datum",
+		DeDE: "Datum",
+		EnUS: "Date",
+		EsES: "Fecha",
+		FrFR: "Date",
+		ItIT: "Data",
+		PlPL: "Data",
+		PtPT: "Data",
+		SkSK: "Dátum",
+		RuRU: "Дата",
+	}
+	db.Create(&packageDate)
+
+	packageName := database.Locale{
+		Name: "package-name",
+		CsCZ: "Balení",
+		DeDE: "Paket",
+		EnUS: "Package",
+		EsES: "Paquete",
+		FrFR: "Paquet",
+		ItIT: "Pacchetto",
+		PlPL: "Pakiet",
+		PtPT: "Pacote",
+		SkSK: "Baleni",
+		RuRU: "Пакет",
+	}
+	db.Create(&packageName)
+
+	packageCount := database.Locale{
+		Name: "package-count",
+		CsCZ: "Množství",
+		DeDE: "Menge",
+		EnUS: "Amount",
+		EsES: "Cantidad",
+		FrFR: "Quantité",
+		ItIT: "Quantità",
+		PlPL: "Ilość",
+		PtPT: "Quantia",
+		SkSK: "Množstvo",
+		RuRU: "Количество",
+	}
+	db.Create(&packageCount)
+
+	partDate := database.Locale{
+		Name: "part-date",
+		CsCZ: "Datum",
+		DeDE: "Datum",
+		EnUS: "Date",
+		EsES: "Fecha",
+		FrFR: "Date",
+		ItIT: "Data",
+		PlPL: "Data",
+		PtPT: "Data",
+		SkSK: "Dátum",
+		RuRU: "Дата",
+	}
+	db.Create(&partDate)
+
+	partName := database.Locale{
+		Name: "part-name",
+		CsCZ: "Díl",
+		DeDE: "Teil",
+		EnUS: "Part",
+		EsES: "Parte",
+		FrFR: "Partie",
+		ItIT: "Parte",
+		PlPL: "Część",
+		PtPT: "Papel",
+		SkSK: "Diel",
+		RuRU: "Часть",
+	}
+	db.Create(&partName)
+
+	partCount := database.Locale{
+		Name: "part-count",
+		CsCZ: "Množství",
+		DeDE: "Menge",
+		EnUS: "Amount",
+		EsES: "Cantidad",
+		FrFR: "Quantité",
+		ItIT: "Quantità",
+		PlPL: "Ilość",
+		PtPT: "Quantia",
+		SkSK: "Množstvo",
+		RuRU: "Количество",
+	}
+	db.Create(&partCount)
+
+	stateStart := database.Locale{
+		Name: "state-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&stateStart)
+
+	stateEnd := database.Locale{
+		Name: "state-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&stateEnd)
+
+	stateName := database.Locale{
+		Name: "state-name",
+		CsCZ: "Stav",
+		DeDE: "Zustand",
+		EnUS: "State",
+		EsES: "Expresar",
+		FrFR: "État",
+		ItIT: "Stato",
+		PlPL: "Stan",
+		PtPT: "Estado",
+		SkSK: "Stav",
+		RuRU: "Состояние",
+	}
+	db.Create(&stateName)
+
+	userStart := database.Locale{
+		Name: "user-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&userStart)
+
+	userEnd := database.Locale{
+		Name: "user-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&userEnd)
+
+	systemDate := database.Locale{
+		Name: "system-date",
+		CsCZ: "Datum",
+		DeDE: "Datum",
+		EnUS: "Date",
+		EsES: "Fecha",
+		FrFR: "Date",
+		ItIT: "Data",
+		PlPL: "Data",
+		PtPT: "Data",
+		SkSK: "Dátum",
+		RuRU: "Дата",
+	}
+	db.Create(&systemDate)
+
+	databaseSize := database.Locale{
+		Name: "database-size",
+		CsCZ: "Velikost databáze",
+		DeDE: "Datenbankgröße",
+		EnUS: "Database size",
+		EsES: "Tamaño de la base de datos",
+		FrFR: "Taille de la base de données",
+		ItIT: "Dimensioni del database",
+		PlPL: "Rozmiar bazy danych",
+		PtPT: "Tamanho do banco de dados",
+		SkSK: "Veľkosť databázy",
+		RuRU: "Размер базы данных",
+	}
+	db.Create(&databaseSize)
+
+	databaseGrowth := database.Locale{
+		Name: "database-growth",
+		CsCZ: "Nárůst databáze",
+		DeDE: "Datenbankwachstum",
+		EnUS: "Database growth",
+		EsES: "Crecimiento de la base de datos",
+		FrFR: "Croissance de la base de données",
+		ItIT: "Crescita del database",
+		PlPL: "Rozwój bazy danych",
+		PtPT: "Crescimento do banco de dados",
+		SkSK: "Rast databázy",
+		RuRU: "Рост базы данных",
+	}
+	db.Create(&databaseGrowth)
+
+	discFreeSpace := database.Locale{
+		Name: "disc-free-space",
+		CsCZ: "Volné místo na disku",
+		DeDE: "Disc freier Speicherplatz",
+		EnUS: "Disc free space",
+		EsES: "Espacio libre en disco",
+		FrFR: "Espace libre sur le disque",
+		ItIT: "Spazio libero su disco",
+		PlPL: "Wolne miejsce na dysku",
+		PtPT: "Espaço livre no disco",
+		SkSK: "Voľné miesto na disku",
+		RuRU: "Свободное место на диске",
+	}
+	db.Create(&discFreeSpace)
+
+	estimatedFreeSpace := database.Locale{
+		Name: "estimated-free-space",
+		CsCZ: "Odhad dnů volného místa",
+		DeDE: "Geschätzte Tage freier Speicherplatz",
+		EnUS: "Estimated days free space",
+		EsES: "Días estimados de espacio libre",
+		FrFR: "Nombre estimé de jours d'espace libre",
+		ItIT: "Giorni stimati di spazio libero",
+		PlPL: "Szacunkowa liczba dni wolnego miejsca",
+		PtPT: "Dias estimados de espaço livre",
+		SkSK: "Odhadovaný počet dní voľného miesta",
+		RuRU: "Приблизительное количество дней свободного места",
+	}
+	db.Create(&estimatedFreeSpace)
 }

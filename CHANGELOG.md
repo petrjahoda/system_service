@@ -18,6 +18,14 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 
 ### Added
 - translation for alarm table
+- translation for breakdown table
+- translation for downtime table
+- translation for fault table
+- translation for package table
+- translation for part table
+- translation for state table
+- translation for user table
+- translation for system stats table
 
 ## [2021.1.2.25] - 2021-02-25
 
