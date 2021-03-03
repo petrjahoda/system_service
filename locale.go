@@ -2181,4 +2181,94 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Приблизительное количество дней свободного места",
 	}
 	db.Create(&estimatedFreeSpace)
+
+	combinedChart := database.Locale{
+		Name: "combined-chart",
+		CsCZ: "Kombinovaný graf",
+		DeDE: "Kombiniertes Diagramm",
+		EnUS: "Combined chart",
+		EsES: "Gráfico combinado",
+		FrFR: "Graphique combiné",
+		ItIT: "Grafico combinato",
+		PlPL: "Wykres łączony",
+		PtPT: "Gráfico combinado",
+		SkSK: "Kombinovaný graf",
+		RuRU: "Комбинированная диаграмма",
+	}
+	db.Create(&combinedChart)
+
+	timelineChart := database.Locale{
+		Name: "timeline-chart",
+		CsCZ: "Časový graf",
+		DeDE: "Zeitdiagramm",
+		EnUS: "Timeline chart",
+		EsES: "Gráfico de línea de tiempo",
+		FrFR: "Graphique chronologique",
+		ItIT: "Grafico cronologico",
+		PlPL: "Wykres z osią czasu",
+		PtPT: "Gráfico de linha do tempo",
+		SkSK: "Časový graf",
+		RuRU: "График времени",
+	}
+	db.Create(&timelineChart)
+
+	analogData := database.Locale{
+		Name: "analog-data",
+		CsCZ: "Analogová data",
+		DeDE: "Analoge Daten",
+		EnUS: "Analog data",
+		EsES: "Datos analógicos",
+		FrFR: "Données analogiques",
+		ItIT: "Dati analogici",
+		PlPL: "Dane analogowe",
+		PtPT: "Dados analógicos",
+		SkSK: "Analógové dáta",
+		RuRU: "Аналоговые данные",
+	}
+	db.Create(&analogData)
+
+	digitalData := database.Locale{
+		Name: "digital-data",
+		CsCZ: "Digitální data",
+		DeDE: "Digitale Daten",
+		EnUS: "Digital data",
+		EsES: "Información digital",
+		FrFR: "Données numériques",
+		ItIT: "Dati digitali",
+		PlPL: "Dane cyfrowe",
+		PtPT: "Dados digitais",
+		SkSK: "Digitálné data",
+		RuRU: "Цифровые данные",
+	}
+	db.Create(&digitalData)
+
+	productionChart := database.Locale{
+		Name: "production-chart",
+		CsCZ: "Graf produkce",
+		DeDE: "Produktionsdiagramm",
+		EnUS: "Production chart",
+		EsES: "Tabla de producción",
+		FrFR: "Tableau de production",
+		ItIT: "Grafico di produzione",
+		PlPL: "Wykres produkcyjny",
+		PtPT: "Gráfico de produção",
+		SkSK: "Graf výroby",
+		RuRU: "График производства",
+	}
+	db.Create(&productionChart)
+
+	consumptionChart := database.Locale{
+		Name: "consumption-chart",
+		CsCZ: "Graf spotřeby",
+		DeDE: "Verbrauchsdiagramm",
+		EnUS: "Consumption chart",
+		EsES: "Gráfico de consumo",
+		FrFR: "Graphique de consommation",
+		ItIT: "Grafico dei consumi",
+		PlPL: "Wykres zużycia",
+		PtPT: "Gráfico de consumo",
+		SkSK: "Graf spotreby",
+		RuRU: "График потребления",
+	}
+	db.Create(&consumptionChart)
 }
