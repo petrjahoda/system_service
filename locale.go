@@ -2271,4 +2271,94 @@ func createLocales(db *gorm.DB) {
 		RuRU: "График потребления",
 	}
 	db.Create(&consumptionChart)
+
+	devices := database.Locale{
+		Name: "devices",
+		CsCZ: "Zařízení",
+		DeDE: "Geräte",
+		EnUS: "Devices",
+		EsES: "Dispositivos",
+		FrFR: "Dispositifs",
+		ItIT: "Dispositivi",
+		PlPL: "Urządzenia",
+		PtPT: "Dispositivos",
+		SkSK: "Zariadenie",
+		RuRU: "Устройства",
+	}
+	db.Create(&devices)
+
+	workplaces := database.Locale{
+		Name: "workplaces",
+		CsCZ: "Pracoviště",
+		DeDE: "Arbeitsplätze",
+		EnUS: "Workplaces",
+		EsES: "Lugares de trabajo",
+		FrFR: "Lieux de travail",
+		ItIT: "Ambienti di lavoro",
+		PlPL: "Miejsca pracy",
+		PtPT: "Locais de trabalho",
+		SkSK: "Pracoviska",
+		RuRU: "Рабочие места",
+	}
+	db.Create(&workplaces)
+
+	products := database.Locale{
+		Name: "products",
+		CsCZ: "Produkty",
+		DeDE: "Produkte",
+		EnUS: "Products",
+		EsES: "Productos",
+		FrFR: "Produits",
+		ItIT: "Prodotti",
+		PlPL: "Produkty",
+		PtPT: "Produtos",
+		SkSK: "Produkty",
+		RuRU: "Товары",
+	}
+	db.Create(&products)
+
+	operations := database.Locale{
+		Name: "operations",
+		CsCZ: "Operace",
+		DeDE: "Operationen",
+		EnUS: "Operations",
+		EsES: "Operaciones",
+		FrFR: "Opérations",
+		ItIT: "Operazioni",
+		PlPL: "Operacje",
+		PtPT: "Operações",
+		SkSK: "Operácie",
+		RuRU: "Операции",
+	}
+	db.Create(&operations)
+
+	workshifts := database.Locale{
+		Name: "workshifts",
+		CsCZ: "Pracovní směny",
+		DeDE: "Arbeitsschichten",
+		EnUS: "Workshifts",
+		EsES: "Turnos de trabajo",
+		FrFR: "Quarts de travail",
+		ItIT: "Turni lavorativi",
+		PlPL: "Zmiany robocze",
+		PtPT: "Turnos de trabalho",
+		SkSK: "Pracovné zmeny",
+		RuRU: "Рабочие смены",
+	}
+	db.Create(&workshifts)
+
+	systemSettings := database.Locale{
+		Name: "system-settings",
+		CsCZ: "Nastavení",
+		DeDE: "Einstellungen",
+		EnUS: "Settings",
+		EsES: "Ajustes",
+		FrFR: "Réglages",
+		ItIT: "Impostazioni",
+		PlPL: "Ustawienia",
+		PtPT: "Definições",
+		SkSK: "Nastavenie",
+		RuRU: "Hастройки",
+	}
+	db.Create(&systemSettings)
 }
