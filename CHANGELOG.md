@@ -18,6 +18,7 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 
 ### Added
 - locales for settings page
+- locales for settings alarm details
 
 
 ## [2021.1.3.4] - 2021-03-04

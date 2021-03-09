@@ -2361,4 +2361,124 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Hастройки",
 	}
 	db.Create(&systemSettings)
+
+	sqlCommand := database.Locale{
+		Name: "sql-command",
+		CsCZ: "Sql příkaz",
+		DeDE: "SQL-Befehl",
+		EnUS: "Sql command",
+		EsES: "Comando sql",
+		FrFR: "Commande SQL",
+		ItIT: "Comando SQL",
+		PlPL: "Sql polecenie",
+		PtPT: "Comando Sql",
+		SkSK: "Sql príkaz",
+		RuRU: "Команда sql",
+	}
+	db.Create(&sqlCommand)
+
+	messageHeader := database.Locale{
+		Name: "message-header",
+		CsCZ: "Předmět zprávy",
+		DeDE: "Betreff der Nachricht",
+		EnUS: "Message subject",
+		EsES: "Asunto del mensaje",
+		FrFR: "Objet du message",
+		ItIT: "Soggetto del messaggio",
+		PlPL: "Temat wiadomości",
+		PtPT: "Assunto da mensagem",
+		SkSK: "Predmet správy",
+		RuRU: "Тема сообщения",
+	}
+	db.Create(&messageHeader)
+
+	messageText := database.Locale{
+		Name: "message-text",
+		CsCZ: "Text zprávy",
+		DeDE: "Nachrichtentext",
+		EnUS: "Message text",
+		EsES: "Mensaje de texto",
+		FrFR: "Texte du message",
+		ItIT: "Messaggio di testo",
+		PlPL: "Wiadomość tekstowa",
+		PtPT: "Mensagem de texto",
+		SkSK: "Text správy",
+		RuRU: "Текст сообщения",
+	}
+	db.Create(&messageText)
+
+	recipients := database.Locale{
+		Name: "recipients",
+		CsCZ: "Příjemci",
+		DeDE: "Empfänger",
+		EnUS: "Recipients",
+		EsES: "Destinatarios",
+		FrFR: "Bénéficiaires",
+		ItIT: "Destinatari",
+		PlPL: "Odbiorcy",
+		PtPT: "Destinatários",
+		SkSK: "Príjemcovia",
+		RuRU: "Получатели",
+	}
+	db.Create(&recipients)
+
+	url := database.Locale{
+		Name: "url",
+		CsCZ: "Url",
+		DeDE: "Url",
+		EnUS: "Url",
+		EsES: "URL",
+		FrFR: "URL",
+		ItIT: "Url",
+		PlPL: "Url",
+		PtPT: "Url",
+		SkSK: "Url",
+		RuRU: "URL",
+	}
+	db.Create(&url)
+
+	pdf := database.Locale{
+		Name: "pdf",
+		CsCZ: "Pdf",
+		DeDE: "Pdf",
+		EnUS: "Pdf",
+		EsES: "PDF",
+		FrFR: "PDF",
+		ItIT: "Pdf",
+		PlPL: "Pdf",
+		PtPT: "Pdf",
+		SkSK: "Pdf",
+		RuRU: "PDF",
+	}
+	db.Create(&pdf)
+
+	createdAt := database.Locale{
+		Name: "created-at",
+		CsCZ: "Vytvořeno v",
+		DeDE: "Hergestellt am",
+		EnUS: "Created at",
+		EsES: "Creado en",
+		FrFR: "Créé à",
+		ItIT: "Creato a",
+		PlPL: "Utworzono w",
+		PtPT: "Criado em",
+		SkSK: "Vytvorené v",
+		RuRU: "Создано на",
+	}
+	db.Create(&createdAt)
+
+	updatedAt := database.Locale{
+		Name: "updated-at",
+		CsCZ: "Aktualizováno v",
+		DeDE: "Aktualisiert am",
+		EnUS: "Updated at",
+		EsES: "Actualizado en",
+		FrFR: "Mis à jour à",
+		ItIT: "Aggiornato a",
+		PlPL: "Zaktualizowano o godz",
+		PtPT: "Atualizado em",
+		SkSK: "Aktualizované o",
+		RuRU: "Обновлено в",
+	}
+	db.Create(&updatedAt)
 }
