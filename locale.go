@@ -1840,7 +1840,7 @@ func createLocales(db *gorm.DB) {
 	breakdownName := database.Locale{
 		Name: "breakdown-name",
 		CsCZ: "Porucha",
-		DeDE: "Ausfall",
+		DeDE: "Störung",
 		EnUS: "Breakdown",
 		EsES: "Trastorno",
 		FrFR: "Désordre",
