@@ -3,7 +3,7 @@ module system_service
 go 1.15
 
 require (
-	github.com/TwinProduction/go-color v0.0.3
+	github.com/TwinProduction/go-color v1.0.0
 	github.com/cockroachdb/apd v1.1.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
@@ -23,7 +23,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/lib/pq v1.10.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/petrjahoda/database v0.0.0-20210221083114-821a71d9b8d4
+	github.com/petrjahoda/database v0.0.0-20210311105338-942970d400aa
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/ricochet2200/go-disk-usage v0.0.0-20150921141558-f0d1b743428f

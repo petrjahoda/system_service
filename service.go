@@ -654,7 +654,7 @@ func checkTablesOnly() bool {
 		operation := database.Operation{
 			Name:    "Operation",
 			OrderID: 1,
-			Barcode: 0,
+			Barcode: "0",
 			Note:    "",
 		}
 		db.Create(&operation)

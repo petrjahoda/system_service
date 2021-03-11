@@ -2481,4 +2481,79 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Обновлено в",
 	}
 	db.Create(&updatedAt)
+
+	productName := database.Locale{
+		Name: "product-name",
+		CsCZ: "Produkt",
+		DeDE: "Produkt",
+		EnUS: "Product",
+		EsES: "Producto",
+		FrFR: "Produit",
+		ItIT: "Prodotto",
+		PlPL: "Produkt",
+		PtPT: "Produtos",
+		SkSK: "Produkt",
+		RuRU: "Tовар",
+	}
+	db.Create(&productName)
+
+	deviceName := database.Locale{
+		Name: "device-name",
+		CsCZ: "Zařízení",
+		DeDE: "Gerät",
+		EnUS: "Device",
+		EsES: "Aparato",
+		FrFR: "L'appareil",
+		ItIT: "Dispositivo",
+		PlPL: "Urządzenie",
+		PtPT: "Dispositivo",
+		SkSK: "Zariadenie",
+		RuRU: "Yстройство",
+	}
+	db.Create(&deviceName)
+
+	typeName := database.Locale{
+		Name: "type-name",
+		CsCZ: "Typ",
+		DeDE: "Sorte",
+		EnUS: "Type",
+		EsES: "Escribe",
+		FrFR: "Catégorie",
+		ItIT: "Genere",
+		PlPL: "Rodzaj",
+		PtPT: "Modelo",
+		SkSK: "Typ",
+		RuRU: "Тип",
+	}
+	db.Create(&typeName)
+
+	name := database.Locale{
+		Name: "name",
+		CsCZ: "Jméno",
+		DeDE: "Name",
+		EnUS: "Name",
+		EsES: "Nombre",
+		FrFR: "Nom",
+		ItIT: "Nome",
+		PlPL: "Nazva",
+		PtPT: "Nome",
+		SkSK: "Meno",
+		RuRU: "Имя",
+	}
+	db.Create(&name)
+
+	barcode := database.Locale{
+		Name: "barcode",
+		CsCZ: "Čárový kód",
+		DeDE: "Barcode",
+		EnUS: "Barcode",
+		EsES: "Código de barras",
+		FrFR: "Code à barre",
+		ItIT: "Codice a barre",
+		PlPL: "Kod kreskowy",
+		PtPT: "Código de barras",
+		SkSK: "Čiarový kód",
+		RuRU: "Штрих-код",
+	}
+	db.Create(&barcode)
 }
