@@ -2556,4 +2556,95 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Штрих-код",
 	}
 	db.Create(&barcode)
+
+	dateRequest := database.Locale{
+		Name: "date-requested",
+		CsCZ: "Požadovaný datum výroby",
+		DeDE: "Erforderliches Herstellungsdatum",
+		EnUS: "Required date of manufacture",
+		EsES: "Fecha requerida de fabricación",
+		FrFR: "Date de fabrication requise",
+		ItIT: "Data di produzione richiesta",
+		PlPL: "Wymagana data produkcji",
+		PtPT: "Data de fabricação exigida",
+		SkSK: "Požadovaný dátum výroby",
+		RuRU: "Требуемая дата изготовления",
+	}
+	db.Create(&dateRequest)
+
+	countRequest := database.Locale{
+		Name: "count-requested",
+		CsCZ: "Požadované množství",
+		DeDE: "Angeforderter Betrag",
+		EnUS: "Count requested",
+		EsES: "Monto requerido",
+		FrFR: "Quantité exigée",
+		ItIT: "Importo richiesto",
+		PlPL: "Wnioskowana kwota",
+		PtPT: "Quantidade solicitada",
+		SkSK: "Požadované množstvo",
+		RuRU: "Запрошенная сумма",
+	}
+	db.Create(&countRequest)
+
+	downtimeDuration := database.Locale{
+		Name: "downtime-duration",
+		CsCZ: "Doba prostoje",
+		DeDE: "Ausfallzeitdauer",
+		EnUS: "Downtime duration",
+		EsES: "Duración del tiempo de inactividad",
+		FrFR: "Durée des temps d'arrêt",
+		ItIT: "Durata del tempo di inattività",
+		PlPL: "Czas przestoju",
+		PtPT: "Duração do tempo de inatividade",
+		SkSK: "Trvanie prestoje",
+		RuRU: "Продолжительность простоя",
+	}
+	db.Create(&downtimeDuration)
+
+	color := database.Locale{
+		Name: "color",
+		CsCZ: "Barva",
+		DeDE: "Farbe",
+		EnUS: "Color",
+		EsES: "Color",
+		FrFR: "Couleur",
+		ItIT: "Colore",
+		PlPL: "Kolor",
+		PtPT: "Cor",
+		SkSK: "Farba",
+		RuRU: "Цвет",
+	}
+	db.Create(&color)
+
+	workshiftStart := database.Locale{
+		Name: "workshift-start",
+		CsCZ: "Začátek",
+		DeDE: "Anfang",
+		EnUS: "Beginning",
+		EsES: "Comenzando",
+		FrFR: "Début",
+		ItIT: "Inizio",
+		PlPL: "Początek",
+		PtPT: "Começo",
+		SkSK: "Začiatok",
+		RuRU: "Начало",
+	}
+	db.Create(&workshiftStart)
+
+	workshiftEnd := database.Locale{
+		Name: "workshift-end",
+		CsCZ: "Konec",
+		DeDE: "Ende",
+		EnUS: "End",
+		EsES: "Fin",
+		FrFR: "Finir",
+		ItIT: "Fine",
+		PlPL: "Koniec",
+		PtPT: "Fim",
+		SkSK: "Koniec",
+		RuRU: "Конец",
+	}
+	db.Create(&workshiftEnd)
+
 }

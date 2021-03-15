@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-const version = "2021.1.3.11"
+const version = "2021.1.3.15"
 const serviceName = "System Service"
 const serviceDescription = "Creates database and checks system data"
 const config = "user=postgres password=pj79.. dbname=system host=database port=5432 sslmode=disable"
