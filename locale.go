@@ -2792,8 +2792,38 @@ func createLocales(db *gorm.DB) {
 		ItIT: "Linguaggio",
 		PlPL: "Język",
 		PtPT: "Língua",
-		SkSK: "jazyk",
+		SkSK: "Jazyk",
 		RuRU: "Язык",
 	}
 	db.Create(&locale)
+
+	value := database.Locale{
+		Name: "value",
+		CsCZ: "Wert",
+		DeDE: "Hodnota",
+		EnUS: "Value",
+		EsES: "Valor",
+		FrFR: "Évaluer",
+		ItIT: "Valore",
+		PlPL: "Wartość",
+		PtPT: "Valor",
+		SkSK: "Hodnota",
+		RuRU: "Значение",
+	}
+	db.Create(&value)
+
+	enabled := database.Locale{
+		Name: "enabled",
+		CsCZ: "Povoleno",
+		DeDE: "Aktiviert",
+		EnUS: "Enabled",
+		EsES: "Activado",
+		FrFR: "Activé",
+		ItIT: "Abilitato",
+		PlPL: "Włączony",
+		PtPT: "Habilitado",
+		SkSK: "Povolené",
+		RuRU: "Включено",
+	}
+	db.Create(&enabled)
 }
