@@ -2647,4 +2647,153 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&workshiftEnd)
 
+	firstName := database.Locale{
+		Name: "first-name",
+		CsCZ: "Jméno",
+		DeDE: "Vorname",
+		EnUS: "First name",
+		EsES: "Nombre de pila",
+		FrFR: "Prénom",
+		ItIT: "Nome di battesimo",
+		PlPL: "Imię",
+		PtPT: "Primeiro nome",
+		SkSK: "Meno",
+		RuRU: "Имя",
+	}
+	db.Create(&firstName)
+
+	secondName := database.Locale{
+		Name: "second-name",
+		CsCZ: "Příjmení",
+		DeDE: "Nachname",
+		EnUS: "First name",
+		EsES: "Apellido",
+		FrFR: "Nom de famille",
+		ItIT: "Cognome",
+		PlPL: "Nazwisko",
+		PtPT: "Sobrenome",
+		SkSK: "Priezvisko",
+		RuRU: "Фамилия",
+	}
+	db.Create(&secondName)
+
+	roleName := database.Locale{
+		Name: "role-name",
+		CsCZ: "Role",
+		DeDE: "Rolle",
+		EnUS: "Role",
+		EsES: "Oficio",
+		FrFR: "Rôle",
+		ItIT: "Ruolo",
+		PlPL: "Rola",
+		PtPT: "Função",
+		SkSK: "Rola",
+		RuRU: "Роль",
+	}
+	db.Create(&roleName)
+
+	email := database.Locale{
+		Name: "email",
+		CsCZ: "E-mail",
+		DeDE: "E-mail",
+		EnUS: "E-mail",
+		EsES: "E-mail",
+		FrFR: "E-mail",
+		ItIT: "E-mail",
+		PlPL: "E-mail",
+		PtPT: "E-mail",
+		SkSK: "E-mail",
+		RuRU: "E-мейл",
+	}
+	db.Create(&email)
+
+	password := database.Locale{
+		Name: "password",
+		CsCZ: "Heslo",
+		DeDE: " Kennwort",
+		EnUS: "Password",
+		EsES: "Contraseña",
+		FrFR: "Mot de passe",
+		ItIT: "Parola d'ordine",
+		PlPL: "Hasło",
+		PtPT: "Senha",
+		SkSK: "Heslo",
+		RuRU: "Пароль",
+	}
+	db.Create(&password)
+
+	phone := database.Locale{
+		Name: "phone",
+		CsCZ: "Telefon",
+		DeDE: "Telefon",
+		EnUS: "Phone",
+		EsES: "Teléfono",
+		FrFR: "Téléphone",
+		ItIT: "Telefono",
+		PlPL: "Telefon",
+		PtPT: "Telefone",
+		SkSK: "Telefón",
+		RuRU: "Телефон",
+	}
+	db.Create(&phone)
+
+	position := database.Locale{
+		Name: "position",
+		CsCZ: "Pozice",
+		DeDE: "Funktion",
+		EnUS: "Position",
+		EsES: "Posición",
+		FrFR: "Positionner",
+		ItIT: "Posizione",
+		PlPL: "Pozycja",
+		PtPT: "Posição",
+		SkSK: "Pozícia",
+		RuRU: "Позиция",
+	}
+	db.Create(&position)
+
+	pin := database.Locale{
+		Name: "pin",
+		CsCZ: "Osobní identifikační číslo",
+		DeDE: "Persönliche Identifikationsnummer",
+		EnUS: "Personal identification number",
+		EsES: "Número de identificación personal",
+		FrFR: "Numéro d'identification personnel",
+		ItIT: "Numero di identificazione personale",
+		PlPL: "Osobisty numer identyfikacyjny",
+		PtPT: "Número de identificação pessoal",
+		SkSK: "Osobné identifikačné číslo",
+		RuRU: "Персональный идентификационный номер",
+	}
+	db.Create(&pin)
+
+	rfid := database.Locale{
+		Name: "rfid",
+		CsCZ: "RFID číslo",
+		DeDE: "RFID-Nummer.",
+		EnUS: "RFID number",
+		EsES: "Número de RFID",
+		FrFR: "Nombre RFID",
+		ItIT: "Numero RFID",
+		PlPL: "Numer RFID.",
+		PtPT: "Número do RFID.",
+		SkSK: "Číslo RFID",
+		RuRU: "RFID номер",
+	}
+	db.Create(&rfid)
+
+	locale := database.Locale{
+		Name: "locale",
+		CsCZ: "Jazyk",
+		DeDE: "Sprache",
+		EnUS: "Language",
+		EsES: "Idioma",
+		FrFR: "Langue",
+		ItIT: "Linguaggio",
+		PlPL: "Język",
+		PtPT: "Língua",
+		SkSK: "jazyk",
+		RuRU: "Язык",
+	}
+	db.Create(&locale)
 }
