@@ -2799,8 +2799,8 @@ func createLocales(db *gorm.DB) {
 
 	value := database.Locale{
 		Name: "value",
-		CsCZ: "Wert",
-		DeDE: "Hodnota",
+		CsCZ: "Hodnota",
+		DeDE: "Wert",
 		EnUS: "Value",
 		EsES: "Valor",
 		FrFR: "Évaluer",
