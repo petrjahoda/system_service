@@ -1412,7 +1412,7 @@ func createLocales(db *gorm.DB) {
 		ItIT: "Difetti",
 		PlPL: "Wady",
 		PtPT: "Falhas",
-		SkSK: "chyby",
+		SkSK: "Chyby",
 		RuRU: "Недостатки",
 	}
 	db.Create(&dataFaults)
