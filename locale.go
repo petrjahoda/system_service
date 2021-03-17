@@ -2826,4 +2826,169 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Включено",
 	}
 	db.Create(&enabled)
+
+	ipAddress := database.Locale{
+		Name: "ip-address",
+		CsCZ: "IP adresa",
+		DeDE: "IP Adresse",
+		EnUS: "IP address",
+		EsES: "Dirección IP",
+		FrFR: "Adresse IP",
+		ItIT: "Indirizzo IP",
+		PlPL: "Adres IP",
+		PtPT: "Endereço de IP",
+		SkSK: "IP adresa",
+		RuRU: "IP адрес",
+	}
+	db.Create(&ipAddress)
+
+	macAddress := database.Locale{
+		Name: "mac-address",
+		CsCZ: "MAC adresa",
+		DeDE: "MAC Adresse",
+		EnUS: "MAC address",
+		EsES: "Dirección MAC",
+		FrFR: "Adresse MAC",
+		ItIT: "Indirizzo MAC",
+		PlPL: "Adres MAC",
+		PtPT: "Endereço de MAC",
+		SkSK: "MAC adresa",
+		RuRU: "MAC-адрес",
+	}
+	db.Create(&macAddress)
+
+	deviceVersion := database.Locale{
+		Name: "device-version",
+		CsCZ: "Verze",
+		DeDE: "Ausführung",
+		EnUS: "Version",
+		EsES: "Versión",
+		FrFR: "Version",
+		ItIT: "Versione",
+		PlPL: "Wersja",
+		PtPT: "Versão",
+		SkSK: "Verzia",
+		RuRU: "Версия",
+	}
+	db.Create(&deviceVersion)
+
+	deviceSettings := database.Locale{
+		Name: "device-settings",
+		CsCZ: "Nastavení",
+		DeDE: "Einstellungen",
+		EnUS: "Settings",
+		EsES: "Ajustes",
+		FrFR: "Réglages",
+		ItIT: "Impostazioni",
+		PlPL: "Ustawienia",
+		PtPT: "Definições",
+		SkSK: "Nastavenie",
+		RuRU: "Hастройки",
+	}
+	db.Create(&deviceSettings)
+
+	portName := database.Locale{
+		Name: "port-name",
+		CsCZ: "Jméno",
+		DeDE: "Name",
+		EnUS: "Name",
+		EsES: "Nombre",
+		FrFR: "Nom",
+		ItIT: "Nome",
+		PlPL: "Nazva",
+		PtPT: "Nome",
+		SkSK: "Meno",
+		RuRU: "Имя",
+	}
+	db.Create(&portName)
+
+	portTypeName := database.Locale{
+		Name: "port-type-name",
+		CsCZ: "Typ",
+		DeDE: "Sorte",
+		EnUS: "Type",
+		EsES: "Escribe",
+		FrFR: "Catégorie",
+		ItIT: "Genere",
+		PlPL: "Rodzaj",
+		PtPT: "Modelo",
+		SkSK: "Typ",
+		RuRU: "Тип",
+	}
+	db.Create(&portTypeName)
+
+	portUnit := database.Locale{
+		Name: "port-unit",
+		CsCZ: "Jednotka",
+		DeDE: "Einheit",
+		EnUS: "Unit",
+		EsES: "Unidad",
+		FrFR: "Unité",
+		ItIT: "Unità",
+		PlPL: "Jednostka",
+		PtPT: "Unidade",
+		SkSK: "Jednotka",
+		RuRU: "Единица измерения",
+	}
+	db.Create(&portUnit)
+
+	plcDataType := database.Locale{
+		Name: "plc-data-type",
+		CsCZ: "PLC data typ",
+		DeDE: "SPS-Datentyp",
+		EnUS: "PLC data type",
+		EsES: "Tipo de datos PLC",
+		FrFR: "Type de données PLC",
+		ItIT: "Tipo di dati PLC",
+		PlPL: "Typ danych PLC",
+		PtPT: "Tipo de dados PLC",
+		SkSK: "Typ údajov PLC",
+		RuRU: "Тип данных PLC",
+	}
+	db.Create(&plcDataType)
+
+	plcDataAddress := database.Locale{
+		Name: "plc-data-address",
+		CsCZ: "PLC adresa",
+		DeDE: "SPS-Datenadresse",
+		EnUS: "PLC data address",
+		EsES: "Dirección de datos PLC",
+		FrFR: "Adresse de données PLC",
+		ItIT: "Indirizzo dei dati del PLC",
+		PlPL: "Adres danych PLC",
+		PtPT: "Endereço de dados do PLC.",
+		SkSK: "Adresa údajov PLC",
+		RuRU: "Адрес данных PLC",
+	}
+	db.Create(&plcDataAddress)
+
+	portVirtual := database.Locale{
+		Name: "port-virtual",
+		CsCZ: "Virtuální",
+		DeDE: "Virtuell",
+		EnUS: "Virtual",
+		EsES: "Virtual",
+		FrFR: "Virtuel",
+		ItIT: "Virtuale",
+		PlPL: "Wirtualny",
+		PtPT: "Virtual",
+		SkSK: "Virtuálne",
+		RuRU: "Виртуальный",
+	}
+	db.Create(&portVirtual)
+
+	portNumber := database.Locale{
+		Name: "port-number",
+		CsCZ: "Číslo",
+		DeDE: "Nummer",
+		EnUS: "Number",
+		EsES: "Número",
+		FrFR: "Nombre",
+		ItIT: "Numero",
+		PlPL: "Numer",
+		PtPT: "Número",
+		SkSK: "Číslo",
+		RuRU: "Число",
+	}
+	db.Create(&portNumber)
 }

@@ -118,6 +118,14 @@ func checkTablesOnly() bool {
 		db.Create(&zapsi)
 		zapsiTouch := database.DeviceType{Name: "Zapsi Touch"}
 		db.Create(&zapsiTouch)
+		siemens := database.DeviceType{Name: "S7 based Siemens PLCs"}
+		db.Create(&siemens)
+		printer := database.DeviceType{Name: "Datamax printers"}
+		db.Create(&printer)
+		file := database.DeviceType{Name: "File based devices"}
+		db.Create(&file)
+		network := database.DeviceType{Name: "Network based devices"}
+		db.Create(&network)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DeviceType{})
 		if err != nil {
