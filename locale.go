@@ -3036,4 +3036,64 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Код",
 	}
 	db.Create(&code)
+
+	counterOk := database.Locale{
+		Name: "counter-ok",
+		CsCZ: "Počítat dobré kusy",
+		DeDE: "Zähle gute Stücke",
+		EnUS: "Count good pieces",
+		EsES: "Cuenta buenas piezas",
+		FrFR: "Comptez les bons morceaux",
+		ItIT: "Conta buoni pezzi",
+		PlPL: "Policz dobre kawałki",
+		PtPT: "Conte peças boas",
+		SkSK: "Počítaj dobré kusy",
+		RuRU: "Считайте хорошие штуки",
+	}
+	db.Create(&counterOk)
+
+	counterNok := database.Locale{
+		Name: "counter-nok",
+		CsCZ: "Počítat špatné kusy",
+		DeDE: "Zähle schlechte Stücke",
+		EnUS: "Count bad pieces",
+		EsES: "Cuenta piezas malas",
+		FrFR: "Compter les mauvais morceaux",
+		ItIT: "Conta i pezzi cattivi",
+		PlPL: "Policz złe kawałki",
+		PtPT: "Contar peças ruins",
+		SkSK: "Počítaj zlé kusy",
+		RuRU: "Считайте плохие штуки",
+	}
+	db.Create(&counterNok)
+
+	highValue := database.Locale{
+		Name: "high-value",
+		CsCZ: "Vysoká hodnota",
+		DeDE: "Hochwertig",
+		EnUS: "High value",
+		EsES: "Alto valor",
+		FrFR: "Haute valeur",
+		ItIT: "Alto valore",
+		PlPL: "Wysoka wartość",
+		PtPT: "Valor alto",
+		SkSK: "Vysoká hodnota",
+		RuRU: "Высокая стоимость",
+	}
+	db.Create(&highValue)
+
+	lowValue := database.Locale{
+		Name: "low-value",
+		CsCZ: "Nízká hodnota",
+		DeDE: "Niedriger Wert",
+		EnUS: "Low value",
+		EsES: "Bajo valor",
+		FrFR: "Faible valeur",
+		ItIT: "Basso valore",
+		PlPL: "Niska wartość",
+		PtPT: "Baixo valor",
+		SkSK: "Nízka hodnota",
+		RuRU: "Низкое значение",
+	}
+	db.Create(&lowValue)
 }
