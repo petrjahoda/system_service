@@ -2991,4 +2991,49 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Число",
 	}
 	db.Create(&portNumber)
+
+	poweroffDuration := database.Locale{
+		Name: "poweroff-duration",
+		CsCZ: "Doba vypnutí",
+		DeDE: "Ausschaltdauer",
+		EnUS: "Poweroff duration",
+		EsES: "Duración del apagado",
+		FrFR: "Durée de la mise hors tension",
+		ItIT: "Durata dello spegnimento",
+		PlPL: "Czas wyłączenia zasilania",
+		PtPT: "Duração do desligamento",
+		SkSK: "Trvanie vypnutia",
+		RuRU: "Продолжительность выключения питания",
+	}
+	db.Create(&poweroffDuration)
+
+	sectionName := database.Locale{
+		Name: "section-name",
+		CsCZ: "Skupina",
+		DeDE: "Gruppe",
+		EnUS: "Group",
+		EsES: "Grupo",
+		FrFR: "Groupe",
+		ItIT: "Gruppo",
+		PlPL: "Grupa",
+		PtPT: "Grupo",
+		SkSK: "Skupina",
+		RuRU: "Группа",
+	}
+	db.Create(&sectionName)
+
+	code := database.Locale{
+		Name: "code-name",
+		CsCZ: "Kód",
+		DeDE: "Code",
+		EnUS: "Code",
+		EsES: "Código",
+		FrFR: "Code",
+		ItIT: "Codice",
+		PlPL: "Kod",
+		PtPT: "Código",
+		SkSK: "Kód",
+		RuRU: "Код",
+	}
+	db.Create(&code)
 }
