@@ -160,6 +160,8 @@ github.com/petrjahoda/database v0.0.0-20210311105338-942970d400aa h1:qO77YoxGfNt
 github.com/petrjahoda/database v0.0.0-20210311105338-942970d400aa/go.mod h1:sujUCnRLIq6ZiD8KcKuVQPXvA/Cxi1eufYuDtBDuJSw=
 github.com/petrjahoda/database v0.0.0-20210318091045-ad8e6e82dd05 h1:33N5to7dN1SXF0TOKiEqSLYrfRVk7ndIeWtp6L9NTBw=
 github.com/petrjahoda/database v0.0.0-20210318091045-ad8e6e82dd05/go.mod h1:rCVp+I85eqh3zzQ5pctl6wBN2nSy6HXhWeaFdeEUd+k=
+github.com/petrjahoda/database v0.0.0-20210322110818-77675b0245a5 h1:nlly0wibm0hAeExybpBVrnHyTVIitnNLL/KA/ONLlGU=
+github.com/petrjahoda/database v0.0.0-20210322110818-77675b0245a5/go.mod h1:rCVp+I85eqh3zzQ5pctl6wBN2nSy6HXhWeaFdeEUd+k=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
@@ -273,6 +275,8 @@ golang.org/x/sys v0.0.0-20210317091845-390168757d9c h1:WGyvPg8lhdtSkb8BiYWdtPlLS
 golang.org/x/sys v0.0.0-20210317091845-390168757d9c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210319071255-635bc2c9138d h1:jbzgAvDZn8aEnytae+4ou0J0GwFZoHR0hOrTg4qH8GA=
 golang.org/x/sys v0.0.0-20210319071255-635bc2c9138d/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 h1:EZ2mChiOa8udjfp6rRmswTbtZN/QzUQp4ptM4rnjHvc=
+golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/term v0.0.0-20201113234701-d7a72108b828/go.mod h1:Nr5EML6q2oocZ2LXRh80K7BxOlk5/8JxuGnuhpl+muw=
 golang.org/x/term v0.0.0-20201117132131-f5c789dd3221/go.mod h1:Nr5EML6q2oocZ2LXRh80K7BxOlk5/8JxuGnuhpl+muw=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=

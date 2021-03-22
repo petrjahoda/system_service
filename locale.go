@@ -3096,4 +3096,35 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Низкое значение",
 	}
 	db.Create(&lowValue)
+
+	productionDowntime := database.Locale{
+		Name: "production-downtime",
+		CsCZ: "Výroba/Prostoj",
+		DeDE: "Produktion/Ausfallzeit",
+		EnUS: "Productin/Downtime",
+		EsES: "Producción/Inactividad",
+		FrFR: "Production/Inactivité",
+		ItIT: "Produzione/Inattività",
+		PlPL: "Produkcja/Przestoj",
+		PtPT: "Produção/Inatividade",
+		SkSK: "Výroba/Prestoj",
+		RuRU: "Производство/Простой",
+	}
+	db.Create(&productionDowntime)
+
+	poweronPoweroff := database.Locale{
+		Name: "poweron-poweroff",
+		CsCZ: "Vypnuto/Zapnuto",
+		DeDE: "Ausgeschaltet/Eingeschaltet",
+		EnUS: "Power-on/Power-off",
+		EsES: "Apagado/Encendido",
+		FrFR: "Éteint/Allumé",
+		ItIT: "Spento/Acceso",
+		PlPL: "Wyłączony/Włączony",
+		PtPT: "Sesligado/Ligado",
+		SkSK: "Vypnuto/Zapnuto",
+		RuRU: "Bыключен/Включенный",
+	}
+	db.Create(&poweronPoweroff)
+
 }
