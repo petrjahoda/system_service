@@ -3101,7 +3101,7 @@ func createLocales(db *gorm.DB) {
 		Name: "production-downtime",
 		CsCZ: "Výroba/Prostoj",
 		DeDE: "Produktion/Ausfallzeit",
-		EnUS: "Productin/Downtime",
+		EnUS: "Production/Downtime",
 		EsES: "Producción/Inactividad",
 		FrFR: "Production/Inactivité",
 		ItIT: "Produzione/Inattività",
