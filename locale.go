@@ -1149,50 +1149,7 @@ func createLocales(db *gorm.DB) {
 	//}
 	//db.Create(&groupPoweroffLive)
 	//
-	//production := database.Locale{
-	//	Name: "production",
-	//	CsCZ: "výroba",
-	//	DeDE: "produktion",
-	//	EnUS: "production",
-	//	EsES: "producción",
-	//	FrFR: "production",
-	//	ItIT: "produzione",
-	//	PlPL: "produkcja",
-	//	PtPT: "Produção",
-	//	SkSK: "výroba",
-	//	RuRU: "производство",
-	//}
-	//db.Create(&production)
-	//
-	//downtime := database.Locale{
-	//	Name: "downtime",
-	//	CsCZ: "prostoj",
-	//	DeDE: "ausfallzeit",
-	//	EnUS: "downtime",
-	//	EsES: "inactividad",
-	//	FrFR: "inactivité",
-	//	ItIT: "inattività",
-	//	PlPL: "przestoj",
-	//	PtPT: "inatividade",
-	//	SkSK: "prestoj",
-	//	RuRU: "простой",
-	//}
-	//db.Create(&downtime)
-	//
-	//poweroff := database.Locale{
-	//	Name: "poweroff",
-	//	CsCZ: "vypnuto",
-	//	DeDE: "ausgeschaltet",
-	//	EnUS: "poweroff",
-	//	EsES: "apagado",
-	//	FrFR: "éteint",
-	//	ItIT: "spento",
-	//	PlPL: "wyłączony",
-	//	PtPT: "desligado",
-	//	SkSK: "vypnuté",
-	//	RuRU: "выключен",
-	//}
-	//db.Create(&poweroff)
+
 	//
 	//liveWorkplaceUser := database.Locale{
 	//	Name: "navbar-live-workplace-3-user",
@@ -3126,5 +3083,50 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Bыключен/Включенный",
 	}
 	db.Create(&poweronPoweroff)
+
+	production := database.Locale{
+		Name: "production",
+		CsCZ: "Výroba",
+		DeDE: "Produktion",
+		EnUS: "Production",
+		EsES: "Producción",
+		FrFR: "Production",
+		ItIT: "Produzione",
+		PlPL: "Produkcja",
+		PtPT: "Produção",
+		SkSK: "Výroba",
+		RuRU: "Производство",
+	}
+	db.Create(&production)
+
+	downtime := database.Locale{
+		Name: "downtime",
+		CsCZ: "Prostoj",
+		DeDE: "Ausfallzeit",
+		EnUS: "Downtime",
+		EsES: "Inactividad",
+		FrFR: "Inactivité",
+		ItIT: "Inattività",
+		PlPL: "Przestoj",
+		PtPT: "Inatividade",
+		SkSK: "Prestoj",
+		RuRU: "Простой",
+	}
+	db.Create(&downtime)
+
+	poweroff := database.Locale{
+		Name: "poweroff",
+		CsCZ: "Vypnuto",
+		DeDE: "Ausgeschaltet",
+		EnUS: "Poweroff",
+		EsES: "Apagado",
+		FrFR: "Éteint",
+		ItIT: "Spento",
+		PlPL: "Wyłączony",
+		PtPT: "Desligado",
+		SkSK: "Vypnuté",
+		RuRU: "Bыключен",
+	}
+	db.Create(&poweroff)
 
 }
