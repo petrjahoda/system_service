@@ -14,6 +14,11 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Fixed``` for any bug fixes.
 * ```Security``` in case of vulnerabilities.
 
+## [2021.1.3.30] - 2021-03-30
+
+### Changed
+- updating state_records table
+
 ## [2021.1.3.25] - 2021-03-25
 
 ### Added
