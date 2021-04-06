@@ -1705,7 +1705,7 @@ func createLocales(db *gorm.DB) {
 	db.Create(&tableInfo)
 
 	alarmName := database.Locale{
-		Name: "Alarm-name",
+		Name: "alarm-name",
 		CsCZ: "Alarm",
 		DeDE: "Alarm",
 		EnUS: "Alarm",
