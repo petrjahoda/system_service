@@ -340,6 +340,8 @@ github.com/petrjahoda/database v0.0.0-20210330111156-c0ef06689319 h1:Fin9VeksGTr
 github.com/petrjahoda/database v0.0.0-20210330111156-c0ef06689319/go.mod h1:p8EGtDRB3YC5X/2oR0JFZ2ybvxfEgeH8goQXOWJh0fg=
 github.com/petrjahoda/database v0.0.0-20210330115549-0754d5a2c5db h1:E5VpF+HX9CVYAcpooA9NwXpg9SHOfXII3icCGbVus3M=
 github.com/petrjahoda/database v0.0.0-20210330115549-0754d5a2c5db/go.mod h1:E+P9M/94uFSgcYyt/0OHCpWoFN9kGkThs9FJaidsoUw=
+github.com/petrjahoda/database v0.0.0-20210406112418-c1d5e41fae2b h1:tx/mIKgHy3L25gaLDCwibZ6pkUSlaWnjvNqYNzf0/ak=
+github.com/petrjahoda/database v0.0.0-20210406112418-c1d5e41fae2b/go.mod h1:E+P9M/94uFSgcYyt/0OHCpWoFN9kGkThs9FJaidsoUw=
 github.com/pierrec/lz4 v1.0.2-0.20190131084431-473cd7ce01a1/go.mod h1:3/3N9NVKO0jef7pBehbT1qWhCMrIgbYNnFAZCqQ5LRc=
 github.com/pierrec/lz4 v2.0.5+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
