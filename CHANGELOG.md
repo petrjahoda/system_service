@@ -14,6 +14,11 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Fixed``` for any bug fixes.
 * ```Security``` in case of vulnerabilities.
 
+## [2021.2.1.7] - 2021-04-07
+
+### Added
+- creating page count table
+
 ## [2021.2.1.6] - 2021-04-06
 
 ### Changed

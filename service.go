@@ -878,6 +878,21 @@ func checkTablesOnly() bool {
 	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 
+	if !db.Migrator().HasTable(&database.PageCount{}) {
+		logInfo("MAIN", "PageCount table not exists, creating")
+		err := db.Migrator().CreateTable(&database.PageCount{})
+		if err != nil {
+			logError("MAIN", "Cannot create page count table")
+		}
+
+	} else {
+		err := db.Migrator().AutoMigrate(&database.PageCount{})
+		if err != nil {
+			logError("MAIN", "Cannot update page count table")
+		}
+	}
+	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
+
 	return true
 }
 
