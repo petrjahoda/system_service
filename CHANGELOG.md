@@ -17,7 +17,7 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 ## [2021.2.1.14] - 2021-04-14
 
 ### Added
-- locales for days and months
+- locales for days and months, etc.
 
 ## [2021.2.1.8] - 2021-04-08
 

@@ -3132,7 +3132,7 @@ func createLocales(db *gorm.DB) {
 	productionToday := database.Locale{
 		Name: "production-today",
 		CsCZ: "Dnešní výroba",
-		DeDE: "Heutige Produktion.",
+		DeDE: "Heutige Produktion",
 		EnUS: "Production today",
 		EsES: "Producción de hoy",
 		FrFR: "La production d'aujourd'hui",
@@ -3143,6 +3143,21 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Сегодняшнее производство",
 	}
 	db.Create(&productionToday)
+
+	productionLastYear := database.Locale{
+		Name: "production-last-year",
+		CsCZ: "Výroba za posledních 12 měsíců",
+		DeDE: "Produktion in den letzten 12 Monaten",
+		EnUS: "Production in the last 12 months",
+		EsES: "Producción en los últimos 12 meses",
+		FrFR: "Production au cours des 12 derniers mois",
+		ItIT: "Produzione negli ultimi 12 mesi",
+		PlPL: "Produkcja w ciągu ostatnich 12 miesięcy",
+		PtPT: "Produção nos últimos 12 meses",
+		SkSK: "Výroba za posledných 12 mesiacov",
+		RuRU: "Производство за последние 12 месяцев",
+	}
+	db.Create(&productionLastYear)
 
 	dayNames := database.Locale{
 		Name: "day-names",
@@ -3173,5 +3188,20 @@ func createLocales(db *gorm.DB) {
 		RuRU: "Янв,Фев,Мар,Апр,Май,Июн,Июл,Авг,Сен,Окт,Ноя,Дек",
 	}
 	db.Create(&monthName)
+
+	overviewMonth := database.Locale{
+		Name: "month-overview",
+		CsCZ: "Přehled za posledních 30 dnů",
+		DeDE: "Übersicht für die letzten 30 Tage",
+		EnUS: "Overview for the last 30 days",
+		EsES: "Resumen de los últimos 30 días",
+		FrFR: "Aperçu des 30 derniers jours",
+		ItIT: "Panoramica degli ultimi 30 giorni",
+		PlPL: "Przegląd ostatnich 30 dni",
+		PtPT: "Visão geral dos últimos 30 dias",
+		SkSK: "Prehľad za posledných 30 dní",
+		RuRU: "Обзор за последние 30 дней",
+	}
+	db.Create(&overviewMonth)
 
 }
