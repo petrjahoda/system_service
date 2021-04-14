@@ -3129,4 +3129,49 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&poweroff)
 
+	productionToday := database.Locale{
+		Name: "production-today",
+		CsCZ: "Dnešní výroba",
+		DeDE: "Heutige Produktion.",
+		EnUS: "Production today",
+		EsES: "Producción de hoy",
+		FrFR: "La production d'aujourd'hui",
+		ItIT: "La produzione di oggi",
+		PlPL: "Dzisiejsza produkcja",
+		PtPT: "Produção de hoje",
+		SkSK: "Dnešná produkcia",
+		RuRU: "Сегодняшнее производство",
+	}
+	db.Create(&productionToday)
+
+	dayNames := database.Locale{
+		Name: "day-names",
+		CsCZ: "Po,Út,St,Čt,Pá,So,Ne",
+		DeDE: "Mo,Di,Mi,Do,Fr,Sa,So",
+		EnUS: "Mo,Tu,We,Th,Fr,Sa,Su",
+		EsES: "Lu,Ma,Mi,Ju,Vi,Sá,Do",
+		FrFR: "Lu,Ma,Me,Je,Ve,Sa,Di",
+		ItIT: "Lu,Ma,Me,Gi,Ve,Sa,Do",
+		PlPL: "Po,Wt,Śr,Cz,Pi,So,Ni",
+		PtPT: "Se,Te,Qua,Qui,Se,Sá,Do",
+		SkSK: "Po,ut,St,Št,Pi,So,Ne",
+		RuRU: "Пн,Вт,Ср,Чт,Пт,Сб,Вс",
+	}
+	db.Create(&dayNames)
+
+	monthName := database.Locale{
+		Name: "month-names",
+		CsCZ: "Led,Úno,Bře,Dub,Kvě,Čer,Čvc,Srp,Zář,Říj,Lis,Pro",
+		DeDE: "Jan,Feb,Mär,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez",
+		EnUS: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+		EsES: "Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Set,Oct,Nov,Dic",
+		FrFR: "Jan,Fév,Mar,Avr,Mai,Juin,Juil,Aoû,Sep,Oct,Nov,Déc",
+		ItIT: "Gen,Feb,Mar,Apr,Mag,Giu,Lug,Ago,Set,Ott,Nov,Dic",
+		PlPL: "Sty,Lut,Mar,Kwi,Maj,Cze,Lip,Sie,Wrz,Paz,Lis,Gru",
+		PtPT: "Jan,Fev,Mar,Abr,Mai,Jun,Jul,Ago,Set,Out,Nov,Dez",
+		SkSK: "Jan,Feb,Mar,Apr,Máj,Jún,Júl,Aug,Sep,Okt,Nov,Dec",
+		RuRU: "Янв,Фев,Мар,Апр,Май,Июн,Июл,Авг,Сен,Окт,Ноя,Дек",
+	}
+	db.Create(&monthName)
+
 }
