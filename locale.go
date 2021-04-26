@@ -3204,4 +3204,19 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&overviewMonth)
 
+	consumptionOverviewMonth := database.Locale{
+		Name: "month-consumption-overview",
+		CsCZ: "Přehled spotřeby elektrické energie za posledních 30 dnů",
+		DeDE: "Stromverbrauchsübersicht für die letzten 30 Tage",
+		EnUS: "Power consumption overview for the last 30 days",
+		EsES: "Descripción general del consumo de energía durante los últimos 30 días",
+		FrFR: "Vue d'ensemble de la consommation d'énergie des 30 derniers jours",
+		ItIT: "Panoramica del consumo energetico per gli ultimi 30 giorni",
+		PlPL: "Przegląd zużycia energii przez ostatnie 30 dni",
+		PtPT: "Visão geral do consumo de energia nos últimos 30 dias",
+		SkSK: "Prehľad spotreby elektrickej energie za posledných 30 dní",
+		RuRU: "Обзор потребления мощности за последние 30 дней",
+	}
+	db.Create(&consumptionOverviewMonth)
+
 }
