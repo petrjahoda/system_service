@@ -1241,16 +1241,16 @@ func createLocales(db *gorm.DB) {
 
 	menuWorkplaces := database.Locale{
 		Name: "menu-workplaces",
-		CsCZ: "skupina",
-		DeDE: "gruppe",
-		EnUS: "group",
-		EsES: "grupo",
-		FrFR: "groupe",
-		ItIT: "gruppo",
-		PlPL: "grupa",
-		PtPT: "grupo",
-		SkSK: "skupina",
-		RuRU: "группа",
+		CsCZ: "pracoviště",
+		DeDE: "arbeitsplätze",
+		EnUS: "workplaces",
+		EsES: "lugares de trabajo",
+		FrFR: "lieux de travail",
+		ItIT: "ambienti di lavoro",
+		PlPL: "miejsca pracy",
+		PtPT: "locais de trabalho",
+		SkSK: "pracoviska",
+		RuRU: "pабочие места",
 	}
 	db.Create(&menuWorkplaces)
 

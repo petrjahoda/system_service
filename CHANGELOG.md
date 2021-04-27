@@ -14,6 +14,11 @@ adhere to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 * ```Fixed``` for any bug fixes.
 * ```Security``` in case of vulnerabilities.
 
+## [2021.2.1.27] - 2021-04-27
+
+### Changed
+- locales for menu-workplaces
+
 ## [2021.2.1.26] - 2021-04-26
 
 ### Added
