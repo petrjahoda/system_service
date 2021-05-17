@@ -911,7 +911,7 @@ func checkDatabaseOnly() bool {
 			logError("MAIN", "Problem opening database: "+err.Error())
 			return false
 		}
-		db = db.Exec("CREATE DATABASE system;")
+		db = db.Exec("CREATE DATABASE system2;")
 		if db.Error != nil {
 			logError("MAIN", "Cannot create database version3: "+err.Error())
 		}
