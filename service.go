@@ -280,7 +280,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create product table")
 		}
-		product := database.Product{Name: "Product"}
+		product := database.Product{Name: "Testovací výrobek"}
 		db.Create(&product)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Product{})
@@ -296,8 +296,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create workplacesection table")
 		}
-		machines := database.WorkplaceSection{Name: "Machines"}
+		machines := database.WorkplaceSection{Name: "Hlavní stroje"}
 		db.Create(&machines)
+		machinesTwo := database.WorkplaceSection{Name: "Pomocné stroje"}
+		db.Create(&machinesTwo)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.WorkplaceSection{})
 		if err != nil {
@@ -312,7 +314,7 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create workplacemode table")
 		}
-		mode := database.WorkplaceMode{Name: "Production", DowntimeDuration: time.Second * 300, PoweroffDuration: time.Second * 300}
+		mode := database.WorkplaceMode{Name: "Produkce", DowntimeDuration: time.Second * 300, PoweroffDuration: time.Second * 300}
 		db.Create(&mode)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.WorkplaceMode{})
@@ -346,11 +348,31 @@ func checkTablesOnly() bool {
 		}
 		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (product_id) REFERENCES products(id)")
 		db.Exec("ALTER TABLE orders ADD CONSTRAINT fk_orders_product FOREIGN KEY (product_id) REFERENCES products(id)")
-		order := database.Order{Name: "Internal", DateTimeRequest: sql.NullTime{
+		order := database.Order{Name: "Nespecifikovaná zakázka", ProductID: sql.NullInt32{Int32: 1, Valid: true}, DateTimeRequest: sql.NullTime{
 			Time:  time.Now(),
 			Valid: true,
 		}}
 		db.Create(&order)
+		left := database.Order{Name: "Levá mechanika", ProductID: sql.NullInt32{Int32: 1, Valid: true}, DateTimeRequest: sql.NullTime{
+			Time:  time.Now(),
+			Valid: true,
+		}}
+		db.Create(&left)
+		right := database.Order{Name: "Pravá mechanika", ProductID: sql.NullInt32{Int32: 1, Valid: true}, DateTimeRequest: sql.NullTime{
+			Time:  time.Now(),
+			Valid: true,
+		}}
+		db.Create(&right)
+		upper := database.Order{Name: "Horní uzávěr", ProductID: sql.NullInt32{Int32: 1, Valid: true}, DateTimeRequest: sql.NullTime{
+			Time:  time.Now(),
+			Valid: true,
+		}}
+		db.Create(&upper)
+		handler := database.Order{Name: "Držák", ProductID: sql.NullInt32{Int32: 1, Valid: true}, DateTimeRequest: sql.NullTime{
+			Time:  time.Now(),
+			Valid: true,
+		}}
+		db.Create(&handler)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Order{})
 		if err != nil {
@@ -412,6 +434,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create breakdowntype table")
 		}
+		electrical := database.BreakdownType{Name: "Elektrická porucha"}
+		db.Create(&electrical)
+		mechanical := database.BreakdownType{Name: "Mechanická porucha"}
+		db.Create(&mechanical)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.BreakdownType{})
 		if err != nil {
@@ -427,6 +453,26 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot create breakdown table")
 		}
 		db.Exec("ALTER TABLE breakdowns ADD CONSTRAINT fk_breakdowns_breakdown_type FOREIGN KEY (breakdown_type_id) REFERENCES breakdown_types(id)")
+		switches := database.Breakdown{
+			Name:            "Vyhozené pojistky",
+			BreakdownTypeID: 1,
+		}
+		db.Create(&switches)
+		panel := database.Breakdown{
+			Name:            "Nefunguje panel",
+			BreakdownTypeID: 1,
+		}
+		db.Create(&panel)
+		button := database.Breakdown{
+			Name:            "Nefunguje tlačítko",
+			BreakdownTypeID: 2,
+		}
+		db.Create(&button)
+		axis := database.Breakdown{
+			Name:            "Drhne osa",
+			BreakdownTypeID: 2,
+		}
+		db.Create(&axis)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Breakdown{})
 		if err != nil {
@@ -442,8 +488,10 @@ func checkTablesOnly() bool {
 		if err != nil {
 			logError("MAIN", "Cannot create downtimetype table")
 		}
-		system := database.DowntimeType{Name: "System"}
+		system := database.DowntimeType{Name: "Systémové"}
 		db.Create(&system)
+		user := database.DowntimeType{Name: "Uživatelské"}
+		db.Create(&user)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DowntimeType{})
 		if err != nil {
@@ -462,10 +510,30 @@ func checkTablesOnly() bool {
 		system := database.DowntimeType{}
 		db.Where("Name = ?", "System").Find(&system)
 		noReasonDowntime := database.Downtime{
-			Name:           "No reason Downtime",
+			Name:           "Nespecifikovaný prostoj",
 			DowntimeTypeID: 1,
 		}
 		db.Create(&noReasonDowntime)
+		smoking := database.Downtime{
+			Name:           "Kouření",
+			DowntimeTypeID: 2,
+		}
+		db.Create(&smoking)
+		cleaning := database.Downtime{
+			Name:           "Uklízení",
+			DowntimeTypeID: 2,
+		}
+		db.Create(&cleaning)
+		preparing := database.Downtime{
+			Name:           "Chystání materiálu",
+			DowntimeTypeID: 2,
+		}
+		db.Create(&preparing)
+		hand := database.Downtime{
+			Name:           "Ruční operace",
+			DowntimeTypeID: 2,
+		}
+		db.Create(&hand)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Downtime{})
 		if err != nil {
@@ -524,7 +592,7 @@ func checkTablesOnly() bool {
 		db.Where("Name = ?", "Administrator").Find(&userRole)
 		userType := database.UserType{}
 		db.Where("Name = ?", "Admin").Find(&userType)
-		password := hashPasswordFromString([]byte("54321"))
+		password := hashPasswordFromString([]byte("admin"))
 		adminUser := database.User{
 			FirstName:  "Admin",
 			SecondName: "Admin",
@@ -535,6 +603,69 @@ func checkTablesOnly() bool {
 			Locale:     "EnUS",
 		}
 		db.Create(&adminUser)
+		password = hashPasswordFromString([]byte("poweruser"))
+		powerUser := database.User{
+			FirstName:  "Power",
+			SecondName: "User",
+			Email:      "power@user.com",
+			Password:   password,
+			UserRoleID: 2,
+			UserTypeID: 2,
+			Locale:     "DeDE",
+		}
+		db.Create(&powerUser)
+		password = hashPasswordFromString([]byte("user"))
+		user := database.User{
+			FirstName:  "User",
+			SecondName: "User",
+			Email:      "user@user.com",
+			Password:   password,
+			UserRoleID: 3,
+			UserTypeID: 2,
+			Locale:     "CsCZ",
+		}
+		db.Create(&user)
+		password = hashPasswordFromString([]byte("user"))
+		demoUserOne := database.User{
+			FirstName:  "Adam",
+			SecondName: "Dub",
+			Email:      "adam@company.com",
+			Password:   password,
+			UserRoleID: 3,
+			UserTypeID: 1,
+			Locale:     "CsCZ",
+		}
+		db.Create(&demoUserOne)
+		demoUserTwo := database.User{
+			FirstName:  "David",
+			SecondName: "Buk",
+			Email:      "david@company.com",
+			Password:   password,
+			UserRoleID: 3,
+			UserTypeID: 1,
+			Locale:     "CsCZ",
+		}
+		db.Create(&demoUserTwo)
+		demoUserThree := database.User{
+			FirstName:  "Johan",
+			SecondName: "Smrk",
+			Email:      "johan@company.com",
+			Password:   password,
+			UserRoleID: 3,
+			UserTypeID: 1,
+			Locale:     "CsCZ",
+		}
+		db.Create(&demoUserThree)
+		demoUserFour := database.User{
+			FirstName:  "Cecil",
+			SecondName: "Jasan",
+			Email:      "cecil@company.com",
+			Password:   password,
+			UserRoleID: 3,
+			UserTypeID: 1,
+			Locale:     "CsCZ",
+		}
+		db.Create(&demoUserFour)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.User{})
 		if err != nil {
@@ -659,13 +790,55 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot create operation table")
 		}
 		db.Exec("ALTER TABLE operations ADD CONSTRAINT fk_operations_order FOREIGN KEY (order_id) REFERENCES orders(id)")
-		operation := database.Operation{
-			Name:    "Operation",
-			OrderID: 1,
-			Barcode: "0",
+		mainOne := database.Operation{
+			Name:    "Hlavní výroba",
+			OrderID: 2,
+			Barcode: "1",
 			Note:    "",
 		}
-		db.Create(&operation)
+		db.Create(&mainOne)
+		mainTwo := database.Operation{
+			Name:    "Hlavní výroba",
+			OrderID: 3,
+			Barcode: "1",
+			Note:    "",
+		}
+		db.Create(&mainTwo)
+		mainThree := database.Operation{
+			Name:    "Hlavní výroba",
+			OrderID: 4,
+			Barcode: "1",
+			Note:    "",
+		}
+		db.Create(&mainThree)
+		mainFour := database.Operation{
+			Name:    "Hlavní výroba",
+			OrderID: 5,
+			Barcode: "1",
+			Note:    "",
+		}
+		db.Create(&mainFour)
+		cleaning := database.Operation{
+			Name:    "Čištění",
+			OrderID: 2,
+			Barcode: "2",
+			Note:    "",
+		}
+		db.Create(&cleaning)
+		brushingOne := database.Operation{
+			Name:    "Broušení",
+			OrderID: 4,
+			Barcode: "1",
+			Note:    "",
+		}
+		db.Create(&brushingOne)
+		brushingTwo := database.Operation{
+			Name:    "Broušení",
+			OrderID: 5,
+			Barcode: "1",
+			Note:    "",
+		}
+		db.Create(&brushingTwo)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Operation{})
 		if err != nil {
@@ -911,9 +1084,9 @@ func checkDatabaseOnly() bool {
 			logError("MAIN", "Problem opening database: "+err.Error())
 			return false
 		}
-		db = db.Exec("CREATE DATABASE system2;")
+		db = db.Exec("CREATE DATABASE system;")
 		if db.Error != nil {
-			logError("MAIN", "Cannot create database version3: "+err.Error())
+			logError("MAIN", "Cannot create database system: "+err.Error())
 		}
 		logInfo("MAIN", "Database created")
 		return true
