@@ -2623,7 +2623,7 @@ func createLocales(db *gorm.DB) {
 		Name: "second-name",
 		CsCZ: "Příjmení",
 		DeDE: "Nachname",
-		EnUS: "First name",
+		EnUS: "Last name",
 		EsES: "Apellido",
 		FrFR: "Nom de famille",
 		ItIT: "Cognome",
