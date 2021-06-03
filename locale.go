@@ -3161,16 +3161,16 @@ func createLocales(db *gorm.DB) {
 
 	dayNames := database.Locale{
 		Name: "day-names",
-		CsCZ: "Po,Út,St,Čt,Pá,So,Ne",
-		DeDE: "Mo,Di,Mi,Do,Fr,Sa,So",
-		EnUS: "Mo,Tu,We,Th,Fr,Sa,Su",
-		EsES: "Lu,Ma,Mi,Ju,Vi,Sá,Do",
-		FrFR: "Lu,Ma,Me,Je,Ve,Sa,Di",
-		ItIT: "Lu,Ma,Me,Gi,Ve,Sa,Do",
-		PlPL: "Po,Wt,Śr,Cz,Pi,So,Ni",
-		PtPT: "Se,Te,Qua,Qui,Se,Sá,Do",
-		SkSK: "Po,ut,St,Št,Pi,So,Ne",
-		RuRU: "Пн,Вт,Ср,Чт,Пт,Сб,Вс",
+		CsCZ: "Ne,Po,Út,St,Čt,Pá,So",
+		DeDE: "So,Mo,Di,Mi,Do,Fr,Sa",
+		EnUS: "Su,Mo,Tu,We,Th,Fr,Sa",
+		EsES: "Do,Lu,Ma,Mi,Ju,Vi,Sá",
+		FrFR: "Di,Lu,Ma,Me,Je,Ve,Sa",
+		ItIT: "Do,Lu,Ma,Me,Gi,Ve,Sa",
+		PlPL: "Ni,Po,Wt,Śr,Cz,Pi,So",
+		PtPT: "Do,Se,Te,Qua,Qui,Se,Sá",
+		SkSK: "Ne,Po,ut,St,Št,Pi,So",
+		RuRU: "Bc,Пн,Вт,Ср,Чт,Пт,Сб",
 	}
 	db.Create(&dayNames)
 

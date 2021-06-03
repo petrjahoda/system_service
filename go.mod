@@ -29,8 +29,8 @@ require (
 	github.com/ricochet2200/go-disk-usage v0.0.0-20150921141558-f0d1b743428f
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
-	golang.org/x/crypto v0.0.0-20210506145944-38f3c27a63bf
-	golang.org/x/sys v0.0.0-20210511113859-b0526f3d8744 // indirect
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b // indirect
 	golang.org/x/text v0.3.6 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
