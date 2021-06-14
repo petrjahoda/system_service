@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/kardianos/service"
+	"strconv"
 	"time"
 )
 
@@ -19,6 +20,7 @@ type program struct{}
 
 func main() {
 	logInfo("MAIN", serviceName+" ["+version+"] starting...")
+	logInfo("MAIN", "© "+strconv.Itoa(time.Now().Year())+" Petr Jahoda")
 	serviceConfig := &service.Config{
 		Name:        serviceName,
 		DisplayName: serviceName,
