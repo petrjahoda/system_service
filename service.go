@@ -169,6 +169,8 @@ func checkTablesOnly() bool {
 		db.Create(&password)
 		email := database.Setting{Name: "email", Value: ""}
 		db.Create(&email)
+		software := database.Setting{Name: "software", Value: "Zapsi"}
+		db.Create(&software)
 	} else {
 		err := db.Migrator().AutoMigrate(&database.Setting{})
 		if err != nil {

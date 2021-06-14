@@ -19,6 +19,7 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 ### Added
 - copyright
 - updated libraries
+- software to settings
 
 ## [2021.2.3.3] - 2021-06-03
 
