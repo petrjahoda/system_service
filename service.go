@@ -1066,6 +1066,20 @@ func checkTablesOnly() bool {
 			logError("MAIN", "Cannot update page count table")
 		}
 	}
+
+	if !db.Migrator().HasTable(&database.WebUserRecord{}) {
+		logInfo("MAIN", "Web user record table not exists, creating")
+		err := db.Migrator().CreateTable(&database.WebUserRecord{})
+		if err != nil {
+			logError("MAIN", "Cannot create web user records table")
+		}
+
+	} else {
+		err := db.Migrator().AutoMigrate(&database.WebUserRecord{})
+		if err != nil {
+			logError("MAIN", "Cannot update web user table")
+		}
+	}
 	logInfo("MAIN", "Tables checked in "+time.Since(timer).String())
 
 	return true
