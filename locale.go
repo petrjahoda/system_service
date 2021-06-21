@@ -3219,4 +3219,19 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&consumptionOverviewMonth)
 
+	overview := database.Locale{
+		Name: "overview",
+		CsCZ: "Přehled",
+		DeDE: "Überblick",
+		EnUS: "Overview",
+		EsES: "Información general",
+		FrFR: "Aperçu",
+		ItIT: "Panoramica",
+		PlPL: "Przegląd",
+		PtPT: "Visão geral",
+		SkSK: "Prehľad",
+		RuRU: "Обзор",
+	}
+	db.Create(&overview)
+
 }
