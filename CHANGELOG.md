@@ -16,8 +16,8 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 
 ## [2021.2.3.23] - 2021-06-23
 
-### Added
-- AlarmRecord and DowntimeRecord creating user foreign keys
+### Changed
+- Removed AlarmRecord and DowntimeRecord creating user foreign keys
 
 ## [2021.2.3.21] - 2021-06-21
 

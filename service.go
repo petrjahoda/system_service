@@ -947,7 +947,6 @@ func checkTablesOnly() bool {
 		}
 		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_downtime FOREIGN KEY (downtime_id) REFERENCES downtimes(id)")
 		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
-		db.Exec("ALTER TABLE downtime_records ADD CONSTRAINT fk_downtime_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.DowntimeRecord{})
 		if err != nil {
@@ -998,7 +997,6 @@ func checkTablesOnly() bool {
 		}
 		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_alarm FOREIGN KEY (alarm_id) REFERENCES alarms(id)")
 		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_workplace FOREIGN KEY (workplace_id) REFERENCES workplaces(id)")
-		db.Exec("ALTER TABLE alarm_records ADD CONSTRAINT fk_alarm_records_user FOREIGN KEY (user_id) REFERENCES users(id)")
 	} else {
 		err := db.Migrator().AutoMigrate(&database.AlarmRecord{})
 		if err != nil {
