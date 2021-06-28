@@ -17,7 +17,7 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html) rules.
 ## [2021.2.3.28] - 2021-06-28
 
 ### Changed
-- Added userId and OrderId for downtimeRecord
+- Added userId and OrderRecordId for downtimeRecord
 - Added userId for orderRecord
 
 
