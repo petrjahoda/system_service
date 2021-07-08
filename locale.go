@@ -3234,4 +3234,79 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&overview)
 
+	statisticsDowntimesCalendar := database.Locale{
+		Name: "statistics-downtimes-calendar",
+		CsCZ: "Přehled prostojů po dnech",
+		DeDE: "Ausfallzeiten Tag für Tag",
+		EnUS: "Downtimes day by day",
+		EsES: "Tiempos de inactividad día a día",
+		FrFR: "Temps d'arrêt au jour le jour",
+		ItIT: "Tempi di inattività giorno per giorno",
+		PlPL: "Przestoje dzień po dniu",
+		PtPT: "Tempos de inatividade do dia a dia",
+		SkSK: "Prestoje deň za dňom",
+		RuRU: "Время простоя день за днем",
+	}
+	db.Create(&statisticsDowntimesCalendar)
+
+	statisticsWorkplaces := database.Locale{
+		Name: "statistics-workplaces",
+		CsCZ: "Srovnání podle pracovišť",
+		DeDE: "Vergleich nach Arbeitsplatz",
+		EnUS: "Comparison by workplace",
+		EsES: "Comparación por lugar de trabajo",
+		FrFR: "Comparaison par lieu de travail",
+		ItIT: "Confronto per luogo di lavoro",
+		PlPL: "Porównanie według miejsca pracy",
+		PtPT: "Comparação por local de trabalho",
+		SkSK: "Porovnanie podľa pracoviska",
+		RuRU: "Сравнение по месту работы",
+	}
+	db.Create(&statisticsWorkplaces)
+
+	statisticsDowntimesSelection := database.Locale{
+		Name: "statistics-selection-downtimes",
+		CsCZ: "Srovnání podle typu prostoje",
+		DeDE: "Vergleich nach Ausfallzeittyp",
+		EnUS: "Comparison by downtime type",
+		EsES: "Comparación por tipo de tiempo de inactividad",
+		FrFR: "Comparaison par type de temps d'arrêt",
+		ItIT: "Confronto per tipo di tempo di inattività",
+		PlPL: "Porównanie według rodzaju przestoju",
+		PtPT: "Comparação por tipo de tempo de inatividade",
+		SkSK: "Porovnanie podľa typu prestoja",
+		RuRU: "Сравнение по типу простоя",
+	}
+	db.Create(&statisticsDowntimesSelection)
+
+	statisticsUsers := database.Locale{
+		Name: "statistics-users",
+		CsCZ: "Srovnání podle pracovníka",
+		DeDE: "Vergleich nach Mitarbeiter",
+		EnUS: "Comparison by employee",
+		EsES: "Comparación por empleado",
+		FrFR: "Comparaison par employé",
+		ItIT: "Confronto per dipendente",
+		PlPL: "Porównanie według pracownika",
+		PtPT: "Comparação por funcionário",
+		SkSK: "Porovnanie podľa zamestnanca",
+		RuRU: "Сравнение по сотрудникам",
+	}
+	db.Create(&statisticsUsers)
+
+	statisticsDuration := database.Locale{
+		Name: "statistics-duration",
+		CsCZ: "Srovnání podle délky trvání",
+		DeDE: "Vergleich nach Dauer",
+		EnUS: "Comparison by duration",
+		EsES: "Comparación por duración",
+		FrFR: "Comparaison par durée",
+		ItIT: "Confronto per durata",
+		PlPL: "Porównanie według czasu trwania",
+		PtPT: "Comparação por duração",
+		SkSK: "Porovnanie podľa trvania",
+		RuRU: "Сравнение по продолжительности",
+	}
+	db.Create(&statisticsDuration)
+
 }
