@@ -3309,4 +3309,33 @@ func createLocales(db *gorm.DB) {
 	}
 	db.Create(&statisticsDuration)
 
+	statisticsBreakdownSelection := database.Locale{
+		Name: "statistics-selection-breakdowns",
+		CsCZ: "Srovnání podle typu poruchy",
+		DeDE: "Vergleich nach Störungtyp",
+		EnUS: "Comparison by breakdown type",
+		EsES: "Comparación por tipo de averías",
+		FrFR: "Comparaison par type de panne",
+		ItIT: "Confronto per tipo di disturbi",
+		PlPL: "Porównanie według typu zaburzenia",
+		PtPT: "Comparação por tipo de tempo de desordens",
+		SkSK: "Porovnanie podľa typu poruchy",
+		RuRU: "Сравнение по типу Pасстройства",
+	}
+	db.Create(&statisticsBreakdownSelection)
+
+	statisticsBreakdownsCalendar := database.Locale{
+		Name: "statistics-breakdowns-calendar",
+		CsCZ: "Přehled poruch po dnech",
+		DeDE: "Störungen Tag für Tag",
+		EnUS: "Breakdowns day by day",
+		EsES: "Averías día a día",
+		FrFR: "Pannes au jour le jour",
+		ItIT: "Disturbi giorno per giorno",
+		PlPL: "Zaburzenia dzień po dniu",
+		PtPT: "Desordens do dia a dia",
+		SkSK: "Poruchy deň za dňom",
+		RuRU: "Время Pасстройства день за днем",
+	}
+	db.Create(&statisticsBreakdownsCalendar)
 }
